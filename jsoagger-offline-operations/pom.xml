@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>io.github.jsoagger</groupId>
+		<artifactId>jsoagger-bridge</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<name>JSoagger offline operations</name>
+	<description>JSoagger offline operations</description>
+	<artifactId>jsoagger-offline-operations</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+		<root.project.location>${project.basedir}/../</root.project.location>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.8.6-SNAPSHOT</version>
+				<scope>system</scope>
+				<systemPath>${root.project.location}/external-libs/gson-2.8.6-SNAPSHOT.jar</systemPath>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.0</version><!--$NO-MVN-MAN-VER$ -->
+				<configuration>
+					<sourceFileExcludes>
+						<sourceFileExclude>module-info.java</sourceFileExclude>
+					</sourceFileExcludes>
+					<additionalOptions>
+						<additionalOption>-Xdoclint:none</additionalOption>
+					</additionalOptions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<modules>
+		<module>jsoagger-coreui-offline-operations</module>
+		<module>jsoagger-corebusiness-offline-operations</module>
+		<module>jsoagger-coreui-offline-services</module>
+		<module>jsoagger-corebusiness-offline-services</module>
+	</modules>
+</project>

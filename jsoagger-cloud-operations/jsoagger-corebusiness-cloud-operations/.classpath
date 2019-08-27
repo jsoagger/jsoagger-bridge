@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="/jsoagger-corebusiness-cloud-services">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar" sourcepath="M2_REPO/javax/inject/javax.inject/1/javax.inject-1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar" sourcepath="M2_REPO/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar" sourcepath="M2_REPO/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/squareup/okhttp/okhttp/2.7.5/okhttp-2.7.5.jar" sourcepath="M2_REPO/com/squareup/okhttp/okhttp/2.7.5/okhttp-2.7.5-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/squareup/okio/okio/1.6.0/okio-1.6.0.jar" sourcepath="M2_REPO/com/squareup/okio/okio/1.6.0/okio-1.6.0-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.jar" sourcepath="M2_REPO/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/sun/xml/bind/jaxb-impl/2.3.0.1/jaxb-impl-2.3.0.1.jar" sourcepath="M2_REPO/com/sun/xml/bind/jaxb-impl/2.3.0.1/jaxb-impl-2.3.0.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-base/11/javafx-base-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-base/11/javafx-base-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-base/11/javafx-base-11-mac.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-controls/11/javafx-controls-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-controls/11/javafx-controls-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-controls/11/javafx-controls-11-mac.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-graphics/11/javafx-graphics-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-graphics/11/javafx-graphics-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-graphics/11/javafx-graphics-11-mac.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-web/11/javafx-web-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-web/11/javafx-web-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-web/11/javafx-web-11-mac.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-media/11/javafx-media-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-media/11/javafx-media-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-media/11/javafx-media-11-mac.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-fxml/11/javafx-fxml-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-fxml/11/javafx-fxml-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-fxml/11/javafx-fxml-11-mac.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-swing/11/javafx-swing-11.jar" sourcepath="M2_REPO/org/openjfx/javafx-swing/11/javafx-swing-11-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/openjfx/javafx-swing/11/javafx-swing-11-mac.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

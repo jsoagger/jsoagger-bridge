@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+        xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+                http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+        <bean id="CoreOfflineMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+                <property name="useCodeAsDefaultMessage" value="true"/>
+                <property name="defaultEncoding" value="UTF-8"/>
+                <property name="basenames">
+                        <list>
+                                <value>i18n.generalOfflineBundle</value>
+                        </list>
+                </property>
+        </bean>
+
+        <bean id="LoadTeamPopulateDataSourceTypesOperation" class="io.github.jsoagger.core.business.offline.operations.LoadTeamPopulateDataSourceTypesOperation"/>
+        
+        <!-- 
+                OFFLINE/LOCAL NOTIFICATIONS OPERATIONS
+         -->
+        <bean id="OfflineLoadAllNotificationsOperations" class="io.github.jsoagger.core.business.offline.operations.notifications.LoadAllOperations" scope="prototype"/>
+        <bean id="OfflineDeleteNotificationsOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.DeleteOperation" scope="prototype"/>
+        <bean id="OfflineSaveNotificationsOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.SaveOperation" scope="prototype"/>
+        <bean id="OfflineUpdateNotificationsStatusOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.UpdateStatusOperation" scope="prototype"/>
+        <bean id="OfflineCountNotificationsOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.CountOperation" scope="prototype"/>
+        <bean id="OfflineLoadNotificationsOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.LoadAllOperations" scope="prototype"/>
+        
+        <bean id="OfflineDeleteAllNotificationsOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.DeleteAllOperation" scope="prototype"/>
+        <bean id="OfflineMarkAllReadenNotificationsOperation" class="io.github.jsoagger.core.business.offline.operations.notifications.MarkAllReadenOperation" scope="prototype"/>
+        
+        <bean id="GetAllFolderTagsOperation" class="io.github.jsoagger.core.business.offline.operations.folderTags.GetAllFolderTagsOperation"  scope="prototype"/>
+</beans>

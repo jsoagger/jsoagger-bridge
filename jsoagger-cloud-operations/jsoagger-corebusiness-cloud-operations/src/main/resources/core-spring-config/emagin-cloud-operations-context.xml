@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+                http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd">
+
+
+	<import resource="classpath:/core-spring-context/jsoagger-cloud-services-context.xml" />
+
+	<!-- Ping server -->
+	<bean id="GuestPingServerOperation" class="io.github.jsoagger.core.business.cloud.operations.general.GuestPingServerOperation" lazy-init="true"  />
+	
+	
+	<!-- Authentification operations-->
+	<bean id="LoginOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.LoginOperation" lazy-init="true" >
+		<property name="clientStatus" ref="ServerStatus" />
+	</bean>
+	<bean id="LogoutOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.LogoutOperation" lazy-init="true"  />
+	<bean id="AuthActivateAccountOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.AuthActivateAccountOperation" lazy-init="true"  />
+	<bean id="AuthLostPasswordOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.AuthLostPasswordOperation" lazy-init="true"  />
+	<bean id="AuthResendLockTokenOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.AuthResendLockTokenOperation" lazy-init="true"  />
+	<bean id="AuthSetSystemLockedOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.AuthSetSystemLockedOperation" lazy-init="true"  />
+	<bean id="AuthMyActivationTokenOperation" class="io.github.jsoagger.core.business.cloud.operations.auth.AuthMyActivationTokenOperation" lazy-init="true"  />
+	
+	
+	<!-- View definition -->
+    <bean id="GetViewDefinitionAllSchemaOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.GetViewDefinitionAllSchemaOperation" lazy-init="true"  />
+    <bean id="GetViewDefinitionUISchemaOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.GetViewDefinitionUISchemaOperation" lazy-init="true"  />
+    <bean id="GetViewDefinitionJsonSchemaOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.GetViewDefinitionJsonSchemaOperation" lazy-init="true"  />
+	<bean id="DeleteViewDefinitionOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.DeleteViewDefinitionOperation" lazy-init="true"  />
+	<bean id="GetAllViewDefinitionsOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.GetAllViewDefinitionsOperation" lazy-init="true"  />
+	<bean id="GetViewDefinitionByIdOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.GetViewDefinitionByIdOperation" lazy-init="true"  />
+	<bean id="GetViewDefinitionByInternalNameOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.GetViewDefinitionByInternalNameOperation" lazy-init="true"  />
+	<bean id="UpdateViewDefinitionOperation" class="io.github.jsoagger.core.business.cloud.operations.viewdef.UpdateViewDefinitionOperation" lazy-init="true"  />
+	
+	
+	<!-- Batchs operations -->
+	<bean id="BatchLoadOperation" class="io.github.jsoagger.core.business.cloud.operations.batch.BatchLoadOperation" lazy-init="true"  />
+	<bean id="BatchExportOperation" class="io.github.jsoagger.core.business.cloud.operations.batch.BatchExportOperation" lazy-init="true"  />
+	
+	<!-- Application version history -->
+	<bean id="CreateAppVersionHistoryOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.CreateAppVersionHistoryOperation" lazy-init="true"  />
+	<bean id="DeleteAppVersionHistoryOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.DeleteAppVersionHistoryOperation" lazy-init="true"  />
+	<bean id="GetAppPendingInstallationOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.GetAppPendingInstallationOperation" lazy-init="true"  />
+	<bean id="GetAppVersionByIdOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.GetAppVersionByIdOperation" lazy-init="true"  />
+	<bean id="GetAppVersionHistoryOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.GetAppVersionHistoryOperation" lazy-init="true"  />
+	<bean id="GetAppVersionHistoryStatusOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.GetAppVersionHistoryStatusOperation" lazy-init="true"  />
+	<bean id="GetAppVersionOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.GetAppVersionOperation" lazy-init="true"  />
+	<bean id="SetAppVersionFailedOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.SetAppVersionFailedOperation" lazy-init="true"  />
+	<bean id="SetAppVersionInstalledOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.SetAppVersionInstalledOperation" lazy-init="true"  />
+	<bean id="GetDataPatchInstallationStatusOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.GetDataPatchInstallationStatusOperation" lazy-init="true"  />
+	<bean id="SetDataPatchInstallationStatusOperation" class="io.github.jsoagger.core.business.cloud.operations.appversion.SetDataPatchInstallationStatusOperation" lazy-init="true"  />
+	
+	<!-- roles management -->
+	<bean id="AddRolePermissionOperation" class="io.github.jsoagger.core.business.cloud.operations.container.role.AddRolePermissionOperation" lazy-init="true"  />
+	<bean id="RemoveRolePermissionOperation" class="io.github.jsoagger.core.business.cloud.operations.container.role.RemoveRolePermissionOperation" lazy-init="true"  />
+	<bean id="GetRolePermissionsOperation" class="io.github.jsoagger.core.business.cloud.operations.container.role.GetRolePermissionsOperation" lazy-init="true"  />
+	<bean id="GetRoleRoleByKeyOperation" class="io.github.jsoagger.core.business.cloud.operations.container.role.GetRoleRoleByKeyOperation" lazy-init="true"  />
+	<bean id="GetRoleOperation" class="io.github.jsoagger.core.business.cloud.operations.container.role.GetRoleOperation" lazy-init="true"  />
+	
+	<!-- Persistable operations -->
+	<bean id="PersistableUpdateOperation" class="io.github.jsoagger.core.business.cloud.operations.general.PersistableUpdateAttributesOperation" lazy-init="true"  />
+	<bean id="PersistableLoadSimpleModelOperation" class="io.github.jsoagger.core.business.cloud.operations.general.PersistableLoadSimpleModelOperation" lazy-init="true"  />
+	<bean id="PersistablePaginateEntityOperation" class="io.github.jsoagger.core.business.cloud.operations.general.PersistablePaginateEntityOperation" lazy-init="true"  />
+	<bean id="PersistablePaginateRcOperation" class="io.github.jsoagger.core.business.cloud.operations.general.PersistablePaginateRcOperation" lazy-init="true"  />
+	<bean id="PersistableLoadBasicRCModelOperation" class="io.github.jsoagger.core.business.cloud.operations.decorated.PersistableLoadBasicRCModelOperation" lazy-init="true" />
+	<bean id="PersistableLoadSimpleRCModelOperation" class="io.github.jsoagger.core.business.cloud.operations.decorated.PersistableLoadSimpleRCModelOperation" lazy-init="true" />
+
+	<!-- contained -->
+	<bean id="GetContainerOfOperation" class="io.github.jsoagger.core.business.cloud.operations.contained.GetContainerOfOperation" lazy-init="true"  />
+	
+	<!-- Container management -->
+	<bean id="CreateChildContainerOperation" class="io.github.jsoagger.core.business.cloud.operations.container.CreateChildContainerOperation" lazy-init="true"  />
+	<bean id="LoadContainerByOidOperation" class="io.github.jsoagger.core.business.cloud.operations.container.LoadContainerByOidOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="LoadContainerByPathOperation" class="io.github.jsoagger.core.business.cloud.operations.container.LoadContainerByPathOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="LoadContainerAdministratorsOperation" class="io.github.jsoagger.core.business.cloud.operations.container.LoadContainerAdministratorsOperation" lazy-init="true"  />
+	<bean id="GetContainerMembers" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerMembers" lazy-init="true"  />
+	<bean id="GetContainerSubContainer" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerSubContainer" lazy-init="true"  />
+	<bean id="GetContainerRoles" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerRoles" lazy-init="true"  />
+	<bean id="GetContainerFolderTemplates" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerFolderTemplates" lazy-init="true"  />
+	<bean id="GetContainerLifecycles" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerLifecycles" lazy-init="true"  />
+	<bean id="GetContainerRootLinkTypes" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerRootLinkTypes" lazy-init="true"  />
+	<bean id="GetContainerRootTypes" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerRootTypes" lazy-init="true"  />
+	<bean id="GetContainerEnTemplateOperation" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerEnTemplateOperation" lazy-init="true"  />
+	<bean id="GetContainerPermissions" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerPermissions" lazy-init="true"  />
+	
+
+	<!-- Groups management -->
+	<bean id="AddMembersInGroupOperation" class="io.github.jsoagger.core.business.cloud.operations.container.groups.AddMembersInGroupOperation" lazy-init="true"  />
+	<bean id="CountGroupMembersOperation" class="io.github.jsoagger.core.business.cloud.operations.container.groups.CountGroupMembersOperation" lazy-init="true"  />
+	<bean id="GetGroupMembersOperation" class="io.github.jsoagger.core.business.cloud.operations.container.groups.GetGroupMembersOperation" lazy-init="true"  />
+	<bean id="RemoveMembersFromGroup" class="io.github.jsoagger.core.business.cloud.operations.container.groups.RemoveMembersFromGroup" lazy-init="true"  />
+	<bean id="DeleteGroupOperation" class="io.github.jsoagger.core.business.cloud.operations.container.groups.DeleteGroupOperation" lazy-init="true"  />
+	<bean id="GetGroupByNameOperation" class="io.github.jsoagger.core.business.cloud.operations.container.groups.GetGroupByNameOperation" lazy-init="true"  />
+
+	<!-- Account management -->
+	<bean id="GetAccountOfPartyOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountOfPartyOperation" lazy-init="true"  />
+	<bean id="UpdateUserEmailOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.UpdateUserEmailOperation" lazy-init="true"  />
+	<bean id="GetAccountByLoginOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountByLoginOperation" lazy-init="true"  />
+	<bean id="GetAccountsByLoginLikeOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountsByLoginLikeOperation" lazy-init="true"  />
+	<bean id="GetAccountsByNameLikeOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountsByNameLikeOperation" lazy-init="true"  />
+	<bean id="GetCurrentUserOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetCurrentUserOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="SetCurrentUserPasswordOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.SetCurrentUserPasswordOperation" lazy-init="true" />
+	<bean id="GetUserDetailsOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetUserDetailsOperation" lazy-init="true"  />
+	<bean id="ResetAccountPasswordOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.ResetAccountPasswordOperation" lazy-init="true"  />
+	<bean id="SetAccountPasswordOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.SetAccountPasswordOperation" lazy-init="true"  />
+	<bean id="SetUserAccountLockedOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.SetUserAccountLockedOperation" lazy-init="true"  />
+	<bean id="SetUserAccountUnLockedOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.SetUserAccountUnLockedOperation" lazy-init="true"  />
+	<bean id="GetAccountOwnerByLoginOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountOwnerByLoginOperation" lazy-init="true"  />
+	<bean id="SwitchUserContainerContextOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.SwitchUserContainerContext" lazy-init="true"  />
+	
+	<bean id="GetUserRootFolderOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetUserRootFolderOperation" lazy-init="true"  />
+	<bean id="GetUserRootFolderChildren" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetUserRootFolderChildren" lazy-init="true" >
+		<property name="getFolderChildrenOperation" ref="GetFolderChildrenOperation"/>
+	</bean>
+	
+	<bean id="GetContainerFolderTemplatesOperation" class="io.github.jsoagger.core.business.cloud.operations.container.GetContainerFolderTemplatesOperation" lazy-init="true"/>
+	<bean id="GetContainerRootFolderChildren" class="io.github.jsoagger.core.business.cloud.operations.folder.GetContainerRootFolderChildren" lazy-init="true"  />
+	<bean id="GetAccountPermissionsOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountPermissionsOperation" lazy-init="true"  />
+	<bean id="AddRoleToAccountOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.AddRoleToAccountOperation" lazy-init="true"  />
+	<bean id="GetAccountRolesOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.GetAccountRolesOperation" lazy-init="true"  />
+	<bean id="RemoveRoleFromAccountOperation" class="io.github.jsoagger.core.business.cloud.operations.container.user.RemoveRoleFromAccountOperation" lazy-init="true"  />
+
+
+	<!-- Types management -->
+	<bean id="GetLinkableRoleBsFromOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetLinkableRoleBsFromOperation" lazy-init="true"  />
+	<bean id="GetSubtypesOfOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetSubtypesOfOperation" lazy-init="true"  />
+	<bean id="GetSubtypesOfByLogicalNameOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetSubtypesOfByLogicalNameOperation" lazy-init="true"  />
+	<bean id="GetTypeByOidOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetTypeByOidOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="GetTypeByPathOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetTypeByPathOperation" lazy-init="true"  />
+	<bean id="GetLinkConstraintsOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetLinkConstraintsOperation" lazy-init="true"  />
+	<bean id="GetInstanciableSoftTypesOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetInstanciableSoftTypesOperation" lazy-init="true"  />
+	<bean id="GetDynamicalAttributesDefinitionOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetDynamicalAttributesDefinitionOperation" lazy-init="true"
+		>
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="GetTypeLifecycleOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetTypeLifecycleOperation" lazy-init="true"  />
+	<bean id="SetTypeLifecycleOperation" class="io.github.jsoagger.core.business.cloud.operations.type.SetTypeLifecycleOperation" lazy-init="true"  />
+
+	<!-- Typed object links management -->
+	<bean id="CountRoleBsOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.CountRoleBsOperation" lazy-init="true"  />
+	<bean id="GetRoleBsOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetRoleBsOperation" lazy-init="true"  />
+	<bean id="GetPaginatedRoleBsOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetPaginatedRoleBsOperation" lazy-init="true"  />
+	<bean id="GetPaginatedRoleAsOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.GetPaginatedRoleAsOperation" lazy-init="true"  />
+	<bean id="GetPaginatedRoleBsWithLinksOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetPaginatedRoleBsWithLinksOperation" lazy-init="true"  />
+
+	<bean id="GetDocUsagesOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetDocUsagesOperation" />
+	<bean id="GetPartUsagesOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetPartUsagesOperation" />
+	<bean id="GetRoleBsWithLinksOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetRoleBsWithLinksOperation" />
+	<bean id="CreateTypedObjectLinkOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.CreateTypedObjectLinkOperation" />
+	<bean id="CreateObjectLinkOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.CreateObjectLinkOperation" />
+	<bean id="GetPaginatedRoleBsIterationsOperation" class="io.github.jsoagger.core.business.cloud.operations.typedLink.GetPaginatedRoleBsIterationsOperation" />
+	<bean id="GetTypeByLogicalNameOperation" class="io.github.jsoagger.core.business.cloud.operations.type.GetTypeByLogicalNameOperation" />
+
+
+	<!-- Non typed object link -->
+	<bean id="CountObjectLinkRoleBsOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.CountRoleBsOperation" lazy-init="true"  />
+	<bean id="GetObjectLinkRoleBsOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.GetRoleBsOperation" lazy-init="true"  />
+	<bean id="GetObjectLinkPaginatedRoleBsOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.GetPaginatedRoleBsOperation" lazy-init="true"  />
+	<bean id="GetObjectLinkPaginatedRoleAsOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.GetPaginatedRoleAsOperation" lazy-init="true"  />
+	<bean id="IsRoleALinkedWithRoleBOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.IsRoleALinkedWithRoleBOperation" lazy-init="true"  />
+	<bean id="DeleteLinkOperation" class="io.github.jsoagger.core.business.cloud.operations.objectlink.DeleteLinkOperation" lazy-init="true"  />
+
+
+	<!-- Global attributes management -->
+	<bean id="GetAllGlobalAttributesOperation" class="io.github.jsoagger.core.business.cloud.operations.attributes.GetAllGlobalAttributesOperation" lazy-init="true"  />
+	<bean id="GetGlobalAttributesByLogicalNameOperation" class="io.github.jsoagger.core.business.cloud.operations.attributes.GetGlobalAttributesByLogicalNameOperation" lazy-init="true"
+		 />
+	<bean id="GetGlobalAttributesByTypeOperation" class="io.github.jsoagger.core.business.cloud.operations.attributes.GetGlobalAttributesByTypeOperation" lazy-init="true"
+		 />
+	<bean id="CountGlobalAttributesOperation" class="io.github.jsoagger.core.business.cloud.operations.attributes.CountGlobalAttributesOperation" lazy-init="true"  />
+	<bean id="GetGlobalAttributesByOidOperation" class="io.github.jsoagger.core.business.cloud.operations.attributes.GetGlobalAttributesByOidOperation" lazy-init="true"  />
+
+
+	<!-- Lifecycle management -->
+	<bean id="GetAllLifecyclesOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecycles.GetAllLifecyclesOperation" lazy-init="true"  />
+	<bean id="GetLifecycleByOidOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecycles.GetLifecycleByOidOperation" lazy-init="true"  />
+	<bean id="GetLifecycleStatesOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecycles.GetLifecycleStatesOperation" lazy-init="true"  />
+	<bean id="GetLifecycleStateByDenoteOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecycles.GetLifecycleStateByDenoteOperation" lazy-init="true"  />
+	<bean id="GetLifecycleStateByPromoteOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecycles.GetLifecycleStateByPromoteOperation" lazy-init="true"  />
+	<bean id="GetLifecycleStateBySetStateOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecycles.GetLifecycleStateBySetStateOperation" lazy-init="true"  />
+
+	<!-- Lifecycle Managed management -->
+	<bean id="DenoteOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.DenoteOperation" lazy-init="true"  />
+	<bean id="GetLifecycleHistoryOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetLifecycleHistoryOperation" lazy-init="true"  />
+	<bean id="GetLifecycleStateOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetLifecycleStateOperation" lazy-init="true"  />
+	<bean id="GetPossibleStatesByDenoteOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetPossibleStatesByDenoteOperation" lazy-init="true"/>
+	<bean id="GetPossibleStatesByPromoteOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetPossibleStatesByPromoteOperation" lazy-init="true"/>
+	<bean id="GetPossibleStatesBySetStateOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetPossibleStatesBySetStateOperation" lazy-init="true"/>
+	<bean id="PromoteOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.PromoteOperation" lazy-init="true"  />
+	<bean id="SetStateOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.SetStateOperation" lazy-init="true"  />
+	<bean id="GetAllLifecycleStatesOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetAllLifecycleStatesOperation" lazy-init="true"  />
+	<bean id="GetLifecycleNameOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.GetLifecycleNameOperation" lazy-init="true"  />
+	<bean id="ReassignLifecycleOperation" class="io.github.jsoagger.core.business.cloud.operations.lifecyclesmanaged.ReassignLifecycleOperation" lazy-init="true"  />
+	
+
+	<!-- Revision controlled -->
+	<bean id="CheckinOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.CheckinOperation" lazy-init="true"  />
+	<bean id="CheckoutOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.CheckoutOperation" lazy-init="true"  />
+	<bean id="ReviseOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.ReviseOperation" lazy-init="true"  />
+	<bean id="UndoCheckoutOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.UndoCheckoutOperation" lazy-init="true"  />
+	<bean id="DeleteIterationOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.DeleteIterationOperation" lazy-init="true"  />
+	<bean id="GetAllIterationsOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetAllIterationsOperation" lazy-init="true"  />
+	<bean id="GetAllIterationsOfVersionOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetAllIterationsOfVersionOperation" lazy-init="true"/>
+	<bean id="GetAllVersionsOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetAllVersionsOperation" lazy-init="true"  />
+	<bean id="GetExactIterationVersionOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetExactIterationVersionOperation" lazy-init="true"/>
+	<bean id="GetIterationMasterOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetIterationMasterOperation" lazy-init="true"  />
+	<bean id="GetLatestIterationOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetLatestIterationOperation" lazy-init="true"  />
+	<bean id="GetLatestVersionOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetLatestVersionOperation" lazy-init="true"  />
+	<bean id="GetMasterByNameOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetMasterByNameOperation" lazy-init="true"  />
+	<bean id="GetMasterByNumberOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetMasterByNumberOperation" lazy-init="true"  />
+	<bean id="GetWorkingCopyOperation" class="io.github.jsoagger.core.business.cloud.operations.rc.GetWorkingCopyOperation" lazy-init="true"  />
+
+	<!-- Content holder -->
+	<bean id="DeleteContentItemOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.DeleteContentItemOperation" lazy-init="true"  />
+	<bean id="DownloadAllByHolderOidOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.DownloadAllByHolderOidOperation" lazy-init="true"  />
+	<bean id="DownloadAttachmentsByHolderOidOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.DownloadAttachmentsByHolderOidOperation" lazy-init="true"/>
+	<bean id="DownloadPrimaryContentByHolderOidOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.DownloadPrimaryContentByHolderOidOperation"
+		lazy-init="true"  />
+	<bean id="GetAllContentsByHolderOidOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.GetAllContentsByHolderOidOperation" lazy-init="true"/>
+	<bean id="GetAttachmentsByHolderOidOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.GetAttachmentsByHolderOidOperation" lazy-init="true"/>
+	<bean id="GetPrimaryContentByHolderOidOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.GetPrimaryContentByHolderOidOperation" lazy-init="true"/>
+	<bean id="AddAttachmentContentOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.AddAttachmentContentOperation" lazy-init="true"  />
+	<bean id="SetPrimaryContentOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.SetPrimaryContentOperation" lazy-init="true"  />
+
+
+	<!-- Team template -->
+	<bean id="GetAllTeamTemplatesOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.GetAllTeamTemplatesOperation" lazy-init="true"  />
+	<bean id="GetTeamTemplateByFullIdOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.GetTeamTemplateByFullIdOperation" lazy-init="true"  />
+	<bean id="GetTeamTemplateClobOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.GetTeamTemplateClobOperation" lazy-init="true"  />
+	<bean id="GetTeamTemplateByNameOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.GetTeamTemplateByNameOperation" lazy-init="true"  />
+	<bean id="PopulateTeamFromTemplateOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.PopulateTeamFromTemplateOperation" lazy-init="true"/>
+	<bean id="DeleteTeamTemplateOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.DeleteTeamTemplateOperation" lazy-init="true"  />
+	<bean id="GetUsersInTemplateOperation" class="io.github.jsoagger.core.business.cloud.operations.teamtemplate.GetUsersInTemplateOperation" lazy-init="true"  />
+
+
+	<!-- Folder management -->
+	<bean id="GetFolderChildrenAndContentOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderChildrenAndContentOperation" lazy-init="true" />
+	<bean id="CountFolderChildrenOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.CountFolderChildrenOperation" lazy-init="true" />
+	<bean id="CountFolderContentOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.CountFolderContentOperation" lazy-init="true" />
+	<bean id="CreateFolderOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.CreateFolderOperation" lazy-init="true"  />
+	<bean id="DeleteFolderOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.DeleteFolderOperation" lazy-init="true"  />
+
+	<bean id="GetContainerRootFolder" class="io.github.jsoagger.core.business.cloud.operations.folder.GetContainerRootFolder" lazy-init="true"  />
+	<bean id="GetFolderChildrenOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderChildrenOperation" lazy-init="true"  />
+	<bean id="GetFolderElementContentOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderElementContentOperation" lazy-init="true"  />
+	<bean id="GetFolderDocumentContentOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderDocumentContentOperation" lazy-init="true"  />
+	<bean id="GetApplicationContainerRootFolder" class="io.github.jsoagger.core.business.cloud.operations.folder.GetApplicationContainerRootFolder" lazy-init="true"  />
+	<bean id="PopulateFolderOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.PopulateFolderOperation" lazy-init="true"  />
+	<bean id="GetFolderByPathOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderByPathOperation" lazy-init="true"  />
+	<bean id="GetFolderOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderOperation" lazy-init="true"  />
+	<bean id="GetFolderTemplateWithNameOperation" class="io.github.jsoagger.core.business.cloud.operations.folder.GetFolderTemplateWithNameOperation" lazy-init="true"  />
+	
+	<bean id="CreateDocumentOperation" class="io.github.jsoagger.core.business.cloud.operations.doc.CreateDocOperation" lazy-init="true"  />
+	<bean id="CreatePartOperation" class="io.github.jsoagger.core.business.cloud.operations.part.CreatePartOperation" lazy-init="true"  />
+	<bean id="ListvaluesOperation" class="io.github.jsoagger.core.business.cloud.operations.general.ListvaluesOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="ListValuesOperation" class="io.github.jsoagger.core.business.cloud.operations.general.ListvaluesOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="SearchTypeManagedPaginatedOperation" class="io.github.jsoagger.core.business.cloud.operations.search.SearchTypeManagedPaginatedOperation" lazy-init="true"  />
+	<bean id="SearchEntityPaginatedOperation" class="io.github.jsoagger.core.business.cloud.operations.search.SearchEntityPaginatedOperation" lazy-init="true"  />
+
+	<bean id="CreateSavedSearchOperation" class="io.github.jsoagger.core.business.cloud.operations.search.CreateSavedSearchOperation" lazy-init="true"  />
+	<bean id="DeleteSavedSearchOperation" class="io.github.jsoagger.core.business.cloud.operations.search.DeleteSavedSearchOperation" lazy-init="true"  />
+	<bean id="GetAllSavedSearchOperation" class="io.github.jsoagger.core.business.cloud.operations.search.GetAllSavedSearchOperation" lazy-init="true"  />
+	<bean id="GetPublicSavedSearchOperation" class="io.github.jsoagger.core.business.cloud.operations.search.GetPublicSavedSearchOperation" lazy-init="true"  />
+	<bean id="GetUserSavedSearchOperation" class="io.github.jsoagger.core.business.cloud.operations.search.GetUserSavedSearchOperation" lazy-init="true"  />
+	
+	<!-- 
+		PRODUCT INSTANCE
+	 -->
+	<bean id="GetProductByIdOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.GetProductByIdOperation" lazy-init="true"  />
+	 <bean id="GetProductByNumberOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.GetProductByNumberOperation" lazy-init="true"  />
+	 <bean id="GetProductCategoriesOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.GetProductCategoriesOperation" lazy-init="true"  />
+	 <bean id="GetProductsOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.GetProductsOperation" lazy-init="true"  />
+	 <bean id="SetProductMasterCategoryOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.SetProductMasterCategoryOperation" lazy-init="true"  />
+	 <bean id="UpdateProductDiscontinuationDateOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.UpdateProductDiscontinuationDateOperation" lazy-init="true"  />
+	 <bean id="UpdateProductOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.UpdateProductOperation" lazy-init="true"  />
+	 <bean id="AddProductToCategoryOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.AddProductToCategoryOperation" lazy-init="true"  />
+	 <bean id="RemoveProductFromCategoryOperation" class="io.github.jsoagger.core.business.cloud.operations.productinstance.RemoveProductFromCategoryOperation" lazy-init="true"  />
+
+
+	<!-- 
+		MULTI IDENTIFICATION
+	 -->
+	 <bean id="GetAllIdentificationsOperation" class="io.github.jsoagger.core.business.cloud.operations.multiIdent.GetAllIdentificationsOperation" lazy-init="true"  />
+	 <bean id="GetMasterIdentificationForTypeOperation" class="io.github.jsoagger.core.business.cloud.operations.multiIdent.GetMasterIdentificationForTypeOperation" lazy-init="true"  />
+	 <bean id="GetMasterIdentificationOperation" class="io.github.jsoagger.core.business.cloud.operations.multiIdent.GetMasterIdentificationForTypeOperation" lazy-init="true"  />
+	 <bean id="SetMasterIdentificationOperation" class="io.github.jsoagger.core.business.cloud.operations.multiIdent.SetMasterIdentificationOperation" lazy-init="true"  />
+
+	<!--
+		TYPE MANAGED
+	-->
+	<bean id="GetTmAttributeDefinitionsOperation" class="io.github.jsoagger.core.business.cloud.operations.typemanaged.GetTmAttributeDefinitionsOperation" lazy-init="true"
+		 />
+	<bean id="GetTmTypeOperation" class="io.github.jsoagger.core.business.cloud.operations.typemanaged.GetTmTypeOperation" lazy-init="true"  />
+
+	<!--
+		NOTIFICATIONS
+	-->
+	<bean id="CountUserNotificationsOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.CountUserNotificationsOperation" lazy-init="true"  />
+	<bean id="DeleteAllUserNotificationsOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.DeleteAllUserNotificationsOperation" lazy-init="true"
+		 />
+	<bean id="DeleteNotificationOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.DeleteNotificationOperation" lazy-init="true"  />
+	<bean id="MarkAllNotificationsReadenOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.MarkAllNotificationsReadenOperation" lazy-init="true"
+		 />
+	<bean id="GetCurrentUserNotificationsOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.GetCurrentUserNotificationsOperation" lazy-init="true"
+		>
+		<property name="getCurrentUserOperation" ref="GetCurrentUserOperation" />
+	</bean>
+	<bean id="NotifyGroupOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.NotifyGroupOperation" lazy-init="true"  />
+	<bean id="NotifyTeamOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.NotifyTeamOperation" lazy-init="true"  />
+	<bean id="NotifyUserOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.NotifyUserOperation" lazy-init="true"  />
+	<bean id="GetUserNotificationsOperation" class="io.github.jsoagger.core.business.cloud.operations.notification.GetUserNotificationsOperation" lazy-init="true"  />
+
+	<!--
+		PEOPLE 
+	 -->
+	 <bean id="CreatePeopleOperation" class="io.github.jsoagger.core.business.cloud.operations.people.CreatePeopleOperation" />
+	 <bean id="GetPartyByReferenceOperation" class="io.github.jsoagger.core.business.cloud.operations.people.GetPartyByReferenceOperation" />
+
+	<!--
+		BUSINESS RULES
+	-->
+	<bean id="ApplicableRulesByIdentifierOperation" class="io.github.jsoagger.core.business.cloud.operations.rule.ApplicableRulesByIdentifierOperation" lazy-init="true"  />
+	<bean id="DeleteRuleByIdentifierOperation" class="io.github.jsoagger.core.business.cloud.operations.rule.DeleteRuleByIdentifierOperation" lazy-init="true"  />
+	<bean id="SetBusinessRuleStateOperation" class="io.github.jsoagger.core.business.cloud.operations.rule.SetBusinessRuleStateOperation" lazy-init="true"  />
+	<bean id="GetRuleByIdentifierOperation" class="io.github.jsoagger.core.business.cloud.operations.rule.GetRuleByIdentifierOperation" lazy-init="true"  />
+	<bean id="GetRulesOperation" class="io.github.jsoagger.core.business.cloud.operations.rule.GetRulesOperation" lazy-init="true"  />
+	<bean id="GetRuleOperation" class="io.github.jsoagger.core.business.cloud.operations.rule.GetRuleOperation" lazy-init="true"  />
+
+
+	<!-- THUMBS -->
+	<bean id="GetIllustrationOperation" class="io.github.jsoagger.core.business.cloud.operations.thumb.GetMultipleIllustrationOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="GetThumbInfoOperation" class="io.github.jsoagger.core.business.cloud.operations.thumb.GetThumbInfoOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="GetThumbOperation" class="io.github.jsoagger.core.business.cloud.operations.thumb.GetThumbOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+
+	<bean id="GetMimeTypeThumbOperation" class="io.github.jsoagger.core.business.cloud.operations.contentFormat.GetMimeTypeThumbOperation" lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+	<bean id="GetContentInfoOperation" class="io.github.jsoagger.core.business.cloud.operations.contentholder.GetContentInfoOperation" lazy-init="true" />
+	
+	
+	<!-- CONTACT MECHANISM -->
+	<bean id="DeleteContactOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.DeleteContactOperation" lazy-init="true" />
+	<bean id="GetContactsOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.GetContactsOperation" lazy-init="true" />
+	<bean id="SetContactEffectivityOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.SetContactEffectivityOperation" lazy-init="true" />
+	<bean id="SetMasterContactForRoleOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.SetMasterContactForRoleOperation" lazy-init="true" />
+	<bean id="SetPostalAddressOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.SetPostalAddressOperation" lazy-init="true" />
+	<bean id="SetTelecomContactsOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.SetTelecomContactsOperation" lazy-init="true" />
+	<bean id="SetWebContactsOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.SetWebContactsOperation" lazy-init="true" />
+	<bean id="SetContactRoleOperation" class="io.github.jsoagger.core.business.cloud.operations.contact.SetContactRoleOperation" lazy-init="true" />
+	
+
+	<!--
+		AOPs for loading business data: type/attributes/container/...
+	-->
+	<bean id="DGetLatestVersionByMasterOidOperation" class="io.github.jsoagger.core.business.cloud.operations.decorated.DGetLatestVersionByMasterOidOperation" lazy-init="true"
+		 />
+	<bean id="PersistableLoadBasicContentHolderModelOperation" class="io.github.jsoagger.core.business.cloud.operations.decorated.PersistableLoadBasicContentHolderModelOperation"
+		lazy-init="true" >
+		<property name="cache" ref="PlatformOperationsCache" />
+	</bean>
+
+	<bean id="ClientBusinessDataAspect" class="io.github.jsoagger.core.business.cloud.operations.aspect.ClientBusinessDataAspect" />
+	<bean id="PlatformOperationsCache" class="io.github.jsoagger.core.business.cloud.operations.cache.PlatformOperationsCache" />
+	
+	<!-- Comments -->
+	<bean id="GetAllCommentsOperation" class="io.github.jsoagger.core.business.cloud.operations.comments.GetAllCommentsOperation" />
+
+
+	<!-- Category -->
+	<bean id="DeleteCategoryByFullIdOperation" class="io.github.jsoagger.core.business.cloud.operations.category.DeleteCategoryByFullIdOperation" />
+	<bean id="GetCategoryByFullIdOperation" class="io.github.jsoagger.core.business.cloud.operations.category.GetCategoryByFullIdOperation" />
+	<bean id="GetCategoryByNameOperation" class="io.github.jsoagger.core.business.cloud.operations.category.GetCategoryByNameOperation" />
+	<bean id="GetCategoryByNumberOperation" class="io.github.jsoagger.core.business.cloud.operations.category.GetCategoryByNumberOperation" />
+	<bean id="GetChildrenCategoriesByFullIdOperation" class="io.github.jsoagger.core.business.cloud.operations.category.GetChildrenCategoriesByFullIdOperation" />
+	<bean id="GetParentCategoryByFullIdOperation" class="io.github.jsoagger.core.business.cloud.operations.category.GetParentCategoryByFullIdOperation" />
+	<bean id="GetRootCategoriesOperation" class="io.github.jsoagger.core.business.cloud.operations.category.GetRootCategoriesOperation" />
+	
+	
+	<!-- Organisations -->
+	<bean id="GetOrganisationsByNameLike" class="io.github.jsoagger.core.business.cloud.operations.org.GetOrganisationsByNameLike" />
+	<bean id="GetOrganisationsBySiretEquals" class="io.github.jsoagger.core.business.cloud.operations.org.GetOrganisationsBySiretEquals" />
+	<bean id="RenameOrganizationCommand" class="io.github.jsoagger.core.business.cloud.operations.org.RenameOrganizationCommand" />
+	
+	
+	<!-- Shopping basket -->
+	<bean id="CleanProductsInBasketOperation" class="io.github.jsoagger.core.business.cloud.operations.basket.CleanProductsInBasketOperation" />
+	<bean id="GetAllProductsInBasketOperation" class="io.github.jsoagger.core.business.cloud.operations.basket.GetAllProductsInBasketOperation" />
+	<bean id="GetProductQuantityInBasketOperation" class="io.github.jsoagger.core.business.cloud.operations.basket.GetProductQuantityInBasketOperation" />
+	<bean id="GetShoppingBasketofUserOperation" class="io.github.jsoagger.core.business.cloud.operations.basket.GetShoppingBasketofUserOperation" />
+	<bean id="RemoveProductFromBasketOperation" class="io.github.jsoagger.core.business.cloud.operations.basket.RemoveProductFromBasketOperation" />
+	<bean id="SetProductQuantityInBasketOperation" class="io.github.jsoagger.core.business.cloud.operations.basket.SetProductQuantityInBasketOperation" />
+	
+	
+	<!-- Product catalog -->
+	<bean id="CreateObjectCatalogOperation" class="io.github.jsoagger.core.business.cloud.operations.productcatalog.CreateObjectCatalogOperation" />
+	<bean id="DeleteObjectCatalogOperation" class="io.github.jsoagger.core.business.cloud.operations.productcatalog.DeleteObjectCatalogOperation" />
+	<bean id="GetObjectCatalogByIdOperation" class="io.github.jsoagger.core.business.cloud.operations.productcatalog.GetObjectCatalogByIdOperation" />
+	<bean id="GetObjectCatalogRootCategoriesOperation" class="io.github.jsoagger.core.business.cloud.operations.productcatalog.GetObjectCatalogRootCategoriesOperation" />
+	<bean id="GetObjectCatalogsOperation" class="io.github.jsoagger.core.business.cloud.operations.productcatalog.GetObjectCatalogsOperation" />
+	<bean id="ObjectCatalogAssignRootCategoryOperation" class="io.github.jsoagger.core.business.cloud.operations.productcatalog.ObjectCatalogAssignRootCategoryOperation" />
+	
+	
+	<!-- Preferences -->
+	<bean id="GetPreferenceValueOperation" class="io.github.jsoagger.core.business.cloud.operations.preferences.GetPreferenceValueOperation" />
+	<bean id="SetPreferenceValueOperation" class="io.github.jsoagger.core.business.cloud.operations.preferences.SetPreferenceValueOperation" />
+	<bean id="LoadAllCurrentUserPreferencesValueOperation" class="io.github.jsoagger.core.business.cloud.operations.preferences.LoadAllCurrentUserPreferencesValueOperation" />
+	
+	<!-- Email -->
+	<bean id="SendEmailNoReplyOperation" class="io.github.jsoagger.core.business.cloud.operations.emailing.SendEmailNoReplyOperation" />
+	
+
+	<!--
+		Task scheduler for pinging server every 30s.
+		This bean can be injected to every bean wo wants to make remote call. If the data since is not null, it means that the server
+		in unpingable since that time. User can for ce ping the server.
+	-->
+	<bean id="ServerStatusChecker" class="io.github.jsoagger.core.business.cloud.operations.utils.ServerStatusCheckerTask" />
+	<task:scheduled-tasks scheduler="cloud-task-scheduler">
+		<task:scheduled ref="ServerStatusChecker" method="checkServerStatus" fixed-delay="10000" />
+	</task:scheduled-tasks>
+
+	<task:scheduler id="cloud-task-scheduler" pool-size="10" />
+	<bean id="ServerStatus" class="io.github.jsoagger.core.business.cloud.operations.utils.ClientStatus" scope="singleton" primary="true" />
+
+</beans>

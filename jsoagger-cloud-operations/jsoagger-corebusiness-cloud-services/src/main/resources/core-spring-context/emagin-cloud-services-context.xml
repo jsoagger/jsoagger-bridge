@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context.xsd
+                http://www.springframework.org/schema/aop
+                http://www.springframework.org/schema/aop/spring-aop.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<util:properties id="cloudServicesProperties" local-override="true">
+		<!-- 
+			remoteServerLocation must be set by clients
+			ApplicationStartUpListener sets it for Shell application.
+		 -->
+		<prop key="remoteServerLocation">http://localhost:8080/jsoagger</prop>
+		<prop key="authenticationApi">/api/authentication</prop>
+	</util:properties>
+
+	<bean id="CloudServicesLocator" class="io.github.jsoagger.core.business.cloud.services.utils.CloudServicesLocator" scope="singleton" lazy-init="false" init-method="init">
+		<property name="authenticationApi" ref="AuthenticationApi" />
+		<property name="userPrincipalApi" ref="UserPrincipalApi" />
+		<property name="heartbeatApi" ref="HeartBeatApi" />
+		<property name="containedApi" ref="ContainedApi" />
+		<property name="containerApi" ref="ContainerApi" />
+		<property name="batchApi" ref="BatchApi" />
+		<property name="listvaluesApi" ref="ListvaluesApi" />
+		<property name="persistableApi" ref="PersistableApi" />
+		<property name="typedObjectLinkApi" ref="TypedObjectLinkApi" />
+		<property name="documentApi" ref="DocumentApi" />
+		<property name="typeApi" ref="TypeApi" />
+		<property name="objectLinkApi" ref="ObjectLinkApi" />
+		<property name="globalAttributesApi" ref="GlobalAttributesApi" />
+		<property name="teamTemplateApi" ref="TeamTemplateApi" />
+		<property name="rcApi" ref="RCApi" />
+		<property name="lifecycleManagedApi" ref="LifecycleManagedApi" />
+		<property name="contentHolderApi" ref="ContentHolderApi" />
+		<property name="folderedApi" ref="FolderedApi" />
+		<property name="partApi" ref="PartApi" />
+		<property name="searchApi" ref="SearchApi" />
+		<property name="typeManagedApi" ref="TypeManagedApi" />
+		<property name="businessRuleApi" ref="BusinessRuleApi" />
+		<property name="notificationApi" ref="NotificationApi" />
+		<property name="thumbedApi" ref="ThumbedApi" />
+		<property name="contentFormatApi" ref="ContentFormatApi" />
+		<property name="lifecycleApi" ref="LifecycleApi" />
+		<property name="peopleApi" ref="PeopleApi" />
+		<property name="preferenceApi" ref="PreferenceApi" />
+		<property name="categoryApi" ref="CategoryApi" />
+		<property name="organizationApi" ref="OrganizationApi" />
+		<property name="contactableApi" ref="ContactableApi" />
+		<property name="productInstanceApi" ref="ProductInstanceApi" />
+		<property name="shoppingBasketApi" ref="ShoppingBasketApi" />
+		<property name="multiIdentificationApi" ref="MultiIdentificationApi" />
+		<property name="folderTemplateApi" ref="FolderTemplateApi" />
+		<property name="roleApi" 		 ref="RoleApi" />
+		<property name="objectCatalogApi" 		 ref="ObjectCatalogApi" />
+		<property name="appVersionApi" 		 ref="AppVersionApi" />
+		<property name="emailingApi" 		 ref="EmailingApi" />
+		<property name="viewDefinitionApi" 	 ref="ViewDefinitionApi" />
+	</bean>
+
+
+	<bean id="ViewDefinitionApi" class="io.github.jsoagger.core.business.cloud.services.impl.ViewDefinitionApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="EmailingApi" class="io.github.jsoagger.core.business.cloud.services.impl.EmailingApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="AppVersionApi" class="io.github.jsoagger.core.business.cloud.services.impl.AppVersionApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ObjectCatalogApi" class="io.github.jsoagger.core.business.cloud.services.impl.ObjectCatalogApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="RoleApi" class="io.github.jsoagger.core.business.cloud.services.impl.RoleApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ContainedApi" class="io.github.jsoagger.core.business.cloud.services.impl.ContainedApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="FolderTemplateApi" class="io.github.jsoagger.core.business.cloud.services.impl.FolderTemplateApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="MultiIdentificationApi" class="io.github.jsoagger.core.business.cloud.services.impl.MultiIdentificationApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ShoppingBasketApi" class="io.github.jsoagger.core.business.cloud.services.impl.ShoppingBasketApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ProductInstanceApi" class="io.github.jsoagger.core.business.cloud.services.impl.ProductInstanceApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ContactableApi" class="io.github.jsoagger.core.business.cloud.services.impl.ContactableApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="OrganizationApi" class="io.github.jsoagger.core.business.cloud.services.impl.OrganizationApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="CategoryApi" class="io.github.jsoagger.core.business.cloud.services.impl.CategoryApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="PreferenceApi" class="io.github.jsoagger.core.business.cloud.services.impl.PreferenceApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ObjectLinkApi" class="io.github.jsoagger.core.business.cloud.services.impl.ObjectLinkApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="GlobalAttributesApi" class="io.github.jsoagger.core.business.cloud.services.impl.GlobalAttributesApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="LifecycleApi" class="io.github.jsoagger.core.business.cloud.services.impl.LifecycleApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="TeamTemplateApi" class="io.github.jsoagger.core.business.cloud.services.impl.TeamTemplateApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="RCApi" class="io.github.jsoagger.core.business.cloud.services.impl.RCApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="LifecycleManagedApi" class="io.github.jsoagger.core.business.cloud.services.impl.LifecycleManagedApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ContentHolderApi" class="io.github.jsoagger.core.business.cloud.services.impl.ContentHolderApi" parent="AbstractClientApi" scope="singleton" />
+
+	<bean id="PeopleApi" class="io.github.jsoagger.core.business.cloud.services.impl.PeopleApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="FolderedApi" class="io.github.jsoagger.core.business.cloud.services.impl.FolderApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="PartApi" class="io.github.jsoagger.core.business.cloud.services.impl.PartApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="DocumentApi" class="io.github.jsoagger.core.business.cloud.services.impl.DocumentApi" parent="AbstractClientApi" scope="singleton" />
+	
+	<bean id="SearchApi" class="io.github.jsoagger.core.business.cloud.services.impl.SearchApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="TypeManagedApi" class="io.github.jsoagger.core.business.cloud.services.impl.TypeManagedApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="BusinessRuleApi" class="io.github.jsoagger.core.business.cloud.services.impl.BusinessRuleApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="NotificationApi" class="io.github.jsoagger.core.business.cloud.services.impl.NotificationApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ThumbedApi" class="io.github.jsoagger.core.business.cloud.services.impl.ThumbedApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ContentFormatApi" class="io.github.jsoagger.core.business.cloud.services.impl.ContentFormatApi" parent="AbstractClientApi" scope="singleton" />
+
+	<bean id="AuthenticationApi" class="io.github.jsoagger.core.business.cloud.services.impl.AuthenticationApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="UserPrincipalApi" class="io.github.jsoagger.core.business.cloud.services.impl.UserPrincipalApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="HeartBeatApi" class="io.github.jsoagger.core.business.cloud.services.impl.HeartBeatApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ContainerApi" class="io.github.jsoagger.core.business.cloud.services.impl.ContainerApi" parent="AbstractClientApi" scope="singleton" />
+
+	<bean id="BatchApi" class="io.github.jsoagger.core.business.cloud.services.impl.BatchApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="ListvaluesApi" class="io.github.jsoagger.core.business.cloud.services.impl.ListvaluesApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="PersistableApi" class="io.github.jsoagger.core.business.cloud.services.impl.PersistableApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="TypeApi" class="io.github.jsoagger.core.business.cloud.services.impl.TypeApi" parent="AbstractClientApi" scope="singleton" />
+	<bean id="TypedObjectLinkApi" class="io.github.jsoagger.core.business.cloud.services.impl.TypedObjectLinkApi" parent="AbstractClientApi" scope="singleton" />
+
+	<bean id="VLSecureRemoteInvocationFactory" class="io.github.jsoagger.core.business.cloud.services.utils.SecureRemoteInvocationFactory" />
+	<bean id="AbstractClientApi" abstract="true" class="io.github.jsoagger.core.business.cloud.services.impl.AbstractClientApi" scope="singleton" init-method="init">
+		<property name="cloudServicesProperties" ref="cloudServicesProperties" />
+	</bean>
+</beans>
