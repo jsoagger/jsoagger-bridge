@@ -1,13 +1,11 @@
 language: java
 
 # -------------  ALL BRANCHES FIRE MVN INSTALL  ------------- ------------- --------
-# DEVELOP: BUILD ON COMMIT (NO DEPLOY)
 # MASTER: BUILD ON COMMIT (NO DEPLOY)
 # +++++++++++++  STABLE AND TAGS FIRE DEPLOY    ++++++++++++++++++++++++++++++++++++
-# STABLE: BUILD ON COMMIT + DEPLOY SNAPSHOT RELEASE
 # TAGS: BUILD ON COMMIT + DEPLOY SONATYPE VERSION  RELEASE
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# Be aware when adding 'branch.only' they can exclude tags deployment is not fired
+# No need to add secure key because we dont need github release for this project
 # -------------------------- ------------- ------------- ------------- ------------- 
 
 
@@ -27,10 +25,10 @@ script:
   - java -version
 
 
-before_install:
-    - export GPG_TTY=/dev/pts/4
-    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
-    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+#before_install:
+#    - export GPG_TTY=/dev/pts/4
+#    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+#    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
 
 install: 
     mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
@@ -42,13 +40,6 @@ before_deploy:
 
 
 deploy: 
-# 1. Trigger a snapshot deploy when commit a stable version
-    - provider: script
-      script: bash .travis/snapshot.sh 
-      skip_cleanup: true
-      on:
-        branch: stable
-
 # 1. Trigger a version deploy when a commit on tag
     - provider: script
       script: bash .travis/release.sh 
