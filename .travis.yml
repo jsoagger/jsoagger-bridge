@@ -8,7 +8,6 @@ language: java
 # No need to add secure key because we dont need github release for this project
 # -------------------------- ------------- ------------- ------------- ------------- 
 
-
 matrix:
   include:
     - os: linux
@@ -19,16 +18,11 @@ cache:
     directories:
     - $HOME/.m2/repository
 
-script:
-  - echo PATH = ${PATH}
-  - echo $JAVA_HOME
-  - java -version
 
-
-#before_install:
-#    - export GPG_TTY=/dev/pts/4
-#    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
-#    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+before_install:
+    - export GPG_TTY=/dev/pts/4
+    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
 
 install: 
     mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
@@ -47,4 +41,9 @@ deploy:
       on:
         tags: true
         all_branches: true
+ 
+script:
+  - echo PATH = ${PATH}
+  - echo $JAVA_HOME
+  - java -version
  
