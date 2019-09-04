@@ -5,7 +5,7 @@
 
 	<groupId>io.github.jsoagger</groupId>
 	<artifactId>jsoagger-bridge</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.1</version>
 
 	<name>JSoagger bridge</name>
 	<description>JSoagger bridge to remote REST service</description>
