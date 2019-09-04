@@ -935,7 +935,7 @@ public class CloudServicesLocator {
   @Named("cloudServicesProperties")
   public static Properties cloudServicesProperties() {
     Properties properties = new Properties();
-    properties.put("remoteServerLocation", "http://localhost:8080/jsoagger-corebusiness-services/serv/core");
+    properties.put("remoteServerLocation", "http://localhost:8080/jsoagger/serv/core");
     properties.put("authenticationApi", "/api/authentication");
     return properties;
   }

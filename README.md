@@ -3,7 +3,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![Build Status](https://travis-ci.com/Nexitia/jsoagger-bridge.svg?branch=master)](https://travis-ci.com/Nexitia/jsoagger-bridge)
+[![Build Status](https://travis-ci.com/jsoagger/jsoagger-bridge.svg?branch=master)](https://travis-ci.com/jsoagger/jsoagger-bridge)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
@@ -80,7 +80,7 @@ public IOperationResult promote(JsonObject query) {
 Please read [CONTRIBUTING.md] for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
-* **rmvonji** - *Initial work* - [JSoagger ](https://github.com/Nexitia/)
+* **rmvonji** - *Initial work* - [JSoagger ](https://github.com/jsoagger/)
 * **Contact** - *yvonjisoa@nexitia.com* 
 
 ## Licence
