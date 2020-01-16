@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.jsoagger</groupId>
-	<artifactId>jsoagger-bridge</artifactId>
+	<artifactId>corebusiness-cloud-services</artifactId>
 	<version>1.0.2-SNAPSHOT</version>
 
-	<name>JSoagger bridge</name>
+	<name>JSoagger cloud services</name>
 	<description>JSoagger bridge to remote REST service</description>
 	<url>https://github.com/jsoagger</url>
 
@@ -16,13 +16,6 @@
 		<url>www.jsoagger.tech</url>
 	</organization>
 	<inceptionYear>2019</inceptionYear>
-
-	<packaging>pom</packaging>
-
-	<modules>
-		<module>jsoagger-offline-operations</module>
-		<module>jsoagger-cloud-operations</module>
-	</modules>
 
 	<properties>
 		<root.project.location>${project.basedir}</root.project.location>
@@ -89,37 +82,6 @@
 		<jdk>${env.JAVA_HOME}</jdk>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>io.github.jsoagger</groupId>
-				<artifactId>jsoagger-core-utils</artifactId>
-				<version>${internal.core.project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jsoagger</groupId>
-				<artifactId>jsoagger-core-bridge</artifactId>
-				<version>${internal.core.project.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jsoagger</groupId>
-				<artifactId>jsoagger-core-ioc</artifactId>
-				<version>${internal.core.project.version}</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jsoagger</groupId>
-				<artifactId>jsoagger-jfxcore-api</artifactId>
-				<version>${internal.core.project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jsoagger</groupId>
-				<artifactId>jsoagger-jfxcore-viewdefinition-json</artifactId>
-				<version>${internal.core.project.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
@@ -128,6 +90,51 @@
 			<version>2.8.6-SNAPSHOT</version>
 			<scope>system</scope>
 			<systemPath>${root.project.location}/external-libs/gson-2.8.6-SNAPSHOT.jar</systemPath>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-jfxcore-api</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-utils</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.guava</groupId>
+					<artifactId>guava</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.reflections</groupId>
+					<artifactId>reflections</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.javassist</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-bridge</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Do not package with application -->
+		<dependency>
+			<groupId>io.github.jsoagger</groupId>
+			<artifactId>jsoagger-core-ioc</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.okhttp</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>${okhttp.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -157,25 +164,6 @@
 				<plugin>
 					<artifactId>maven-assembly-plugin</artifactId>
 					<version>2.5.4</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.1.0</version>
-					<executions>
-						<execution>
-							<id>attach-javadocs</id>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<additionalOptions>
-							<additionalOption>-Xdoclint:none</additionalOption>
-						</additionalOptions>
-					</configuration>
 				</plugin>
 
 				<plugin>
@@ -295,6 +283,7 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh</artifactId>
+				<version>3.3.4</version>
 			</extension>
 		</extensions>
 	</build>
@@ -319,7 +308,7 @@
 			<id>central</id>
 			<name>Maven Repository Switchboard</name>
 			<layout>default</layout>
-			<url>http://repo1.maven.org/maven2</url>
+			<url>https://repo1.maven.org/maven2</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -335,7 +324,7 @@
 		<pluginRepository>
 			<id>central</id>
 			<name>Maven Plugin Repository</name>
-			<url>http://repo1.maven.org/maven2</url>
+			<url>https://repo1.maven.org/maven2</url>
 			<layout>default</layout>
 			<snapshots>
 				<enabled>false</enabled>
