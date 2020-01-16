@@ -5,7 +5,7 @@
 
 	<groupId>io.github.jsoagger</groupId>
 	<artifactId>corebusiness-cloud-services</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 
 	<name>JSoagger cloud services</name>
 	<description>JSoagger bridge to remote REST service</description>
