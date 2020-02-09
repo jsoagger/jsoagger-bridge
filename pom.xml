@@ -5,7 +5,7 @@
 
 	<groupId>io.github.jsoagger</groupId>
 	<artifactId>corebusiness-cloud-bridge</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3-SNAPSHOT</version>
 
 	<name>JSoagger cloud services</name>
 	<description>JSoagger bridge to remote REST service</description>
@@ -18,7 +18,6 @@
 	<inceptionYear>2019</inceptionYear>
 
 	<properties>
-		<root.project.location>${project.basedir}</root.project.location>
 		<internal.core.project.version>1.0.0</internal.core.project.version>
 
 		<javax.annotation.version>1.2</javax.annotation.version>
@@ -87,18 +86,16 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.8.6-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${root.project.location}/external-libs/gson-2.8.6-SNAPSHOT.jar</systemPath>
+			<version>2.8.6</version>
 		</dependency>
-		
-		
+
+
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-jfxcore-api</artifactId>
 			<version>1.0.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-core-utils</artifactId>
@@ -267,7 +264,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.0</version><!--$NO-MVN-MAN-VER$-->
+				<version>3.1.0</version><!--$NO-MVN-MAN-VER$ -->
 				<configuration>
 					<sourceFileExcludes>
 						<sourceFileExclude>module-info.java</sourceFileExclude>
@@ -318,6 +315,19 @@
 			<name>JBoss Repository</name>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<id>nexitia.com</id>
+			<name>Nexitia releases</name>
+			<url>http://nexus.nexitia.com/repository/nexitia-group/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<checksumPolicy>ignore</checksumPolicy>
+			</releases>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
@@ -347,12 +357,13 @@
 		</site>
 
 		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<id>nexitia-snapshots</id>
+			<url>http://nexus.nexitia.com/repository/nexitia-snapshots</url>
 		</snapshotRepository>
+
 		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>nexitia-release</id>
+			<url>http://nexus.nexitia.com/repository/nexitia-releases/</url>
 		</repository>
 	</distributionManagement>
 
@@ -387,8 +398,8 @@
 						<version>1.6.8</version>
 						<extensions>true</extensions>
 						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<serverId>nexitia</serverId>
+							<nexusUrl>http://nexus.nexitia.com/</nexusUrl>
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
@@ -426,21 +437,10 @@
 						</configuration>
 					</plugin>
 
-					<!-- To sign the artifacts -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
+					<!-- To sign the artifacts <plugin> <groupId>org.apache.maven.plugins</groupId> 
+						<artifactId>maven-gpg-plugin</artifactId> <version>1.6</version> <executions> 
+						<execution> <id>sign-artifacts</id> <phase>verify</phase> <goals> <goal>sign</goal> 
+						</goals> </execution> </executions> </plugin> -->
 				</plugins>
 			</build>
 		</profile>

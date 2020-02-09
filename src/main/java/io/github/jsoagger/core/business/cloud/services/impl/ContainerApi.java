@@ -6,11 +6,12 @@ package io.github.jsoagger.core.business.cloud.services.impl;
 import java.net.URLEncoder;
 
 import com.google.gson.JsonObject;
-import io.github.jsoagger.core.business.cloud.services.api.IContainerApi;
+
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 import io.github.jsoagger.core.bridge.operation.JsonUtils;
 import io.github.jsoagger.core.bridge.result.MultipleResult;
 import io.github.jsoagger.core.bridge.result.SingleResult;
+import io.github.jsoagger.core.business.cloud.services.api.IContainerApi;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -60,6 +61,10 @@ public class ContainerApi extends AbstractClientApi implements IContainerApi {
     }
   }
 
+  @Override
+  public IOperationResult accessibleSubcontainer(JsonObject query) {
+		return null;
+  }
 
   /**
    * {@inheritDoc}
