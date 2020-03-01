@@ -1,9 +1,9 @@
 pipeline {
+   
    agent any
    
    environment {
        PROJECT_NAME="JSOAGGER Cloud Bridge"
-       BRANCH_NAME= "master"
    }
    
    options {
@@ -38,9 +38,6 @@ pipeline {
         
         stage('Integration Tests') {
             steps {
-            	echo "My branch is: ${env.BRANCH_NAME}"
-                echo "My branch is: ${env.BRANCH_NAME}"
-                
                 sh '''
                 	echo "Running integration tests"
                 	#mvn -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true verify
@@ -48,33 +45,6 @@ pipeline {
             }
         }
         
-        
-        stage('Deploy') {
-		    steps {
-                sh '''
-				    echo "Deloying snapshots is not very usefull"
-				    echo "You can be just share artifact or do a local build instead"
-				    #mvn clean deploy --settings .maven.xml -DskipTests=true -Dmaven.javadoc.skip=true -B -U -Prelease
-			    '''
-            } 
-            post {  
-                success {  
-                    emailext   	body: "$PROJECT_NAME, build success.<br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
-                            	subject: "$PROJECT_NAME, build Success", 
-                            	from: "${env.JOB_EMAIL_SENDER}", 
-                            	to: "${env.DEV_MAILING_LIST}", 
-                            	attachLog: false;
-                }  
-             	failure {
-                	emailext    body: "$PROJECT_NAME, build failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
-                            	subject: "$PROJECT_NAME - build Failure", 
-                            	from: "${env.JOB_EMAIL_SENDER}", 
-                            	to: "${env.DEV_MAILING_LIST}", 
-                            	attachLog: true;
-             	}  
-        	}
-      	}
-    
       	stage('Perform release?') {
       		when {
       			branch 'master'
@@ -105,26 +75,31 @@ pipeline {
          	}
          	
          	post {  
-         		 always {
-         		 	sh '''
-         		 		echo "End of job"
-		         	'''
-         		 }
 				 success {  
-					 emailext   body: "$PROJECT_NAME have been succesfully released.<br/> A new version of project $PROJECT_NAME is now avalaible.<br/><br/>Jenkins", 
-								subject: "$PROJECT_NAME, released", 
+					 emailext   to: "${env.DEV_MAILING_LIST}",
+					 			subject: "$PROJECT_NAME, released",
+					 			body: "$PROJECT_NAME have been succesfully released.<br/> A new version of project $PROJECT_NAME is now avalaible.<br/><br/>Jenkins", 
 								from: "${env.JOB_EMAIL_SENDER}", 
-								to: "${env.DEV_MAILING_LIST}", 
 								attachLog: false;
 				 }  
 				 failure {
-					emailext    body: "$PROJECT_NAME, RELEASE failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
-								subject: "$PROJECT_NAME, RELEASE Failure", 
+					emailext    to: "${env.DEV_MAILING_LIST}",
+								subject: "$PROJECT_NAME, RELEASE Failure",
+								body: "$PROJECT_NAME, RELEASE failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
 								from: "${env.JOB_EMAIL_SENDER}", 
-								to: "${env.DEV_MAILING_LIST}", 
 								attachLog: true;
 				}  
 			}
       	}
+      	
+      	post {  
+         	failure {
+            	emailext	to: "${env.DEV_MAILING_LIST}",    
+            				subject: "$PROJECT_NAME - Build Failed",
+            				body: "$PROJECT_NAME, build failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
+                        	from: "${env.JOB_EMAIL_SENDER}", 
+                        	attachLog: true;
+         	}  
+    	}
     }
 }
