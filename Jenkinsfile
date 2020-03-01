@@ -91,15 +91,15 @@ pipeline {
 				}  
 			}
       	}
-      	
-      	post {  
-         	failure {
-            	emailext	to: "${env.DEV_MAILING_LIST}",    
-            				subject: "$PROJECT_NAME - Build Failed",
-            				body: "$PROJECT_NAME, build failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
-                        	from: "${env.JOB_EMAIL_SENDER}", 
-                        	attachLog: true;
-         	}  
-    	}
     }
+    
+    post {  
+     	failure {
+        	emailext	to: "${env.DEV_MAILING_LIST}",    
+        				subject: "$PROJECT_NAME - Build Failed",
+        				body: "$PROJECT_NAME, build failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
+                    	from: "${env.JOB_EMAIL_SENDER}", 
+                    	attachLog: true;
+     	}  
+	}
 }
