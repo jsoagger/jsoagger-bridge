@@ -37,6 +37,9 @@ pipeline {
         
         stage('Integration Tests') {
             steps {
+            	echo "My branch is: ${env.BRANCH_NAME}"
+                echo "My branch is: ${env.BRANCH_NAME}"
+                
                 sh '''
                 	echo "Running integration tests"
                 	#mvn -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true verify
@@ -73,7 +76,7 @@ pipeline {
     
       	stage('Perform release?') {
       		when {
-      			branch 'origin/master'
+      			branch 'master'
       		}
       		
         	steps {
@@ -89,7 +92,7 @@ pipeline {
       
       	stage('Release') {
       		when {
-      			branch 'origin/master'
+      			branch 'master'
       		}
       		
          	steps {
