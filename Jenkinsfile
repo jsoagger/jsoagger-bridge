@@ -13,6 +13,8 @@ pipeline {
    stages {
         stage ('Prepare') {
 			steps {
+				deleteDir()
+				
 				sh '''
 					echo "PATH = ${PATH}"
 					echo "M2_HOME = ${M2_HOME}"
