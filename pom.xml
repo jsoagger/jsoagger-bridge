@@ -286,9 +286,9 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:https://github.com/jsoagger/jsoagger-platform.git</connection>
-		<developerConnection>scm:git:https://github.com/jsoagger/jsoagger-platform.git</developerConnection>
-		<url>https://github.com/jsoagger/jsoagger-platform.git</url>
+		<connection>scm:git:https://github.com/jsoagger/jsoagger-bridge.git</connection>
+		<developerConnection>scm:git:https://github.com/jsoagger/jsoagger-bridge.git</developerConnection>
+		<url>https://github.com/jsoagger</url>
 		<tag>HEAD</tag>
 	</scm>
 
