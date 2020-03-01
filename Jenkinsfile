@@ -45,11 +45,7 @@ pipeline {
             }
         }
         
-      	stage('Perform release?') {
-      		when {
-      			branch 'master'
-      		}
-      		
+      	stage('Release confirmation') {
         	steps {
         		timeout(time: 600, unit: 'SECONDS'){
         			script {
@@ -61,11 +57,7 @@ pipeline {
         	}
       	}
       
-      	stage('Release') {
-      		when {
-      			branch 'master'
-      		}
-      		
+      	stage('Perform release') {
          	steps {
 	         	withCredentials([usernamePassword(credentialsId: 'jenkins_github_credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')])
 	         	{
