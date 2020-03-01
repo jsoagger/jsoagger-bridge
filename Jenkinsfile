@@ -73,7 +73,7 @@ pipeline {
     
       	stage('Perform release?') {
       		when {
-      			branch 'master'
+      			branch 'origin/master'
       		}
       		
         	steps {
@@ -89,7 +89,7 @@ pipeline {
       
       	stage('Release') {
       		when {
-      			branch 'master'
+      			branch 'origin/master'
       		}
       		
          	steps {
