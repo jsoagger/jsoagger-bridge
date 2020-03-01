@@ -3,6 +3,7 @@ pipeline {
    
    environment {
        PROJECT_NAME="JSOAGGER Cloud Bridge"
+       BRANCH_NAME= "master"
    }
    
    options {
