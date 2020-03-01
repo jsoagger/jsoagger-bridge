@@ -12,8 +12,6 @@ pipeline {
    stages {
         stage ('Prepare') {
 			steps {
-				echo 'Pulling...' + env.BRANCH_NAME
-				
 				sh '''
 					echo "PATH = ${PATH}"
 					echo "M2_HOME = ${M2_HOME}"
@@ -24,7 +22,6 @@ pipeline {
        
         stage('Build') {
             steps {
-            	echo 'Pulling...' + env.BRANCH_NAME
                 sh "mvn -Dmaven.test.failure.ignore=true -DskipTests=true -Dmaven.javadoc.skip=true install"
             }
         }
