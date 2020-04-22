@@ -4,10 +4,11 @@
 package io.github.jsoagger.core.business.cloud.services.impl;
 
 import com.google.gson.JsonObject;
-import io.github.jsoagger.core.business.cloud.services.api.IUserPrincipalApi;
+
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 import io.github.jsoagger.core.bridge.result.MultipleResult;
 import io.github.jsoagger.core.bridge.result.SingleResult;
+import io.github.jsoagger.core.business.cloud.services.api.IUserPrincipalApi;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -16,38 +17,49 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipalApi {
 
-  private static final String	account_current_URL		         = "/api/account/current/?containerId=%s";
-  private static final String   account_current_update_pass_URL  = "/api/account/%s/updatePassword/?containerId=%s";
+  private static final String account_current_URL = "/api/account/current/?containerId=%s";
+  private static final String account_current_update_pass_URL =
+      "/api/account/%s/updatePassword/?containerId=%s";
 
-  private static final String   account_of_Party_current_URL     = "/api/account/ofParty/?partyId=%s&containerId=%s";
+  private static final String account_of_Party_current_URL =
+      "/api/account/ofParty/?partyId=%s&containerId=%s";
 
-  private static final String	account_details_URL		        = "/api/account/%s/details/?containerId=%s";
-  private static final String   account_update_Mail_URL         = "/api/account/%s/updateMail/?email=%s&containerId=%s";
-  private static final String   account_owner_URL               = "/api/account/%s/owner/?containerId=%s";
-  private static final String	account_byloginLike_URL	        = "/api/account/byLoginLike/?login=%s&containerId=%s";
-  private static final String	account_bylogin_URL		         = "/api/account/byLogin/?login=%s&containerId=%s";
-  private static final String	account_byname_URL		          = "/api/account/byNameLike/?name=%s&containerId=%s";
-  private static final String	account_resetPassword_URL		= "/api/account/%s/resetPassword/?containerId=%s";
+  private static final String account_details_URL = "/api/account/%s/details/?containerId=%s";
+  private static final String account_update_Mail_URL =
+      "/api/account/%s/updateMail/?email=%s&containerId=%s";
+  private static final String account_owner_URL = "/api/account/%s/owner/?containerId=%s";
+  private static final String account_byloginLike_URL =
+      "/api/account/byLoginLike/?login=%s&containerId=%s";
+  private static final String account_bylogin_URL = "/api/account/byLogin/?login=%s&containerId=%s";
+  private static final String account_byname_URL =
+      "/api/account/byNameLike/?name=%s&containerId=%s";
+  private static final String account_resetPassword_URL =
+      "/api/account/%s/resetPassword/?containerId=%s";
 
-  private static final String	account_lock_URL	   = "/api/account/%s/lock/?containerId=%s";
-  private static final String   account_unlocked_URL   = "/api/account/%s/unlock/?lockToken=%s&containerId=%s";
+  private static final String account_lock_URL = "/api/account/%s/lock/?containerId=%s";
+  private static final String account_unlocked_URL =
+      "/api/account/%s/unlock/?lockToken=%s&containerId=%s";
 
-  private static final String   account_roles_URL       = "/api/account/%s/roles/?containerId=%s";
-  private static final String   account_roles_add_remove_URL       = "/api/account/%s/roles/%s/?containerId=%s";
+  private static final String account_roles_URL = "/api/account/%s/roles/?containerId=%s";
+  private static final String account_roles_add_remove_URL =
+      "/api/account/%s/roles/%s/?containerId=%s";
 
-  private static final String   account_rootFolder_URL   = "/api/account/%s/rootFolder/?containerId=%s";
-  private static final String   account_permissions_URL   = "/api/account/%s/permissions/?containerId=%s&includeParentItems=%s";
+  private static final String account_rootFolder_URL = "/api/account/%s/rootFolder/?containerId=%s";
+  private static final String account_permissions_URL =
+      "/api/account/%s/permissions/?containerId=%s&includeParentItems=%s";
 
 
-  private static final String	getGroupByName				= "/api/userGroup/byName?internalName=%s&containerId=%s";
-  private static final String	deleteGroup_URL				= "/api/userGroup/%s/?containerId=%s";
-  private static final String	childrenOf_URL				= "/api/userGroup/%s/children/?containerId=%s";
-  private static final String	members_URL					= "/api/userGroup/%s/members/?containerId=%s";
-  private static final String	members_count_URL			= "/api/userGroup/%s/members/count/?containerId=%s";
-  private static final String	members_remove_URL			= "/api/userGroup/%s/members/?containerId=%s";
-  private static final String	members_add_URL				= "/api/userGroup/%s/members/?containerId=%s";
+  private static final String getGroupByName =
+      "/api/userGroup/byName?internalName=%s&containerId=%s";
+  private static final String deleteGroup_URL = "/api/userGroup/%s/?containerId=%s";
+  private static final String childrenOf_URL = "/api/userGroup/%s/children/?containerId=%s";
+  private static final String members_URL = "/api/userGroup/%s/members/?containerId=%s";
+  private static final String members_count_URL = "/api/userGroup/%s/members/count/?containerId=%s";
+  private static final String members_remove_URL = "/api/userGroup/%s/members/?containerId=%s";
+  private static final String members_add_URL = "/api/userGroup/%s/members/?containerId=%s";
 
-  private static final String   SWITCH_CONTAINER_CONTEXT      = "/api/account/%s/switchToContext?containerId=%s";
+  private static final String SWITCH_CONTAINER_CONTEXT =
+      "/api/account/%s/switchToContext?containerId=%s";
 
 
 
@@ -58,11 +70,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String containerId = query.get("containerId").getAsString();
       String roleId = query.get("roleId").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_roles_add_remove_URL, id, roleId, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_roles_add_remove_URL, id, roleId, containerId));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -75,11 +87,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String containerId = query.get("containerId").getAsString();
       String roleId = query.get("roleId").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_roles_add_remove_URL, id, roleId, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_roles_add_remove_URL, id, roleId, containerId));
       IOperationResult result = doDelete(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -94,8 +106,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_roles_URL, id, containerId));
       IOperationResult result = doGet(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.generalMultipleResutError();
     }
@@ -110,11 +121,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String containerId = query.get("containerId").getAsString();
       String includeParentItems = query.get("includeParentItems").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_permissions_URL, id, containerId, includeParentItems));
+      String url = getRootUrl()
+          .concat(String.format(account_permissions_URL, id, containerId, includeParentItems));
       IOperationResult result = doGet(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.generalMultipleResutError();
     }
@@ -131,8 +142,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_rootFolder_URL, id, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -144,11 +154,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String containerId = query.get("containerId").getAsString();
       String partyId = query.get("partyId").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_of_Party_current_URL, partyId, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_of_Party_current_URL, partyId, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -163,8 +173,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(SWITCH_CONTAINER_CONTEXT, id, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -179,8 +188,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(getGroupByName, internalName, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -195,8 +203,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(deleteGroup_URL, id));
       IOperationResult result = doDelete(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -210,8 +217,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(childrenOf_URL, fullId));
       IOperationResult result = doDelete(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -227,8 +233,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(members_add_URL, fullId));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -242,8 +247,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(members_count_URL, fullId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -257,8 +261,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(members_URL, id));
       IOperationResult result = doGet(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.generalMultipleResutError();
     }
@@ -272,8 +275,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(members_remove_URL, id));
       IOperationResult result = doDelete(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -297,11 +299,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String containerId = query.get("containerId").getAsString();
 
       int pageSize = 5;
-      String url = getRootUrl().concat(String.format(account_byloginLike_URL, login, pageSize, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_byloginLike_URL, login, pageSize, containerId));
       IOperationResult result = doGet(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.generalMultipleResutError();
     }
@@ -317,8 +319,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_bylogin_URL, login, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -333,8 +334,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_byname_URL, name, containerId));
       IOperationResult result = doGet(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.generalMultipleResutError();
     }
@@ -346,14 +346,15 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
     try {
       String id = getFullId(query);
       String containerId = query.get("containerId").getAsString();
-      String newPassword = query.get("newPassword").getAsString();
       String oldPassword = query.get("oldPassword").getAsString();
+      String newPassword = query.get("newPassword").getAsString();
+      String newPasswordValidation = query.get("newPasswordValidation").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_current_update_pass_URL, id, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_current_update_pass_URL, id, containerId));
       IOperationResult result = doPut(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -370,8 +371,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
 
         IOperationResult result = doGet(new JsonObject(), url, SingleResult.class);
         return result;
-      }
-      catch (Exception e) {
+      } catch (Exception e) {
         if (tries < 2) {
           tries++;
           Thread.sleep(2000);
@@ -380,8 +380,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       }
 
       return new SingleResult();
-    }
-    catch (Throwable e) {
+    } catch (Throwable e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -397,8 +396,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_details_URL, id, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -414,8 +412,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_resetPassword_URL, id, containerId));
       IOperationResult result = doPut(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -431,8 +428,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_lock_URL, id, containerId));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -445,11 +441,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String containerId = query.get("containerId").getAsString();
       String lockToken = query.get("lockToken").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_unlocked_URL, id, lockToken, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_unlocked_URL, id, lockToken, containerId));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -465,8 +461,7 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String url = getRootUrl().concat(String.format(account_owner_URL, id, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -480,11 +475,11 @@ public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipa
       String email = query.get("email").getAsString();
       String containerId = query.get("containerId").getAsString();
 
-      String url = getRootUrl().concat(String.format(account_update_Mail_URL, id, email, containerId));
+      String url =
+          getRootUrl().concat(String.format(account_update_Mail_URL, id, email, containerId));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       e.printStackTrace();
       return IOperationResult.getGeneralSingleResultError();
     }

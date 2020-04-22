@@ -1,6 +1,6 @@
 pipeline {
    
-   agent any
+   agent {label 'slave1'}
    
    environment {
        PROJECT_NAME="JSOAGGER Cloud Bridge"
@@ -76,7 +76,7 @@ pipeline {
 				 }  
 				 failure {
 					emailext    to: "${env.DEV_MAILING_LIST}",
-								subject: "$PROJECT_NAME, RELEASE Failure",
+								subject: "$PROJECT_NAME, RELEASE Failed",
 								body: "$PROJECT_NAME, RELEASE failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
 								from: "${env.JOB_EMAIL_SENDER}", 
 								attachLog: true;

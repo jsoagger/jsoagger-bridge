@@ -85,6 +85,7 @@ import io.github.jsoagger.core.business.cloud.services.impl.ViewDefinitionApi;
 import io.github.jsoagger.core.ioc.api.annotations.Bean;
 import io.github.jsoagger.core.ioc.api.annotations.BeansProvider;
 import io.github.jsoagger.core.ioc.api.annotations.Named;
+import io.github.jsoagger.jfxcore.api.services.Services;
 
 /**
  * Gives access to remote services . This service should be injected to client
@@ -405,7 +406,7 @@ public class CloudServicesLocator {
   public static IViewDefinitionApi getViewDefinitionApi() {
     if(viewDefinitionApi == null) {
       viewDefinitionApi = new ViewDefinitionApi();
-      ((ViewDefinitionApi)viewDefinitionApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ViewDefinitionApi)viewDefinitionApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
 
     return viewDefinitionApi;
@@ -420,7 +421,7 @@ public class CloudServicesLocator {
   public static IEmailingApi getEmailingApi() {
     if(emailingApi == null) {
       emailingApi = new EmailingApi();
-      ((EmailingApi)emailingApi).setCloudServicesProperties(cloudServicesProperties());
+      ((EmailingApi)emailingApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
 
     return emailingApi;
@@ -435,7 +436,7 @@ public class CloudServicesLocator {
   public static IAppVersionApi getAppVersionApi() {
     if(appVersionApi == null) {
       appVersionApi = new AppVersionApi();
-      ((AppVersionApi)appVersionApi).setCloudServicesProperties(cloudServicesProperties());
+      ((AppVersionApi)appVersionApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
 
     return appVersionApi;
@@ -450,7 +451,7 @@ public class CloudServicesLocator {
   public static IObjectCatalogApi getObjectCatalogApi() {
     if(objectCatalogApi == null) {
       objectCatalogApi = new ObjectCatalogApi();
-      ((ObjectCatalogApi)objectCatalogApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ObjectCatalogApi)objectCatalogApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
 
     return objectCatalogApi;
@@ -464,7 +465,7 @@ public class CloudServicesLocator {
   public static IRoleApi getRoleApi() {
     if(roleApi == null) {
       roleApi = new RoleApi();
-      ((RoleApi)roleApi).setCloudServicesProperties(cloudServicesProperties());
+      ((RoleApi)roleApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return roleApi;
   }
@@ -478,7 +479,7 @@ public class CloudServicesLocator {
   public static IMultiIdentificationApi getMultiIdentificationApi() {
     if(multiIdentificationApi == null) {
       multiIdentificationApi = new MultiIdentificationApi();
-      ((ShoppingBasketApi)multiIdentificationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ShoppingBasketApi)multiIdentificationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return multiIdentificationApi;
   }
@@ -492,7 +493,7 @@ public class CloudServicesLocator {
   public static IShoppingBasketApi getShoppingBasketApi() {
     if(shoppingBasketApi == null) {
       shoppingBasketApi = new ShoppingBasketApi();
-      ((ShoppingBasketApi)shoppingBasketApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ShoppingBasketApi)shoppingBasketApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return shoppingBasketApi;
   }
@@ -505,7 +506,7 @@ public class CloudServicesLocator {
   public static IProductInstanceApi getProductInstanceApi() {
     if(productInstanceApi == null) {
       productInstanceApi = new ProductInstanceApi();
-      ((ProductInstanceApi)productInstanceApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ProductInstanceApi)productInstanceApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return productInstanceApi;
   }
@@ -518,7 +519,7 @@ public class CloudServicesLocator {
   public static IContactableApi getContactableApi() {
     if(contactableApi == null) {
       contactableApi = new ContactableApi();
-      ((ContactableApi)contactableApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ContactableApi)contactableApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return contactableApi;
   }
@@ -531,7 +532,7 @@ public class CloudServicesLocator {
   public static IOrganizationApi getOrganizationApi() {
     if(organizationApi == null) {
       organizationApi = new OrganizationApi();
-      ((OrganizationApi)organizationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((OrganizationApi)organizationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return organizationApi;
   }
@@ -544,7 +545,7 @@ public class CloudServicesLocator {
   public static ICategoryApi getCategoryApi() {
     if(categoryApi == null) {
       categoryApi = new CategoryApi();
-      ((CategoryApi)categoryApi).setCloudServicesProperties(cloudServicesProperties());
+      ((CategoryApi)categoryApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return categoryApi;
   }
@@ -557,7 +558,7 @@ public class CloudServicesLocator {
   public static IClientAuthenticationApi getAuthenticationApi() {
     if(authenticationApi == null) {
       authenticationApi = new AuthenticationApi();
-      ((AuthenticationApi)authenticationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((AuthenticationApi)authenticationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return authenticationApi;
   }
@@ -570,7 +571,7 @@ public class CloudServicesLocator {
   public static IHeartbeatApi getHeartbeatApi() {
     if(heartbeatApi == null) {
       heartbeatApi  = new HeartBeatApi();
-      ((HeartBeatApi)authenticationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((HeartBeatApi)authenticationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return heartbeatApi;
   }
@@ -583,7 +584,7 @@ public class CloudServicesLocator {
   public static IUserPrincipalApi getUserPrincipalApi() {
     if(userPrincipalApi == null) {
       userPrincipalApi = new UserPrincipalApi();
-      ((UserPrincipalApi)userPrincipalApi).setCloudServicesProperties(cloudServicesProperties());
+      ((UserPrincipalApi)userPrincipalApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return userPrincipalApi;
   }
@@ -596,7 +597,7 @@ public class CloudServicesLocator {
   public static IContainerApi getContainerApi() {
     if(containerApi == null) {
       containerApi = new ContainerApi();
-      ((ContainerApi)containerApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ContainerApi)containerApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return containerApi;
   }
@@ -609,7 +610,7 @@ public class CloudServicesLocator {
   public static IContainedApi getContainedApi() {
     if(containedApi == null) {
       containedApi = new ContainedApi();
-      ((ContainedApi)containedApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ContainedApi)containedApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return containedApi;
   }
@@ -622,7 +623,7 @@ public class CloudServicesLocator {
   public static IBatchApi getBatchApi() {
     if(batchApi == null) {
       batchApi= new BatchApi();
-      ((BatchApi)batchApi).setCloudServicesProperties(cloudServicesProperties());
+      ((BatchApi)batchApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return batchApi;
   }
@@ -635,7 +636,7 @@ public class CloudServicesLocator {
   public static IListvaluesApi getListvaluesApi() {
     if(listvaluesApi == null) {
       listvaluesApi = new ListvaluesApi();
-      ((ListvaluesApi)listvaluesApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ListvaluesApi)listvaluesApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return listvaluesApi;
   }
@@ -648,7 +649,7 @@ public class CloudServicesLocator {
   public static IPersistableApi getPersistableApi() {
     if(persistableApi == null) {
       persistableApi = new PersistableApi();
-      ((PersistableApi)persistableApi).setCloudServicesProperties(cloudServicesProperties());
+      ((PersistableApi)persistableApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return persistableApi;
   }
@@ -661,7 +662,7 @@ public class CloudServicesLocator {
   public static ITypeApi getTypeApi() {
     if(typeApi == null) {
       typeApi = new TypeApi();
-      ((TypeApi)typeApi).setCloudServicesProperties(cloudServicesProperties());
+      ((TypeApi)typeApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return typeApi;
   }
@@ -674,7 +675,7 @@ public class CloudServicesLocator {
   public static ITypedObjectLinkApi getTypedObjectLinkApi() {
     if(typedObjectLinkApi == null) {
       typedObjectLinkApi = new TypedObjectLinkApi();
-      ((TypedObjectLinkApi)typedObjectLinkApi).setCloudServicesProperties(cloudServicesProperties());
+      ((TypedObjectLinkApi)typedObjectLinkApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return typedObjectLinkApi;
   }
@@ -687,7 +688,7 @@ public class CloudServicesLocator {
   public static IObjectLinkApi getObjectLinkApi() {
     if(objectLinkApi == null) {
       objectLinkApi = new ObjectLinkApi();
-      ((ObjectLinkApi)objectLinkApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ObjectLinkApi)objectLinkApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return objectLinkApi;
   }
@@ -700,7 +701,7 @@ public class CloudServicesLocator {
   public static IGlobalAttributesApi getGlobalAttributesApi() {
     if(globalAttributesApi == null) {
       globalAttributesApi = new GlobalAttributesApi();
-      ((GlobalAttributesApi)globalAttributesApi).setCloudServicesProperties(cloudServicesProperties());
+      ((GlobalAttributesApi)globalAttributesApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return globalAttributesApi;
   }
@@ -713,7 +714,7 @@ public class CloudServicesLocator {
   public static IPreferenceAPI getPreferenceAPI() {
     if(preferenceApi == null) {
       preferenceApi = new PreferenceApi();
-      ((PreferenceApi)preferenceApi).setCloudServicesProperties(cloudServicesProperties());
+      ((PreferenceApi)preferenceApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return preferenceApi;
   }
@@ -727,7 +728,7 @@ public class CloudServicesLocator {
   public static ILifecycleApi getLifecycleApi() {
     if(lifecycleApi == null) {
       lifecycleApi = new LifecycleApi();
-      ((LifecycleApi)authenticationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((LifecycleApi)authenticationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return lifecycleApi;
   }
@@ -740,7 +741,7 @@ public class CloudServicesLocator {
   public static IRCApi getRcApi() {
     if(rcApi == null) {
       rcApi= new RCApi();
-      ((RCApi)authenticationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((RCApi)authenticationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return rcApi;
   }
@@ -753,7 +754,7 @@ public class CloudServicesLocator {
   public static ILifecycleManagedApi getLifecycleManagedApi() {
     if(lifecycleManagedApi == null) {
       lifecycleManagedApi = new LifecycleManagedApi();
-      ((LifecycleManagedApi)lifecycleManagedApi).setCloudServicesProperties(cloudServicesProperties());
+      ((LifecycleManagedApi)lifecycleManagedApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return lifecycleManagedApi;
   }
@@ -766,7 +767,7 @@ public class CloudServicesLocator {
   public static IContentHolderApi getContentHolderApi() {
     if(contentHolderApi == null) {
       contentHolderApi = new ContentHolderApi();
-      ((ContentHolderApi)contentHolderApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ContentHolderApi)contentHolderApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return contentHolderApi;
   }
@@ -779,7 +780,7 @@ public class CloudServicesLocator {
   public static ITeamTemplateApi getTeamTemplateApi() {
     if(teamTemplateApi == null) {
       teamTemplateApi = new TeamTemplateApi();
-      ((TeamTemplateApi)teamTemplateApi).setCloudServicesProperties(cloudServicesProperties());
+      ((TeamTemplateApi)teamTemplateApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return teamTemplateApi;
   }
@@ -792,7 +793,7 @@ public class CloudServicesLocator {
   public static IFolderApi getFolderApi() {
     if(folderApi == null) {
       folderApi = new FolderApi();
-      ((FolderApi)folderApi).setCloudServicesProperties(cloudServicesProperties());
+      ((FolderApi)folderApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return folderApi;
   }
@@ -805,7 +806,7 @@ public class CloudServicesLocator {
   public static IPartApi getPartApi() {
     if(partApi == null) {
       partApi = new PartApi();
-      ((PartApi)partApi).setCloudServicesProperties(cloudServicesProperties());
+      ((PartApi)partApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return partApi;
   }
@@ -818,7 +819,7 @@ public class CloudServicesLocator {
   public static ISearchApi getSearchApi() {
     if(searchApi == null) {
       searchApi = new SearchApi();
-      ((SearchApi)searchApi).setCloudServicesProperties(cloudServicesProperties());
+      ((SearchApi)searchApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return searchApi;
   }
@@ -831,7 +832,7 @@ public class CloudServicesLocator {
   public static ITypeManagedApi getTypeManagedApi() {
     if(typeManagedApi == null) {
       typeManagedApi =  new TypeManagedApi();
-      ((TypeManagedApi)typeManagedApi).setCloudServicesProperties(cloudServicesProperties());
+      ((TypeManagedApi)typeManagedApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return typeManagedApi;
   }
@@ -844,7 +845,7 @@ public class CloudServicesLocator {
   public static IBusinessRuleApi getBusinessRuleApi() {
     if(businessRuleApi == null) {
       businessRuleApi = new BusinessRuleApi();
-      ((BusinessRuleApi)businessRuleApi).setCloudServicesProperties(cloudServicesProperties());
+      ((BusinessRuleApi)businessRuleApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return businessRuleApi;
   }
@@ -857,7 +858,7 @@ public class CloudServicesLocator {
   public static INotificationApi getNotificationApi() {
     if(notificationApi == null) {
       notificationApi = new NotificationApi();
-      ((NotificationApi)notificationApi).setCloudServicesProperties(cloudServicesProperties());
+      ((NotificationApi)notificationApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return notificationApi;
   }
@@ -870,7 +871,7 @@ public class CloudServicesLocator {
   public static IThumbedApi getThumbedApi() {
     if(thumbedApi == null) {
       thumbedApi =  new ThumbedApi();
-      ((ThumbedApi)thumbedApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ThumbedApi)thumbedApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return thumbedApi;
   }
@@ -883,7 +884,7 @@ public class CloudServicesLocator {
   public static IContentFormatApi getContentFormatApi() {
     if(contentFormatApi == null) {
       contentFormatApi = new ContentFormatApi();
-      ((ContentFormatApi)contentFormatApi).setCloudServicesProperties(cloudServicesProperties());
+      ((ContentFormatApi)contentFormatApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return contentFormatApi;
   }
@@ -896,7 +897,7 @@ public class CloudServicesLocator {
   public static IFolderTemplateApi getFolderTemplateApi() {
     if(folderTemplateApi == null) {
       folderTemplateApi = new FolderTemplateApi();
-      ((FolderTemplateApi)folderTemplateApi).setCloudServicesProperties(cloudServicesProperties());
+      ((FolderTemplateApi)folderTemplateApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return folderTemplateApi;
   }
@@ -910,7 +911,7 @@ public class CloudServicesLocator {
   public static IDocumentApi getDocumentApi() {
     if(documentApi == null) {
       documentApi = new DocumentApi();
-      ((DocumentApi)documentApi).setCloudServicesProperties(cloudServicesProperties());
+      ((DocumentApi)documentApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return documentApi;
   }
@@ -923,21 +924,8 @@ public class CloudServicesLocator {
   public static IPeopleApi getPeopleApi() {
     if(peopleApi == null) {
       peopleApi = new PeopleApi();
-      ((PeopleApi)peopleApi).setCloudServicesProperties(cloudServicesProperties());
+      ((PeopleApi)peopleApi).setCloudServicesProperties((Properties) Services.getBean("cloudServicesProperties"));
     }
     return peopleApi;
   }
-
-  /**
-   * @return
-   */
-  @Bean
-  @Named("cloudServicesProperties")
-  public static Properties cloudServicesProperties() {
-    Properties properties = new Properties();
-    properties.put("remoteServerLocation", "http://localhost:8080/jsoagger/serv/core");
-    properties.put("authenticationApi", "/api/authentication");
-    return properties;
-  }
-
 }
