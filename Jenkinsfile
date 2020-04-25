@@ -11,28 +11,14 @@ pipeline {
     }
    
    stages {
-        stage ('Prepare') {
-			steps {
-				sh '''
+        stage('Build') {
+            steps {
+            	sh '''
 					echo "PATH = ${PATH}"
 					echo "M2_HOME = ${M2_HOME}"
 					echo "JAVA_HOME = ${JAVA_HOME}"					
 				'''
-			}
-		}
-       
-        stage('Build') {
-            steps {
-                sh "mvn -Dmaven.test.failure.ignore=true -DskipTests=true -Dmaven.javadoc.skip=true install"
-            }
-        }
-        
-        stage('Unit Tests') {
-            steps {
-            	sh '''
-                	echo "Running unit tests"
-                	mvn -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true verify
-                '''
+                sh "mvn -Dmaven.test.failure.ignore=true -DskipTests=false -Dmaven.javadoc.skip=true clean install"
             }
         }
         
@@ -50,7 +36,7 @@ pipeline {
         		timeout(time: 600, unit: 'SECONDS'){
         			script {
 	                    def perfomRelease = input(
- 							id: 'perfomRelease', message: 'Do you want to perform version release?', ok:'Release this build' 
+ 							id: 'perfomRelease', message: 'Do you want to release?', ok:'Release this build' 
 						)
                 	}	
         		}
