@@ -15,7 +15,7 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 public class PeopleApi extends AbstractClientApi implements IPeopleApi{
 
 
-  private static final String CREATE_PEOPLE_URI = "/api/people/";
+  private static final String CREATE_PEOPLE_URI = "/v1/secured/api/people/";
 
 
   @Override

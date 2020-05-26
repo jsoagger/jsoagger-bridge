@@ -17,49 +17,49 @@ import io.github.jsoagger.core.business.cloud.services.api.IUserPrincipalApi;
  */
 public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipalApi {
 
-  private static final String account_current_URL = "/api/account/current/?containerId=%s";
+  private static final String account_current_URL = "/v1/secured/api/account/current/?containerId=%s";
   private static final String account_current_update_pass_URL =
-      "/api/account/%s/updatePassword/?containerId=%s";
+      "/v1/secured/api/account/%s/updatePassword/?containerId=%s";
 
   private static final String account_of_Party_current_URL =
-      "/api/account/ofParty/?partyId=%s&containerId=%s";
+      "/v1/secured/api/account/ofParty/?partyId=%s&containerId=%s";
 
-  private static final String account_details_URL = "/api/account/%s/details/?containerId=%s";
+  private static final String account_details_URL = "/v1/secured/api/account/%s/details/?containerId=%s";
   private static final String account_update_Mail_URL =
-      "/api/account/%s/updateMail/?email=%s&containerId=%s";
-  private static final String account_owner_URL = "/api/account/%s/owner/?containerId=%s";
+      "/v1/secured/api/account/%s/updateMail/?email=%s&containerId=%s";
+  private static final String account_owner_URL = "/v1/secured/api/account/%s/owner/?containerId=%s";
   private static final String account_byloginLike_URL =
-      "/api/account/byLoginLike/?login=%s&containerId=%s";
-  private static final String account_bylogin_URL = "/api/account/byLogin/?login=%s&containerId=%s";
+      "/v1/secured/api/account/byLoginLike/?login=%s&containerId=%s";
+  private static final String account_bylogin_URL = "/v1/secured/api/account/byLogin/?login=%s&containerId=%s";
   private static final String account_byname_URL =
-      "/api/account/byNameLike/?name=%s&containerId=%s";
+      "/v1/secured/api/account/byNameLike/?name=%s&containerId=%s";
   private static final String account_resetPassword_URL =
-      "/api/account/%s/resetPassword/?containerId=%s";
+      "/v1/secured/api/account/%s/resetPassword/?containerId=%s";
 
-  private static final String account_lock_URL = "/api/account/%s/lock/?containerId=%s";
+  private static final String account_lock_URL = "/v1/secured/api/account/%s/lock/?containerId=%s";
   private static final String account_unlocked_URL =
-      "/api/account/%s/unlock/?lockToken=%s&containerId=%s";
+      "/v1/secured/api/account/%s/unlock/?lockToken=%s&containerId=%s";
 
-  private static final String account_roles_URL = "/api/account/%s/roles/?containerId=%s";
+  private static final String account_roles_URL = "/v1/secured/api/account/%s/roles/?containerId=%s";
   private static final String account_roles_add_remove_URL =
-      "/api/account/%s/roles/%s/?containerId=%s";
+      "/v1/secured/api/account/%s/roles/%s/?containerId=%s";
 
-  private static final String account_rootFolder_URL = "/api/account/%s/rootFolder/?containerId=%s";
+  private static final String account_rootFolder_URL = "/v1/secured/api/account/%s/rootFolder/?containerId=%s";
   private static final String account_permissions_URL =
-      "/api/account/%s/permissions/?containerId=%s&includeParentItems=%s";
+      "/v1/secured/api/account/%s/permissions/?containerId=%s&includeParentItems=%s";
 
 
   private static final String getGroupByName =
-      "/api/userGroup/byName?internalName=%s&containerId=%s";
-  private static final String deleteGroup_URL = "/api/userGroup/%s/?containerId=%s";
-  private static final String childrenOf_URL = "/api/userGroup/%s/children/?containerId=%s";
-  private static final String members_URL = "/api/userGroup/%s/members/?containerId=%s";
-  private static final String members_count_URL = "/api/userGroup/%s/members/count/?containerId=%s";
-  private static final String members_remove_URL = "/api/userGroup/%s/members/?containerId=%s";
-  private static final String members_add_URL = "/api/userGroup/%s/members/?containerId=%s";
+      "/v1/secured/api/userGroup/byName?internalName=%s&containerId=%s";
+  private static final String deleteGroup_URL = "/v1/secured/api/userGroup/%s/?containerId=%s";
+  private static final String childrenOf_URL = "/v1/secured/api/userGroup/%s/children/?containerId=%s";
+  private static final String members_URL = "/v1/secured/api/userGroup/%s/members/?containerId=%s";
+  private static final String members_count_URL = "/v1/secured/api/userGroup/%s/members/count/?containerId=%s";
+  private static final String members_remove_URL = "/v1/secured/api/userGroup/%s/members/?containerId=%s";
+  private static final String members_add_URL = "/v1/secured/api/userGroup/%s/members/?containerId=%s";
 
   private static final String SWITCH_CONTAINER_CONTEXT =
-      "/api/account/%s/switchToContext?containerId=%s";
+      "/v1/secured/api/account/%s/switchToContext?containerId=%s";
 
 
 

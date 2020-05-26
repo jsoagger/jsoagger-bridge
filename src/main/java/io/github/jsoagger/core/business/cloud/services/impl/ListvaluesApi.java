@@ -16,7 +16,7 @@ import io.github.jsoagger.core.bridge.result.MultipleResult;
  */
 public class ListvaluesApi extends AbstractClientApi implements IListvaluesApi {
 
-  private static final String	URI		= "/api/listvalues/?name=%s&locale=%s&containerId=%s&includeParentItems=%s";
+  private static final String	URI		= "/v1/secured/api/listvalues/?name=%s&locale=%s&containerId=%s&includeParentItems=%s";
 
 
   /**

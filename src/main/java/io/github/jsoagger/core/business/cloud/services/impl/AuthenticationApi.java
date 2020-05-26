@@ -4,9 +4,10 @@
 package io.github.jsoagger.core.business.cloud.services.impl;
 
 import com.google.gson.JsonObject;
-import io.github.jsoagger.core.business.cloud.services.api.IClientAuthenticationApi;
+
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 import io.github.jsoagger.core.bridge.result.SingleResult;
+import io.github.jsoagger.core.business.cloud.services.api.IClientAuthenticationApi;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -15,15 +16,15 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class AuthenticationApi extends AbstractClientApi implements IClientAuthenticationApi {
 
-  private static final String	API_AUTHENTICATION_LOGIN	= "/anon/auth/login";
-  private static final String   API_LOST_PASS               = "/anon/auth/lostPassword?login=%s";
+  private static final String API_AUTHENTICATION_LOGIN = "/v1/anon/auth/login";
+  private static final String API_LOST_PASS = "/v1/anon/auth/lostPassword?login=%s";
 
-  private static final String   API_AUTHENTICATION_LOGOUT   = "/api/auth/logout";
-  private static final String   API_RESEND_LOCKTOKEN        = "/api/auth/%s/resendLockToken/?containerId=%s";
-  private static final String   API_SET_TECHNICAL_STATE     = "/api/auth/setSystemLocked?login=%s";
+  private static final String API_AUTHENTICATION_LOGOUT = "/v1/secured/api/auth/logout";
+  private static final String API_RESEND_LOCKTOKEN = "/v1/secured/api//auth/%s/resendLockToken/?containerId=%s";
+  private static final String API_SET_TECHNICAL_STATE = "/v1/secured/api/auth/setSystemLocked?login=%s";
 
-  private static final String   API_ACTIVATE_ACCOUNT       = "/inactive/auth/activateAccount?login=%s";
-  private static final String   MY_ACTIVATION_TOKEN        = "/inactive/auth/myActivationToken";
+  private static final String API_ACTIVATE_ACCOUNT = "/inactive/auth/activateAccount?login=%s";
+  private static final String MY_ACTIVATION_TOKEN = "/inactive/auth/myActivationToken";
 
   /**
    * Constructor
@@ -39,8 +40,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String loginUrl = getRootUrl().concat(MY_ACTIVATION_TOKEN);
       IOperationResult result = doGet(query, loginUrl, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -51,8 +51,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String loginUrl = getRootUrl().concat(API_AUTHENTICATION_LOGIN);
       IOperationResult result = doPost(query, loginUrl, SingleResult.class, true);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -63,8 +62,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String url = getRootUrl().concat(API_AUTHENTICATION_LOGOUT);
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -76,8 +74,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String url = getRootUrl().concat(API_LOST_PASS);
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -90,8 +87,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String url = getRootUrl().concat(String.format(API_SET_TECHNICAL_STATE, login));
       IOperationResult result = doPut(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -106,8 +102,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String url = getRootUrl().concat(String.format(API_RESEND_LOCKTOKEN, login, containerId));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -122,8 +117,7 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
       String url = getRootUrl().concat(String.format(API_ACTIVATE_ACCOUNT, login));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }

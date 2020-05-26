@@ -15,7 +15,7 @@ import io.github.jsoagger.core.business.cloud.services.api.IHeartbeatApi;
 public class HeartBeatApi extends AbstractClientApi implements IHeartbeatApi {
 
 
-  private static final String	API_HEARTBEAT_ANON_PING		= "/anon/ping";
+  private static final String API_HEARTBEAT_ANON_PING = "/v1/anon/ping";
 
 
   /**
@@ -35,8 +35,7 @@ public class HeartBeatApi extends AbstractClientApi implements IHeartbeatApi {
       String pingUrl = getRootUrl().concat(API_HEARTBEAT_ANON_PING);
       IOperationResult result = doGet(null, pingUrl, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       logException(e);
       return IOperationResult.getGeneralSingleResultError();
     }

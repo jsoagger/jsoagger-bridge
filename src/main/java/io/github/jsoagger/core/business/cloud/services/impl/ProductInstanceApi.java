@@ -18,13 +18,13 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 public class ProductInstanceApi extends AbstractClientApi implements IProductInstanceApi {
 
 
-  private static final String   getProduct_byid_ULR                   = "/api/productInstance/%s/?containerId=%s";
-  private static final String   getProducts_bynumber_ULR                   = "/api/productInstance/byNumber/?containerId=%s&number=%s";
-  private static final String   getProducts_ULR                   = "/api/productInstance/?containerId=%s&o=%s&c=%s&page=%s&pageSize=%s&s=%s";
-  private static final String   updateDiscontinuationDate_ULR     = "/api/productInstance/%s/discontinuationDate/?containerId=%s";
-  private static final String   setProductMasterCategory_ULR      = "/api/productInstance/%s/masterCategory/?c=%s&containerId=%s";
-  private static final String   getCategoriesOf_ULR             = "/api/productInstance/%s/categories/?containerId=%s";
-  private static final String   manageCategoriesOf_ULR          = "/api/productInstance/%s/categories/?categoryId=%s&containerId=%s";
+  private static final String   getProduct_byid_ULR                   = "/v1/secured/api/productInstance/%s/?containerId=%s";
+  private static final String   getProducts_bynumber_ULR                   = "/v1/secured/api/productInstance/byNumber/?containerId=%s&number=%s";
+  private static final String   getProducts_ULR                   = "/v1/secured/api/productInstance/?containerId=%s&o=%s&c=%s&page=%s&pageSize=%s&s=%s";
+  private static final String   updateDiscontinuationDate_ULR     = "/v1/secured/api/productInstance/%s/discontinuationDate/?containerId=%s";
+  private static final String   setProductMasterCategory_ULR      = "/v1/secured/api/productInstance/%s/masterCategory/?c=%s&containerId=%s";
+  private static final String   getCategoriesOf_ULR             = "/v1/secured/api/productInstance/%s/categories/?containerId=%s";
+  private static final String   manageCategoriesOf_ULR          = "/v1/secured/api/productInstance/%s/categories/?categoryId=%s&containerId=%s";
 
 
   @Override

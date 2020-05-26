@@ -16,7 +16,7 @@
 	<inceptionYear>2019</inceptionYear>
 
 	<properties>
-		<internal.core.project.version>1.0.0</internal.core.project.version>
+		<internal.core.project.version>1.0.17</internal.core.project.version>
 
 		<project.scm.id>jsoaggercore.repo</project.scm.id>
 
@@ -93,13 +93,13 @@
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-jfxcore-api</artifactId>
-			<version>1.0.1</version>
+			<version>${internal.core.project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-core-utils</artifactId>
-			<version>1.0.1</version>
+			<version>${internal.core.project.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.google.guava</groupId>
@@ -118,14 +118,14 @@
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-core-bridge</artifactId>
-			<version>1.0.1</version>
+			<version>${internal.core.project.version}</version>
 		</dependency>
 
 		<!-- Do not package with application -->
 		<dependency>
 			<groupId>io.github.jsoagger</groupId>
 			<artifactId>jsoagger-core-ioc</artifactId>
-			<version>1.0.1</version>
+			<version>${internal.core.project.version}</version>
 		</dependency>
 
 		<dependency>

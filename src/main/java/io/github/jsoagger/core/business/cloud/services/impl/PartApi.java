@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
  */
 public class PartApi extends AbstractClientApi implements IPartApi {
 
-  private static final String CREATE_PART_UIR = "/api/part/";
+  private static final String CREATE_PART_UIR = "/v1/secured/api/part/";
 
 
   /**

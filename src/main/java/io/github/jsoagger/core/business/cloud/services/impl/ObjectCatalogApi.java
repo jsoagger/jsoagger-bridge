@@ -17,12 +17,12 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 public class ObjectCatalogApi extends AbstractClientApi implements IObjectCatalogApi {
 
 
-  static final String GET_BY_ID_URL = "/api/objectCatalog/%s/?containerId=%s";
-  static final String LIST_URL = "/api/objectCatalog/?ownerId=%s&typeId=%s&containerId=%s&state=%s";
-  static final String CREATE_URL = "/api/objectCatalog/%s/?containerId=%s";
-  static final String DELETE_URL = "/api/objectCatalog/%s/?containerId=%s";
-  static final String ROOT_CATEGORIES_URL = "/api/objectCatalog/%s/rootCategories/?containerId=%s";
-  static final String ASSIGNROOT_CATEGORIES_URL = "/api/objectCatalog/%s/assignRootCategory/?rootCategoryId=%s&containerId=%s";
+  static final String GET_BY_ID_URL = "/v1/secured/api/objectCatalog/%s/?containerId=%s";
+  static final String LIST_URL = "/v1/secured/api/objectCatalog/?ownerId=%s&typeId=%s&containerId=%s&state=%s";
+  static final String CREATE_URL = "/v1/secured/api/objectCatalog/%s/?containerId=%s";
+  static final String DELETE_URL = "/v1/secured/api/objectCatalog/%s/?containerId=%s";
+  static final String ROOT_CATEGORIES_URL = "/v1/secured/api/objectCatalog/%s/rootCategories/?containerId=%s";
+  static final String ASSIGNROOT_CATEGORIES_URL = "/v1/secured/api/objectCatalog/%s/assignRootCategory/?rootCategoryId=%s&containerId=%s";
 
   @Override
   public IOperationResult getObjectCatalogById(JsonObject query) {

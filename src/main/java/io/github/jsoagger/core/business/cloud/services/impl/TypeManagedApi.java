@@ -14,8 +14,8 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class TypeManagedApi extends AbstractClientApi implements ITypeManagedApi {
 
-  private static final String attributeDefinitions_url = "/api/typeManaged/%s/attributeDefinitions/?containerId=%s";
-  private static final String typeof_url = "/api/typeManaged/%s/typeOf/?containerId=%s";
+  private static final String attributeDefinitions_url = "/v1/secured/api/typeManaged/%s/attributeDefinitions/?containerId=%s";
+  private static final String typeof_url = "/v1/secured/api/typeManaged/%s/typeOf/?containerId=%s";
 
   /**
    * {@inheritDoc}

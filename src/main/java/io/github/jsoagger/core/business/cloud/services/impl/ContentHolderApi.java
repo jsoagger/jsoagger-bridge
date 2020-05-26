@@ -24,11 +24,11 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class ContentHolderApi extends AbstractClientApi implements IContentHolderApi {
 
-  private static final String DOWNLOAD_URL = "/api/contentHolder/%s/content?role=%s&contentItemId=%s&containerId=%s";
-  private static final String CONTENT_FORMAT_PATH = "/api/contentHolder/%s/contentInfo/?role=%s&containerId=%s";
-  private static final String setContentFile = "/api/contentHolder/%s/setContentFile/?role=%s&containerId=%s";
-  private static final String setContentUrl = "/api/contentHolder/%s/setContentUrl/?role=%s&url=%s&containerId=%s";
-  private static final String deleteContentUrl = "/api/contentHolder/%s/content/?role=%s&contentItemId=%s&containerId=%s";
+  private static final String DOWNLOAD_URL = "/v1/secured/api/contentHolder/%s/content?role=%s&contentItemId=%s&containerId=%s";
+  private static final String CONTENT_FORMAT_PATH = "/v1/secured/api/contentHolder/%s/contentInfo/?role=%s&containerId=%s";
+  private static final String setContentFile = "/v1/secured/api/contentHolder/%s/setContentFile/?role=%s&containerId=%s";
+  private static final String setContentUrl = "/v1/secured/api/contentHolder/%s/setContentUrl/?role=%s&url=%s&containerId=%s";
+  private static final String deleteContentUrl = "/v1/secured/api/contentHolder/%s/content/?role=%s&contentItemId=%s&containerId=%s";
 
   /**
    * @{inheritedDoc}

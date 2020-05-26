@@ -4,10 +4,11 @@
 package io.github.jsoagger.core.business.cloud.services.impl;
 
 import com.google.gson.JsonObject;
-import io.github.jsoagger.core.business.cloud.services.api.IAppVersionApi;
+
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 import io.github.jsoagger.core.bridge.result.MultipleResult;
 import io.github.jsoagger.core.bridge.result.SingleResult;
+import io.github.jsoagger.core.business.cloud.services.api.IAppVersionApi;
 
 
 /**
@@ -16,19 +17,18 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
 
+  static String PENDING_ISNTALLATION_URL = "/v1/secured/api/versionHistory/pendingInstallation/?buildModuleName=%s&buildModuleVersion=%s";
+  static String INSTALLATION_STATUS_URL = "/v1/secured/api/versionHistory/installationStatus?buildModuleName=%s&buildModuleVersion=%s";
+  static String VERSION_URL = "/v1/secured/api/versionHistory/version/?buildModuleName=%s";
+  static String CREATE_URL = "/v1/secured/api/versionHistory/";
+  static String GET_BY_ID_URL = "/v1/secured/api/versionHistory/%s";
+  static String DELETE_URL = "/v1/secured/api/versionHistory/%s";
+  static String SET_INSTALLED_URL = "/v1/secured/api/versionHistory/%s/installed";
+  static String SET_FAILED_URL = "/v1/secured/api/versionHistory/%s/failed";
+  static String GET_ALL_URL = "/v1/secured/api/versionHistory/?label=%s";
 
-  static String PENDING_ISNTALLATION_URL = "/api/versionHistory/pendingInstallation/?buildModuleName=%s&buildModuleVersion=%s";
-  static String INSTALLATION_STATUS_URL = "/api/versionHistory/installationStatus?buildModuleName=%s&buildModuleVersion=%s";
-  static String VERSION_URL = "/api/versionHistory/version/?buildModuleName=%s";
-  static String CREATE_URL = "/api/versionHistory/";
-  static String GET_BY_ID_URL = "/api/versionHistory/%s";
-  static String DELETE_URL = "/api/versionHistory/%s";
-  static String SET_INSTALLED_URL = "/api/versionHistory/%s/installed";
-  static String SET_FAILED_URL = "/api/versionHistory/%s/failed";
-  static String GET_ALL_URL = "/api/versionHistory/?label=%s";
-
-  static String getDataPatchInstallationStatusURL = "/anon/dataPatchInstallationStatus/?buildModuleVersion=%s&buildModuleName=%s";
-  static String setDataPatchInstallationStatusURL = "/api/versionHistory/dataPatchInstallationStatus/";
+  static String getDataPatchInstallationStatusURL = "/v1/anon/dataPatch/installationStatus/?buildModuleVersion=%s&buildModuleName=%s";
+  static String setDataPatchInstallationStatusURL = "/v1/secured/api/versionHistory/dataPatchInstallationStatus/";
 
 
   @Override
@@ -39,8 +39,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(getDataPatchInstallationStatusURL, buildVersion, dataPatchName));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -54,8 +53,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(setDataPatchInstallationStatusURL));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -68,8 +66,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(GET_BY_ID_URL, identifier));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -81,8 +78,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(GET_ALL_URL, label));
       IOperationResult result = doGet(query, url, MultipleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.generalMultipleResutError();
     }
   }
@@ -94,8 +90,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(DELETE_URL, identifier));
       IOperationResult result = doDelete(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -106,8 +101,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(CREATE_URL));
       IOperationResult result = doPost(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -119,8 +113,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(VERSION_URL, label));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -134,8 +127,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(INSTALLATION_STATUS_URL, buildModuleName, buildModuleVersion));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -149,8 +141,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(PENDING_ISNTALLATION_URL, buildModuleName, buildModuleVersion));
       IOperationResult result = doGet(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -162,8 +153,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(SET_FAILED_URL, id));
       IOperationResult result = doPut(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }
@@ -175,8 +165,7 @@ public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
       String url = getRootUrl().concat(String.format(SET_INSTALLED_URL, id));
       IOperationResult result = doPut(query, url, SingleResult.class);
       return result;
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();
     }
   }

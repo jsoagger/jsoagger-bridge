@@ -18,14 +18,14 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class ObjectLinkApi extends AbstractClientApi implements IObjectLinkApi {
 
-  private static final String	CREATE_LINK_ULR			 = "/api/objectLink/";
-  private static final String	DELETE_LINK				 = "/api/objectLink/%s/deleteLink/%s/?linkClass=%s&containerId=%s";
-  private static final String	IS_LINKED				 = "/api/objectLink/%s/isLinked/%s/?linkClass=%s&containerId=%s";
-  private static final String	GET_ROLEBs_ULR			 = "/api/objectLink/%s/roleBs/?linkClass=%s&containerId=%s";
-  private static final String	GET_ROLEBs_WITH_LINK_ULR = "/api/objectLink/%s/roleBsWithLinks/?linkClass=%s&containerId=%s";
-  private static final String	GET_PAGINATED_ROLEBs_ULR = "/api/objectLink/%s/paginatedRoleBs/?linkClass=%s&pageSize=%s&page=%s&containerId=%s";
-  private static final String	GET_PAGINATED_ROLEAs_ULR = "/api/objectLink/%s/paginatedRoleAs/?linkClass=%s&pageSize=%s&page=%s&containerId=%s";
-  private static final String	COUNT_ROLEBs_URL		 = "/api/objectLink/%s/countRoleBs?&linkClass=%s&containerId=%s";
+  private static final String	CREATE_LINK_ULR			 = "/v1/secured/api/objectLink/";
+  private static final String	DELETE_LINK				 = "/v1/secured/api/objectLink/%s/deleteLink/%s/?linkClass=%s&containerId=%s";
+  private static final String	IS_LINKED				 = "/v1/secured/api/objectLink/%s/isLinked/%s/?linkClass=%s&containerId=%s";
+  private static final String	GET_ROLEBs_ULR			 = "/v1/secured/api/objectLink/%s/roleBs/?linkClass=%s&containerId=%s";
+  private static final String	GET_ROLEBs_WITH_LINK_ULR = "/v1/secured/api/objectLink/%s/roleBsWithLinks/?linkClass=%s&containerId=%s";
+  private static final String	GET_PAGINATED_ROLEBs_ULR = "/v1/secured/api/objectLink/%s/paginatedRoleBs/?linkClass=%s&pageSize=%s&page=%s&containerId=%s";
+  private static final String	GET_PAGINATED_ROLEAs_ULR = "/v1/secured/api/objectLink/%s/paginatedRoleAs/?linkClass=%s&pageSize=%s&page=%s&containerId=%s";
+  private static final String	COUNT_ROLEBs_URL		 = "/v1/secured/api/objectLink/%s/countRoleBs?&linkClass=%s&containerId=%s";
 
 
   /**

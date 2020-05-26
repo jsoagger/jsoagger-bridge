@@ -15,12 +15,12 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class ViewDefinitionApi extends AbstractClientApi implements IViewDefinitionApi {
 
-  static String getAllSchemasByInternalName = "/anon/api/viewDefinition/getAllSchemasByInternalName?internalName=%s";
-  static String getUISchemaByInternalName = "/anon/api/viewDefinition/getUISchemaByInternalName?internalName=%s&platform=%s";
-  static String getJSONSchemaByInternalName = "/anon/api/viewDefinition/getJSONSchemaByInternalName?internalName=%s&platform=%s";
-  static String getAll = "/api/viewDefinition/?platform=%s";
-  static String getById = "/api/viewDefinition/%s";
-  static String getByInternalName = "/api/viewDefinition/getByInternalName/?internalName=%s";
+  static String getAllSchemasByInternalName = "/v1/anon/api/viewDefinition/getAllSchemasByInternalName?internalName=%s";
+  static String getUISchemaByInternalName = "/v1/anon/api/viewDefinition/getUISchemaByInternalName?internalName=%s&platform=%s";
+  static String getJSONSchemaByInternalName = "/v1/anon/api/viewDefinition/getJSONSchemaByInternalName?internalName=%s&platform=%s";
+  static String getAll = "/v1/secured/api/viewDefinition/?platform=%s";
+  static String getById = "/v1/secured/api/viewDefinition/%s";
+  static String getByInternalName = "/v1/secured/api/viewDefinition/getByInternalName/?internalName=%s";
 
   //remote return jsonSchema + uiSchema (if platform is not null)
   @Override

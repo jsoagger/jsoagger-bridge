@@ -56,9 +56,17 @@ public abstract class AbstractClientApi {
   }
 
   private String getSessionId() {
-    ILoginSessionHolder loginContext = (ILoginSessionHolder) Services.getBean("LoginSessionHolder");
-    String sesstionId = loginContext.getSessionId();
-    return sesstionId;
+
+    String sessionId = "";
+
+    try {
+      ILoginSessionHolder loginContext = (ILoginSessionHolder) Services.getBean("LoginSessionHolder");
+      sessionId = loginContext.getSessionId();
+    } catch (Exception e) {
+      sessionId = System.getProperty("shiro.session.id");
+    }
+
+    return sessionId;
   }
 
   public <T extends IOperationResult> IOperationResult doGet(JsonObject query, String url,
@@ -164,8 +172,10 @@ public abstract class AbstractClientApi {
         request = new Request.Builder().url(url).header("Content-Type", "application/json")
             .header("Accept", "application/json").post(body).build();
       } else {
-        request = new Request.Builder().url(url).header("Content-Type", "application/json")
-            .header("Accept", "application/json").header("Cookie", "sid=" + getSessionId())
+        request = new Request.Builder().url(url)
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .header("Cookie", "sid=" + getSessionId())
             .post(body).build();
       }
 
@@ -396,9 +406,7 @@ public abstract class AbstractClientApi {
    */
   public String getRootUrl() {
     String rootUrl = cloudServicesProperties.getProperty(REMOTE_SERVER_LOCATION);
-    // System.out.println("AbstractClientApi: " + rootUrl);
-    // System.out.println("AbstractClientApi: " + cloudServicesProperties);
-    return "http://soaggyshop-demo.uat.jsoagger.tech/soaggyshop/";
+    return rootUrl;
   }
 
   /**
@@ -428,4 +436,9 @@ public abstract class AbstractClientApi {
       r.addMetaData(HTTP_CODE, response.code());
     }
   }
+
+  /**
+   * For spring compatibity init method
+   */
+  public void init() {}
 }

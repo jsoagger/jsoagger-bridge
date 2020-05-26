@@ -8,9 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gson.JsonObject;
-import io.github.jsoagger.core.business.cloud.services.api.IBatchApi;
+
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 import io.github.jsoagger.core.bridge.result.SingleResult;
+import io.github.jsoagger.core.business.cloud.services.api.IBatchApi;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -19,8 +20,8 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class BatchApi extends AbstractClientApi implements IBatchApi {
 
-  private static final String LOAD_URI = "/api/batch/load";
-  private static final String EXPORT_URI = "/api/batch/export";
+  private static final String LOAD_URI = "/v1/secured/api/batch/load";
+  private static final String EXPORT_URI = "/v1/secured/api/batch/export";
 
 
   /**
@@ -35,30 +36,29 @@ public class BatchApi extends AbstractClientApi implements IBatchApi {
 
       // upload folder content
       // firts leve children of that folder are files to upload
-      if(query.get("local.attachments.folder") != null) {
+      if (query.get("local.attachments.folder") != null) {
         String attachments = query.get("local.attachments.folder").getAsString();
 
         File at = new File(attachments);
-        if(at.isDirectory()) {
-          for(File file : at.listFiles()) {
-            if(file.isFile()) f.put("attachments_" + file.getName(), file);
+        if (at.isDirectory()) {
+          for (File file : at.listFiles()) {
+            if (file.isFile())
+              f.put("attachments_" + file.getName(), file);
           }
         }
       }
 
-      if(query.get("input.file.path.raw") != null) {
+      if (query.get("input.file.path.raw") != null) {
         File file = new File(query.get("input.file.path.raw").getAsString());
         f.put("master_file", file);
       }
 
-      if(!f.isEmpty()) {
+      if (!f.isEmpty()) {
         return doPostMp(query, f, byPathUrl, SingleResult.class);
-      }
-      else {
+      } else {
         return doPost(query, byPathUrl, SingleResult.class);
       }
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       logException(e);
       return IOperationResult.getGeneralSingleResultError();
     }
@@ -72,16 +72,15 @@ public class BatchApi extends AbstractClientApi implements IBatchApi {
     try {
       String byPathUrl = getRootUrl().concat(EXPORT_URI);
 
-      if(query.get("input.file.path.raw") != null && !query.get("input.file.path.raw").isJsonNull()) {
+      if (query.get("input.file.path.raw") != null && !query.get("input.file.path.raw").isJsonNull()) {
         String uploadMasterFile = query.get("input.file.path.raw").getAsString();
         Map<String, File> f = new HashMap<>();
-        //f.put("input.file.path.raw", new File(uploadMasterFile));
-        //return doPostMp(query, f, byPathUrl, SingleResult.class);
+        // f.put("input.file.path.raw", new File(uploadMasterFile));
+        // return doPostMp(query, f, byPathUrl, SingleResult.class);
       }
 
       return doPost(query, byPathUrl, SingleResult.class);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       logException(e);
       return IOperationResult.getGeneralSingleResultError();
     }
