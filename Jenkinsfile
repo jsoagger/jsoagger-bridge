@@ -3,58 +3,90 @@ pipeline {
    agent {label 'slave1'}
    
    environment {
-       PROJECT_NAME="JSOAGGER Cloud Bridge"
+       PROJECT_NAME="JSoagger Core CloudBridge"
    }
    
    options {
         timestamps()
-    }
+        buildDiscarder(logRotator(numToKeepStr: '3'))
+   		timeout(time: 5, unit: 'MINUTES')
+   }
    
    stages {
+   
+   		stage('Prepare') {
+   		   steps {
+   			 ansiColor('xterm') {
+   			 	script {
+                      AUTHOR = sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+
+                      if("jenkins2".equals(AUTHOR)){
+                        currentBuild.result = 'ABORTED'
+                        return
+                      }
+                }
+              }
+   		   }
+   		}
+   		
+   		
         stage('Build') {
+        	when {
+	            branch 'master'
+	            not{ equals expected: "jenkins2", actual: "${AUTHOR}" }
+	        }
+          
             steps {
-            	sh '''
-					mvn -version
-					mvn -Dmaven.test.failure.ignore=true -DskipTests=false -Dmaven.javadoc.skip=true clean install
-                '''
+            	ansiColor('xterm') {
+					sh "mvn -version"
+					sh "mvn -Dmaven.test.failure.ignore=true -DskipTests=false -Dmaven.javadoc.skip=true clean install"
+				}
             }
         }
         
-        stage('Integration Tests') {
-            steps {
-                sh '''
-                	echo "Running integration tests"
-                	#mvn -Dmaven.test.failure.ignore=false -Dmaven.javadoc.skip=true verify
-                '''
-            }
-        }
         
       	stage('Release confirmation') {
+      		when {
+	            branch 'master'
+	            not{ equals expected: "jenkins2", actual: "${AUTHOR}" }
+	        }
+	        
         	steps {
-        		timeout(time: 600, unit: 'SECONDS'){
-        			script {
-	                    def perfomRelease = input(
- 							id: 'perfomRelease', message: 'Do you want to release?', ok:'Release this build' 
-						)
-                	}	
-        		}
+        		ansiColor('xterm') {
+	        		timeout(time: 5, unit: 'MINUTES'){
+	        			script {
+		                    def perfomRelease = input(
+	 							id: 'perfomRelease', message: 'Do you want to release?', ok:'Yes, release this build' 
+							)
+	                	}	
+	        		}
+	        	}
         	}
       	}
       
       	stage('Perform release') {
+      		when {
+	            branch 'master'
+	            not{ equals expected: "jenkins2", actual: "${AUTHOR}" }
+	        }
+	        
          	steps {
-	         	withCredentials([usernamePassword(credentialsId: 'jenkins_github_credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')])
-	         	{
-	                sh 'mvn --settings .maven.xml -DENV_GIT_USERNAME=$GIT_USERNAME -DENV_GIT_PASSWORD=$GIT_PASSWORD -Dresume=false -DdryRun=true -Dmaven.test.failure.ignore=true -DskipTests=true -Darguments=\"-Dmaven.javadoc.skip=true\" release:prepare -B -V -Prelease'
-			        sh 'mvn --settings .maven.xml -DENV_GIT_USERNAME=$GIT_USERNAME -DENV_GIT_PASSWORD=$GIT_PASSWORD -Dresume=false -Dmaven.test.failure.ignore=true -DskipTests=true -Darguments=\"-Dmaven.javadoc.skip=true\" -B -V release:prepare release:perform -Prelease'
-	         	}
+         		ansiColor('xterm') {
+		         	withCredentials([usernamePassword(credentialsId: 'jenkins_github_credentials', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]){
+		         		sh 'git config --global user.email "jenkins@nexitia.com"'
+		         		sh 'git config --global user.name "jenkins2"'
+		         	
+		                sh 'mvn --settings .maven.xml -DENV_GIT_USERNAME=$GIT_USERNAME -DENV_GIT_PASSWORD=$GIT_PASSWORD -Dresume=false -DdryRun=true -Dmaven.test.failure.ignore=true -DskipTests=true -Darguments=\"-Dmaven.javadoc.skip=true\" release:prepare -B -V -Prelease'
+				        sh 'mvn --settings .maven.xml -DENV_GIT_USERNAME=$GIT_USERNAME -DENV_GIT_PASSWORD=$GIT_PASSWORD -Dresume=false -Dmaven.test.failure.ignore=true -DskipTests=true -Darguments=\"-Dmaven.javadoc.skip=true\" -B -V release:prepare release:perform -Prelease'
+		         	}
+		        }
          	}
          	
          	post {  
-				 success {  
+				 success {
 					 emailext   to: "${env.DEV_MAILING_LIST}",
 					 			subject: "$PROJECT_NAME, released",
-					 			body: "$PROJECT_NAME have been succesfully released.<br/> A new version of project $PROJECT_NAME is now avalaible.<br/><br/>Jenkins", 
+					 			body: "$PROJECT_NAME released.<br/> A new version of project $PROJECT_NAME is avalaible.<br/><br/>Jenkins", 
 								from: "${env.JOB_EMAIL_SENDER}", 
 								attachLog: false;
 				 }  
