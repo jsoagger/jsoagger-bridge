@@ -13,23 +13,15 @@ pipeline {
    }
    
    stages {
-   
-   		stage('Prepare') {
-   		   steps {
-   			 ansiColor('xterm') {
-   			 	script {
+   		
+   	   stage ('Validate Current User') {
+			steps {
+				script {
                       AUTHOR = sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-
-                      if("jenkins2".equals(AUTHOR)){
-                        currentBuild.result = 'ABORTED'
-                        return
-                      }
                 }
-              }
-   		   }
-   		}
-   		
-   		
+			}
+		}
+
         stage('Build') {
         	when {
 	            branch 'master'
