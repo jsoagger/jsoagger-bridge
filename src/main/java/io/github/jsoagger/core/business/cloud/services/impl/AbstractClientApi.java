@@ -56,7 +56,7 @@ public abstract class AbstractClientApi {
   }
 
   private String getJWtToken() {
-    String token = System.getProperty(JSON_WEB_TOKEN);
+    String token = System.getProperty("Bearer " + JSON_WEB_TOKEN);
     return token;
   }
 
