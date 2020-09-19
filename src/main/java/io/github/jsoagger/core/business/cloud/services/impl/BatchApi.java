@@ -47,7 +47,7 @@ public class BatchApi extends AbstractClientApi implements IBatchApi {
           }
         }
       }
-
+      
       if (query.get("input.file.path.raw") != null) {
         File file = new File(query.get("input.file.path.raw").getAsString());
         f.put("master_file", file);

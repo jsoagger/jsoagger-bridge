@@ -4,6 +4,7 @@
 package io.github.jsoagger.core.business.cloud.services.api;
 
 import com.google.gson.JsonObject;
+
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 
 /**
@@ -13,8 +14,8 @@ import io.github.jsoagger.core.bridge.operation.IOperationResult;
  */
 public interface IClientAuthenticationApi {
 
-  IOperationResult login(JsonObject query);
-  public IOperationResult activationToken(JsonObject query);
+  boolean login(JsonObject query);
+  IOperationResult activationToken(JsonObject query);
   IOperationResult logout(JsonObject query);
 
   IOperationResult lostPassword(JsonObject query);

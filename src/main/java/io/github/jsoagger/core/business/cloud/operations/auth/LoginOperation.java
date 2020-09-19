@@ -4,16 +4,15 @@
 package io.github.jsoagger.core.business.cloud.operations.auth;
 
 import java.time.LocalDateTime;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import com.google.gson.JsonObject;
+
+import io.github.jsoagger.core.bridge.operation.IOperationResult;
+import io.github.jsoagger.core.bridge.result.SingleResult;
 import io.github.jsoagger.core.business.cloud.operations.ICloudOperation;
 import io.github.jsoagger.core.business.cloud.operations.utils.ClientStatus;
 import io.github.jsoagger.core.business.cloud.services.utils.CloudServicesLocator;
-import io.github.jsoagger.core.bridge.operation.IOperationResult;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -21,10 +20,6 @@ import io.github.jsoagger.core.bridge.operation.IOperationResult;
  * @date 2019
  */
 public class LoginOperation implements ICloudOperation {
-
-  public static final String	SESSION_ID_SYSTEM_PROPERTY_NAME	= "shiro.session.id";
-  private ResourceBundle		bundle							= ResourceBundle.getBundle("MessageBundle");
-  private Locale				defaultLocale					= Locale.getDefault();
 
   // needs clientStatus
   private ClientStatus clientStatus;
@@ -52,16 +47,13 @@ public class LoginOperation implements ICloudOperation {
 
 
   private IOperationResult doLogin(JsonObject query) {
-    IOperationResult result = CloudServicesLocator.authenticationApi.login(query);
-    if (!result.hasMessage()) {
-      Map object = result.getMetaData();
-      System.setProperty(SESSION_ID_SYSTEM_PROPERTY_NAME, (String) object.get("session_id"));
-
+    boolean loggedIn = CloudServicesLocator.authenticationApi.login(query);
+    if (loggedIn) {
       clientStatus.setLoggedIn(true);
       clientStatus.setLoggedInSince(LocalDateTime.now());
     }
 
-    return result;
+    return new SingleResult ();
   }
 
 

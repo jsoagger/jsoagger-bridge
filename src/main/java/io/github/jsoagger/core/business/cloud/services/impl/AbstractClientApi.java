@@ -25,8 +25,7 @@ import com.squareup.okhttp.Response;
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
 import io.github.jsoagger.core.bridge.operation.JsonUtils;
 import io.github.jsoagger.core.bridge.result.SingleResult;
-import io.github.jsoagger.jfxcore.api.security.ILoginSessionHolder;
-import io.github.jsoagger.jfxcore.api.services.Services;
+import io.github.jsoagger.core.utils.StringUtils;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -39,6 +38,7 @@ public abstract class AbstractClientApi {
   private static final String ID = "id";
   public static final String REMOTE_SERVER_LOCATION = "remoteServerLocation";
   public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+  public static final String  JSON_WEB_TOKEN = "json_web_token";
 
   private Properties cloudServicesProperties;
   protected static OkHttpClient client = new OkHttpClient();
@@ -55,25 +55,21 @@ public abstract class AbstractClientApi {
     client.setConnectionPool(connectionPool);
   }
 
-  private String getSessionId() {
-
-    String sessionId = "";
-
-    try {
-      ILoginSessionHolder loginContext = (ILoginSessionHolder) Services.getBean("LoginSessionHolder");
-      sessionId = loginContext.getSessionId();
-    } catch (Exception e) {
-      sessionId = System.getProperty("shiro.session.id");
-    }
-
-    return sessionId;
+  private String getJWtToken() {
+    String token = System.getProperty(JSON_WEB_TOKEN);
+    return token;
   }
 
   public <T extends IOperationResult> IOperationResult doGet(JsonObject query, String url,
       Class<T> clazz) {
 
-    Request request = new Request.Builder().url(url).header("Content-Type", "application/json")
-        .header("Accept", "application/json").header("Cookie", "sid=" + getSessionId()).build();
+    Request request = new Request
+        .Builder()
+        .url(url)
+        .header("Content-Type", "application/json")
+        .header("Accept", "application/json")
+        .header("Authorization", getJWtToken())
+        .build ();
 
     if (query == null) {
       query = new JsonObject();
@@ -81,17 +77,24 @@ public abstract class AbstractClientApi {
 
     Response response = null;
     try {
+
       response = client.newCall(request).execute();
+
+      System.out.println("NetworkResponse : " + response.networkResponse());
+      System.out.println("isSuccessful : " + response.isSuccessful());
+
       T o = JsonUtils.toJsonObject(response.body().string(), clazz);
       setHttpStatus(response, o);
       return o;
     } catch (IOException e1) {
+      logException(e1);
       System.out.println("Error > " + e1.getMessage());
     } finally {
       if (response != null) {
         try {
           response.body().close();
         } catch (IOException e) {
+          logException(e);
           // e1.printStackTrace();
         }
       }
@@ -100,14 +103,14 @@ public abstract class AbstractClientApi {
     return null;
   }
 
-
   public <T extends IOperationResult> void doGetAsynch(JsonObject query, String url, Class<T> clazz,
       Consumer<IOperationResult> resHandler) {
 
     Request request = new Request.Builder().url(url).header("Content-Type", "application/json")
         .header("Accept", "application/json")
         .header("Authorization", "Token " + System.getProperty("shiro.session.id"))
-        .header("Cookie", "sid=" + getSessionId()).build();
+        .header("Authorization", getJWtToken())
+        .build();
 
     if (query == null) {
       query = new JsonObject();
@@ -122,6 +125,7 @@ public abstract class AbstractClientApi {
           setHttpStatus(response, o);
           resHandler.accept(o);
         } catch (IOException e) {
+          logException(e);
           System.out.println("Error > " + e.getMessage());
         } finally {
           response.body().close();
@@ -138,7 +142,9 @@ public abstract class AbstractClientApi {
 
   public byte[] doGetByte(JsonObject query, String url) throws IOException {
     Request request = new Request.Builder().url(url).header("Content-Type", "application/json")
-        .header("Accept", "application/json").header("Cookie", "sid=" + getSessionId()).build();
+        .header("Accept", "application/json")
+        .header("Authorization", getJWtToken())
+        .build();
 
     if (query == null) {
       query = new JsonObject();
@@ -147,7 +153,12 @@ public abstract class AbstractClientApi {
     Response response = null;
 
     try {
+
       response = client.newCall(request).execute();
+
+      System.out.println("NetworkResponse : " + response.networkResponse());
+      System.out.println("isSuccessful : " + response.isSuccessful());
+
       byte[] o = response.body().string().getBytes();
       return o;
     } finally {
@@ -160,6 +171,41 @@ public abstract class AbstractClientApi {
     }
   }
 
+  public boolean  doPostLogin(JsonObject query, String url) {
+
+    Response response = null;
+
+    try {
+      RequestBody body = RequestBody.create(JSON, JsonUtils.toString(query));
+      Request request = new Request
+            .Builder()
+            .url(url)
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .post(body).build();
+
+      response = client.newCall(request).execute();
+      String token = response.body().string();
+
+      if(StringUtils.isNotBlank (token)) {
+        System.setProperty(JSON_WEB_TOKEN, token);
+      }
+
+      return true;
+    } catch (Exception e) {
+      logException(e);
+    } finally {
+      if (response != null) {
+        try {
+          response.body().close();
+        } catch (IOException e) {
+        }
+      }
+    }
+
+    return false;
+  }
+
   public <T extends IOperationResult> IOperationResult doPost(JsonObject query, String url,
       Class<T> clazz, boolean anon) {
     Response response = null;
@@ -169,21 +215,34 @@ public abstract class AbstractClientApi {
       Request request = null;
 
       if (anon) {
-        request = new Request.Builder().url(url).header("Content-Type", "application/json")
-            .header("Accept", "application/json").post(body).build();
-      } else {
-        request = new Request.Builder().url(url)
+        request = new Request
+            .Builder()
+            .url(url)
             .header("Content-Type", "application/json")
             .header("Accept", "application/json")
-            .header("Cookie", "sid=" + getSessionId())
+            .post(body)
+            .build();
+      } else {
+
+        request = new Request
+            .Builder()
+            .url(url)
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .header("Authorization", getJWtToken())
             .post(body).build();
       }
 
       response = client.newCall(request).execute();
+
+      System.out.println("NetworkResponse : " + response.networkResponse());
+      System.out.println("isSuccessful : " + response.isSuccessful());
+
       T o = JsonUtils.toJsonObject(response.body().string(), clazz);
       setHttpStatus(response, o);
       return o;
     } catch (Exception e) {
+      logException(e);
       System.out.println("Error > " + e.getMessage());
       if (clazz.getName().equals(SingleResult.class.getName())) {
         return IOperationResult.getNetworkError();
@@ -218,23 +277,38 @@ public abstract class AbstractClientApi {
     Response response = null;
 
     try {
-      RequestBody body = RequestBody.create(JSON, JsonUtils.toString(query));
+      RequestBody body = RequestBody
+          .create(JSON, JsonUtils.toString(query));
       Request request = null;
 
       if (anon) {
-        request = new Request.Builder().url(url).header("Content-Type", "application/json")
-            .header("Accept", "application/json").put(body).build();
+        request = new Request
+            .Builder()
+            .url(url)
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .put(body)
+            .build();
       } else {
-        request = new Request.Builder().url(url).header("Content-Type", "application/json")
-            .header("Accept", "application/json").header("Cookie", "sid=" + getSessionId())
+        request = new Request
+            .Builder()
+            .url(url)
+            .header("Content-Type", "application/json")
+            .header("Accept", "application/json")
+            .header("Authorization", getJWtToken())
             .put(body).build();
       }
 
       response = client.newCall(request).execute();
+
+      System.out.println("NetworkResponse : " + response.networkResponse());
+      System.out.println("isSuccessful : " + response.isSuccessful());
+
       T o = JsonUtils.toJsonObject(response.body().string(), clazz);
       setHttpStatus(response, o);
       return o;
     } catch (Exception e) {
+      logException(e);
       System.out.println("Error > " + e.getMessage());
       if (clazz.getName().equals(SingleResult.class.getName())) {
         return IOperationResult.getNetworkError();
@@ -283,23 +357,37 @@ public abstract class AbstractClientApi {
         MultipartBuilder mpbuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
         for (String filename : files.keySet()) {
           mpbuilder.addFormDataPart("file", filename,
-              RequestBody.create(MediaType.parse("text/csv"), files.get(filename)));
+              RequestBody
+              .create(MediaType.parse("text/csv"), files.get(filename)));
         }
 
-        mpbuilder.addFormDataPart("form", JsonUtils.toString(query));
-        body = mpbuilder.build();
+        body = mpbuilder
+          .addFormDataPart("form", JsonUtils.toString(query))
+          .build();
+
+        System.out.println("URL: " + url);
+
       } else {
-        body = new MultipartBuilder().type(MultipartBuilder.FORM).build();
+        body = new MultipartBuilder()
+            .type(MultipartBuilder.FORM)
+            .build();
       }
 
-      Request request = new Request.Builder().url(url).header("Accept", "application/json")
-          .header("Cookie", "sid=" + getSessionId()).post(body).build();
+      Request request = new Request.Builder().url(url)
+          .header("Accept", "application/json")
+          .header("Authorization", getJWtToken())
+          .post(body).build();
 
       response = client.newCall(request).execute();
+
+      System.out.println("NetworkResponse : " + response.networkResponse());
+      System.out.println("isSuccessful : " + response.isSuccessful());
+
       T o = JsonUtils.toJsonObject(response.body().string(), clazz);
       setHttpStatus(response, o);
       return o;
     } catch (Exception e) {
+      logException(e);
       System.out.println("Error > " + e.getMessage());
       if (clazz.getName().equals(SingleResult.class.getName())) {
         return IOperationResult.getNetworkError();
@@ -316,7 +404,6 @@ public abstract class AbstractClientApi {
     }
   }
 
-
   /**
    * Do http DELETE operation and add header to request before sending it
    *
@@ -331,8 +418,11 @@ public abstract class AbstractClientApi {
 
     try {
       RequestBody body = RequestBody.create(JSON, JsonUtils.toString(query));
-      Request request = new Request.Builder().url(url).header("Content-Type", "application/json")
-          .header("Accept", "application/json").header("Cookie", "sid=" + getSessionId())
+      Request request = new Request.Builder()
+          .url(url)
+          .header("Content-Type", "application/json")
+          .header("Accept", "application/json")
+          .header("Authorization", getJWtToken())
           .delete(body).build();
 
       response = client.newCall(request).execute();
@@ -340,6 +430,7 @@ public abstract class AbstractClientApi {
       setHttpStatus(response, o);
       return o;
     } catch (Exception e) {
+      logException(e);
       System.out.println("Error > " + e.getMessage());
       if (clazz.getName().equals(SingleResult.class.getName())) {
         return IOperationResult.getNetworkError();

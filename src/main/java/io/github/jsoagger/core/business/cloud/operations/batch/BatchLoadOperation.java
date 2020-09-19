@@ -17,11 +17,6 @@ import io.github.jsoagger.core.bridge.operation.IOperationResult;
  */
 public class BatchLoadOperation implements IOperation {
 
-
-
-  /**
-   * @{inheritedDoc}
-   */
   @Override
   public void doOperation(JsonObject query,
       Consumer<IOperationResult> resultHandler,

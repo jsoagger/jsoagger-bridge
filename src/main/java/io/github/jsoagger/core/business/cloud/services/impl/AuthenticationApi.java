@@ -46,13 +46,12 @@ public class AuthenticationApi extends AbstractClientApi implements IClientAuthe
   }
 
   @Override
-  public IOperationResult login(JsonObject query) {
+  public boolean login(JsonObject query) {
     try {
       String loginUrl = getRootUrl().concat(API_AUTHENTICATION_LOGIN);
-      IOperationResult result = doPost(query, loginUrl, SingleResult.class, true);
-      return result;
+      return doPostLogin(query, loginUrl);
     } catch (Exception e) {
-      return IOperationResult.getGeneralSingleResultError();
+      return false;
     }
   }
 
