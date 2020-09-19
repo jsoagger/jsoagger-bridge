@@ -258,9 +258,7 @@ public class ContainerApi extends AbstractClientApi implements IContainerApi {
       final String byPathUrl =
           getRootUrl().concat(String.format(GET_CONTAINER_BY_PATH, URLEncoder.encode(path)));
 
-      System.out.println("333333333333 : " + byPathUrl);
       final IOperationResult result = doGet(query, byPathUrl, SingleResult.class);
-      System.out.println("444444444444444 : " + result);
 
       OperationData data = (OperationData) result.rootData();
       if (path.equalsIgnoreCase("/Application") && data == null
@@ -268,7 +266,6 @@ public class ContainerApi extends AbstractClientApi implements IContainerApi {
         data.getAttributes().put("id", rootContainerId);
       }
 
-      System.out.println("444444444444444 2: " + result);
       return result;
     } catch (Exception e) {
       return IOperationResult.getGeneralSingleResultError();

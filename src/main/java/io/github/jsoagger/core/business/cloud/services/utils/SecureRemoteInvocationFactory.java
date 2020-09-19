@@ -75,7 +75,6 @@ public class SecureRemoteInvocationFactory {//extends DefaultRemoteInvocationFac
   //				// exception if it's not set
   //				SecurityUtils.getSecurityManager();
   //				if (!sessionManagerMethodInvocation) {
-  //					Subject subject = SecurityUtils.getSubject();
   //					Session session = subject.getSession(false);
   //					if (session != null) {
   //						sessionId = session.getId();

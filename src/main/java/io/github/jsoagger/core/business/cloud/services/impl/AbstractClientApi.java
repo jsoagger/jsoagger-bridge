@@ -55,9 +55,12 @@ public abstract class AbstractClientApi {
     client.setConnectionPool(connectionPool);
   }
 
-  private String getJWtToken() {
-    String token = System.getProperty(JSON_WEB_TOKEN);
-    return "Bearer " + token;
+  private String getJWtToken(String forUrl) {
+    if(forUrl.contains ("/anon/")) {
+      return "";
+    }
+
+    return System.getProperty(JSON_WEB_TOKEN);
   }
 
   public <T extends IOperationResult> IOperationResult doGet(JsonObject query, String url,
@@ -68,7 +71,7 @@ public abstract class AbstractClientApi {
         .url(url)
         .header("Content-Type", "application/json")
         .header("Accept", "application/json")
-        .header("Authorization", getJWtToken())
+        .header("Authorization", getJWtToken(url))
         .build ();
 
     if (query == null) {
@@ -109,7 +112,7 @@ public abstract class AbstractClientApi {
     Request request = new Request.Builder().url(url).header("Content-Type", "application/json")
         .header("Accept", "application/json")
         .header("Authorization", "Token " + System.getProperty("shiro.session.id"))
-        .header("Authorization", getJWtToken())
+        .header("Authorization", getJWtToken(url))
         .build();
 
     if (query == null) {
@@ -143,7 +146,7 @@ public abstract class AbstractClientApi {
   public byte[] doGetByte(JsonObject query, String url) throws IOException {
     Request request = new Request.Builder().url(url).header("Content-Type", "application/json")
         .header("Accept", "application/json")
-        .header("Authorization", getJWtToken())
+        .header("Authorization", getJWtToken(url))
         .build();
 
     if (query == null) {
@@ -177,15 +180,21 @@ public abstract class AbstractClientApi {
 
     try {
       RequestBody body = RequestBody.create(JSON, JsonUtils.toString(query));
+
+      System.out.println ("Login : " + JsonUtils.toString(query));
+
       Request request = new Request
             .Builder()
             .url(url)
             .header("Content-Type", "application/json")
             .header("Accept", "application/json")
-            .post(body).build();
+            .post(body)
+            .build();
 
       response = client.newCall(request).execute();
       String token = response.body().string();
+
+      System.out.println ("Response : " + token);
 
       if(StringUtils.isNotBlank (token)) {
         System.setProperty(JSON_WEB_TOKEN, token);
@@ -229,7 +238,7 @@ public abstract class AbstractClientApi {
             .url(url)
             .header("Content-Type", "application/json")
             .header("Accept", "application/json")
-            .header("Authorization", getJWtToken())
+            .header("Authorization", getJWtToken(url))
             .post(body).build();
       }
 
@@ -295,7 +304,7 @@ public abstract class AbstractClientApi {
             .url(url)
             .header("Content-Type", "application/json")
             .header("Accept", "application/json")
-            .header("Authorization", getJWtToken())
+            .header("Authorization", getJWtToken(url))
             .put(body).build();
       }
 
@@ -375,7 +384,7 @@ public abstract class AbstractClientApi {
 
       Request request = new Request.Builder().url(url)
           .header("Accept", "application/json")
-          .header("Authorization", getJWtToken())
+          .header("Authorization", getJWtToken(url))
           .post(body).build();
 
       response = client.newCall(request).execute();
@@ -422,7 +431,7 @@ public abstract class AbstractClientApi {
           .url(url)
           .header("Content-Type", "application/json")
           .header("Accept", "application/json")
-          .header("Authorization", getJWtToken())
+          .header("Authorization", getJWtToken(url))
           .delete(body).build();
 
       response = client.newCall(request).execute();
