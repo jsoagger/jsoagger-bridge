@@ -56,8 +56,8 @@ public abstract class AbstractClientApi {
   }
 
   private String getJWtToken() {
-    String token = System.getProperty("Bearer " + JSON_WEB_TOKEN);
-    return token;
+    String token = System.getProperty(JSON_WEB_TOKEN);
+    return "Bearer " + token;
   }
 
   public <T extends IOperationResult> IOperationResult doGet(JsonObject query, String url,
