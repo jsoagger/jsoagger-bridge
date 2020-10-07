@@ -6,9 +6,10 @@ package io.github.jsoagger.core.business.cloud.operations.appversion;
 import java.util.function.Consumer;
 
 import com.google.gson.JsonObject;
-import io.github.jsoagger.core.business.cloud.services.utils.CloudServicesLocator;
+
 import io.github.jsoagger.core.bridge.operation.IOperation;
 import io.github.jsoagger.core.bridge.operation.IOperationResult;
+import io.github.jsoagger.core.business.cloud.services.utils.CloudServicesLocator;
 
 /**
  * @author Ramilafananana VONJISOA
@@ -16,9 +17,6 @@ import io.github.jsoagger.core.bridge.operation.IOperationResult;
  */
 public class GetDataPatchInstallationStatusOperation implements IOperation {
 
-  /* (non-Javadoc)
-   * @see io.github.jsoagger.core.bridge.operation.IOperation#doOperation(com.google.gson.JsonObject, java.util.function.Consumer, java.util.function.Consumer)
-   */
   @Override
   public void doOperation(JsonObject query, Consumer<IOperationResult> resultHandler,
       Consumer<Throwable> exHandler) {

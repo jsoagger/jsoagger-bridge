@@ -41,15 +41,20 @@ public abstract class AbstractClientApi {
   public static final String  JSON_WEB_TOKEN = "json_web_token";
 
   private Properties cloudServicesProperties;
+
   protected static OkHttpClient client = new OkHttpClient();
 
   /**
    * Constructor
    */
   public AbstractClientApi() {
+    buildShortClient ();
+  }
+
+  private void buildShortClient(){
     client.setConnectTimeout(20, TimeUnit.SECONDS);
-    client.setReadTimeout(120, TimeUnit.SECONDS);
-    client.setWriteTimeout(120, TimeUnit.SECONDS);
+    client.setReadTimeout(0, TimeUnit.SECONDS);
+    client.setWriteTimeout(0, TimeUnit.SECONDS);
 
     ConnectionPool connectionPool = new ConnectionPool(10, 10000, TimeUnit.MILLISECONDS);
     client.setConnectionPool(connectionPool);
@@ -385,7 +390,8 @@ public abstract class AbstractClientApi {
       Request request = new Request.Builder().url(url)
           .header("Accept", "application/json")
           .header("Authorization", getJWtToken(url))
-          .post(body).build();
+          .post(body)
+          .build();
 
       response = client.newCall(request).execute();
 
