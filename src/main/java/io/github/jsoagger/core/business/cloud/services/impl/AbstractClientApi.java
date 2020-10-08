@@ -53,8 +53,8 @@ public abstract class AbstractClientApi {
 
   private void buildShortClient(){
     client.setConnectTimeout(20, TimeUnit.SECONDS);
-    client.setReadTimeout(0, TimeUnit.SECONDS);
-    client.setWriteTimeout(0, TimeUnit.SECONDS);
+    client.setReadTimeout(Integer.MAX_VALUE, TimeUnit.SECONDS);
+    client.setWriteTimeout(Integer.MAX_VALUE, TimeUnit.SECONDS);
 
     ConnectionPool connectionPool = new ConnectionPool(10, 10000, TimeUnit.MILLISECONDS);
     client.setConnectionPool(connectionPool);
@@ -402,8 +402,11 @@ public abstract class AbstractClientApi {
       setHttpStatus(response, o);
       return o;
     } catch (Exception e) {
-      logException(e);
       System.out.println("Error > " + e.getMessage());
+      System.out.println("Error > " + e.getMessage());
+      System.out.println("Error > " + e.getMessage());
+      System.out.println("Error > " + e.getMessage());
+      logException(e);
       if (clazz.getName().equals(SingleResult.class.getName())) {
         return IOperationResult.getNetworkError();
       } else {
