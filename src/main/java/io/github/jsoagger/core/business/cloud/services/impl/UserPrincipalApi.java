@@ -17,49 +17,49 @@ import io.github.jsoagger.core.business.cloud.services.api.IUserPrincipalApi;
  */
 public class UserPrincipalApi extends AbstractClientApi implements IUserPrincipalApi {
 
-  private static final String account_current_URL = "/v1/secured/api/account/current/?containerId=%s";
+  private static final String account_current_URL = "/transdev/people/v1/secured/api/principals/current/?containerId=%s";
   private static final String account_current_update_pass_URL =
-      "/v1/secured/api/account/%s/updatePassword/?containerId=%s";
+      "/transdev/people/v1/secured/api/principals/%s/updatePassword/?containerId=%s";
 
   private static final String account_of_Party_current_URL =
-      "/v1/secured/api/account/ofParty/?partyId=%s&containerId=%s";
+      "/transdev/people/v1/secured/api/principals/ofParty/?partyId=%s&containerId=%s";
 
-  private static final String account_details_URL = "/v1/secured/api/account/%s/details/?containerId=%s";
+  private static final String account_details_URL = "/transdev/people/v1/secured/api/principals/%s/details/?containerId=%s";
   private static final String account_update_Mail_URL =
-      "/v1/secured/api/account/%s/updateMail/?email=%s&containerId=%s";
-  private static final String account_owner_URL = "/v1/secured/api/account/%s/owner/?containerId=%s";
+      "/transdev/people/v1/secured/api/principals/%s/updateMail/?email=%s&containerId=%s";
+  private static final String account_owner_URL = "/transdev/people/v1/secured/api/principals/%s/owner/?containerId=%s";
   private static final String account_byloginLike_URL =
-      "/v1/secured/api/account/byLoginLike/?login=%s&containerId=%s";
-  private static final String account_bylogin_URL = "/v1/secured/api/account/byLogin/?login=%s&containerId=%s";
+      "/transdev/people/v1/secured/api/principals/byLoginLike/?login=%s&containerId=%s";
+  private static final String account_bylogin_URL = "/transdev/people/v1/secured/api/principals/byLogin/?login=%s&containerId=%s";
   private static final String account_byname_URL =
-      "/v1/secured/api/account/byNameLike/?name=%s&containerId=%s";
+      "/transdev/people/v1/secured/api/principals/byNameLike/?name=%s&containerId=%s";
   private static final String account_resetPassword_URL =
-      "/v1/secured/api/account/%s/resetPassword/?containerId=%s";
+      "/transdev/people/v1/secured/api/principals/%s/resetPassword/?containerId=%s";
 
-  private static final String account_lock_URL = "/v1/secured/api/account/%s/lock/?containerId=%s";
+  private static final String account_lock_URL = "/transdev/people/v1/secured/api/principals/%s/lock/?containerId=%s";
   private static final String account_unlocked_URL =
-      "/v1/secured/api/account/%s/unlock/?lockToken=%s&containerId=%s";
+      "/transdev/people/v1/secured/api/principals/%s/unlock/?lockToken=%s&containerId=%s";
 
-  private static final String account_roles_URL = "/v1/secured/api/account/%s/roles/?containerId=%s";
+  private static final String account_roles_URL = "/transdev/people/v1/secured/api/principals/%s/roles/?containerId=%s";
   private static final String account_roles_add_remove_URL =
-      "/v1/secured/api/account/%s/roles/%s/?containerId=%s";
+      "/transdev/people/v1/secured/api/principals/%s/roles/%s/?containerId=%s";
 
-  private static final String account_rootFolder_URL = "/v1/secured/api/account/%s/rootFolder/?containerId=%s";
+  private static final String account_rootFolder_URL = "/transdev/people/v1/secured/api/principals/%s/rootFolder/?containerId=%s";
   private static final String account_permissions_URL =
-      "/v1/secured/api/account/%s/permissions/?containerId=%s&includeParentItems=%s";
+      "/transdev/people/v1/secured/api/principals/%s/permissions/?containerId=%s&includeParentItems=%s";
 
 
   private static final String getGroupByName =
-      "/v1/secured/api/userGroup/byName?internalName=%s&containerId=%s";
-  private static final String deleteGroup_URL = "/v1/secured/api/userGroup/%s/?containerId=%s";
-  private static final String childrenOf_URL = "/v1/secured/api/userGroup/%s/children/?containerId=%s";
-  private static final String members_URL = "/v1/secured/api/userGroup/%s/members/?containerId=%s";
-  private static final String members_count_URL = "/v1/secured/api/userGroup/%s/members/count/?containerId=%s";
-  private static final String members_remove_URL = "/v1/secured/api/userGroup/%s/members/?containerId=%s";
-  private static final String members_add_URL = "/v1/secured/api/userGroup/%s/members/?containerId=%s";
+      "/transdev/people/v1/secured/api/userGroup/byName?internalName=%s&containerId=%s";
+  private static final String deleteGroup_URL = "/transdev/people/v1/secured/api/userGroup/%s/?containerId=%s";
+  private static final String childrenOf_URL = "/transdev/people/v1/secured/api/userGroup/%s/children/?containerId=%s";
+  private static final String members_URL = "/transdev/people/v1/secured/api/userGroup/%s/members/?containerId=%s";
+  private static final String members_count_URL = "/transdev/people/v1/secured/api/userGroup/%s/members/count/?containerId=%s";
+  private static final String members_remove_URL = "/transdev/people/v1/secured/api/userGroup/%s/members/?containerId=%s";
+  private static final String members_add_URL = "/transdev/people/v1/secured/api/userGroup/%s/members/?containerId=%s";
 
   private static final String SWITCH_CONTAINER_CONTEXT =
-      "/v1/secured/api/account/%s/switchToContext?containerId=%s";
+      "/transdev/people/v1/secured/api/principals/%s/switchToContext?containerId=%s";
 
 
 

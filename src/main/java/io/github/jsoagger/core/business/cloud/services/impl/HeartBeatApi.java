@@ -15,7 +15,7 @@ import io.github.jsoagger.core.business.cloud.services.api.IHeartbeatApi;
 public class HeartBeatApi extends AbstractClientApi implements IHeartbeatApi {
 
 
-  private static final String API_HEARTBEAT_ANON_PING = "/v1/anon/ping";
+  private static final String API_HEARTBEAT_ANON_PING = "/transdev/base/v1/anon/ping";
 
 
   /**

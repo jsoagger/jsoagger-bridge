@@ -20,8 +20,8 @@ import io.github.jsoagger.core.business.cloud.services.api.IBatchApi;
  */
 public class BatchApi extends AbstractClientApi implements IBatchApi {
 
-  private static final String LOAD_URI = "/v1/secured/api/batch/load";
-  private static final String EXPORT_URI = "/v1/secured/api/batch/export";
+  private static final String LOAD_URI = "/transdev/base/v1/secured/api/batch/load";
+  private static final String EXPORT_URI = "/transdev/base/v1/secured/api/batch/export";
 
 
   /**
@@ -47,7 +47,7 @@ public class BatchApi extends AbstractClientApi implements IBatchApi {
           }
         }
       }
-      
+
       if (query.get("input.file.path.raw") != null) {
         File file = new File(query.get("input.file.path.raw").getAsString());
         f.put("master_file", file);

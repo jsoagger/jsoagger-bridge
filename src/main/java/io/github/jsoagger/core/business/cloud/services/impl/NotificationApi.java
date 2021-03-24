@@ -17,15 +17,15 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class NotificationApi extends AbstractClientApi implements INotificationApi {
 
-  private static final String	ALL_NOTIFICATIONS_URI		= "/v1/secured/api/account/%s/notification/?status=%s&page=%s&pageSize=%s&sort=%s";
-  private static final String	COUNT_ALL_NOTIFICATIONS_URI	= "/v1/secured/api/account/%s/notification/count/?status=%s";
-  private static final String	SET_STATUS_URI				= "/v1/secured/api/notification/%s/status/%s";
-  private static final String	NOTIFY_GROUP_URI			= "/v1/secured/api/notification/notifyGroup";
-  private static final String	NOTIFY_TEAM_URI				= "/v1/secured/api/notification/notifyTeam";
-  private static final String	NOTIFY_USER_URI				= "/v1/secured/api/notification/notifyUser";
-  private static final String	DELETE_ONE_URI				= "/v1/secured/api/notification/%s";
-  private static final String	DELETE_ALL_URI				= "/v1/secured/api/account/%s/notification/deleteAll";
-  private static final String	MARK_ALL_READEN_URI			= "/v1/secured/api/account/%s/notification/markAllReaden";
+  private static final String	ALL_NOTIFICATIONS_URI		= "/transdev/base/v1/secured/api/account/%s/notification/?status=%s&page=%s&pageSize=%s&sort=%s";
+  private static final String	COUNT_ALL_NOTIFICATIONS_URI	= "/transdev/base/v1/secured/api/account/%s/notification/count/?status=%s";
+  private static final String	SET_STATUS_URI				= "/transdev/base/v1/secured/api/notification/%s/status/%s";
+  private static final String	NOTIFY_GROUP_URI			= "/transdev/base/v1/secured/api/notification/notifyGroup";
+  private static final String	NOTIFY_TEAM_URI				= "/transdev/base/v1/secured/api/notification/notifyTeam";
+  private static final String	NOTIFY_USER_URI				= "/transdev/base/v1/secured/api/notification/notifyUser";
+  private static final String	DELETE_ONE_URI				= "/transdev/base/v1/secured/api/notification/%s";
+  private static final String	DELETE_ALL_URI				= "/transdev/base/v1/secured/api/account/%s/notification/deleteAll";
+  private static final String	MARK_ALL_READEN_URI			= "/transdev/base/v1/secured/api/account/%s/notification/markAllReaden";
 
 
   @Override

@@ -16,11 +16,11 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 @SuppressWarnings("exports")
 public class ShoppingBasketApi extends AbstractClientApi implements IShoppingBasketApi {
 
-  private static String GET_SB_URL = "/v1/secured/api/shoppingBasket/?ownerId=%s&containerId=%s";
-  private static String GET_PRODUCTS_IN_SB_URL = "/v1/secured/api/shoppingBasket/%s/products?containerId=%s";
-  private static String DELETE_PRODUCTS_IN_SB_URL = "/v1/secured/api/shoppingBasket/%s/products/%s?containerId=%s";
-  private static String PRODUCTS_QUANTITY_IN_SB_URL = "/v1/secured/api/shoppingBasket/%s/products/%s/quantity/?quantity=%s&containerId=%s";
-  private static String GET_PRODUCTS_QUANTITY_IN_SB_URL = "/v1/secured/api/shoppingBasket/%s/products/%s/quantity/?containerId=%s";
+  private static String GET_SB_URL = "/transdev/shop/v1/secured/api/shoppingBasket/?ownerId=%s&containerId=%s";
+  private static String GET_PRODUCTS_IN_SB_URL = "/transdev/shop/v1/secured/api/shoppingBasket/%s/products?containerId=%s";
+  private static String DELETE_PRODUCTS_IN_SB_URL = "/transdev/shop/v1/secured/api/shoppingBasket/%s/products/%s?containerId=%s";
+  private static String PRODUCTS_QUANTITY_IN_SB_URL = "/transdev/shop/v1/secured/api/shoppingBasket/%s/products/%s/quantity/?quantity=%s&containerId=%s";
+  private static String GET_PRODUCTS_QUANTITY_IN_SB_URL = "/transdev/shop/v1/secured/api/shoppingBasket/%s/products/%s/quantity/?containerId=%s";
 
   /**
    * {@inheritDoc}

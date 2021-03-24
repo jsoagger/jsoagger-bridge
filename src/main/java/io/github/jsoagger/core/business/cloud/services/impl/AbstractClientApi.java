@@ -53,8 +53,8 @@ public abstract class AbstractClientApi {
 
   private void buildShortClient(){
     client.setConnectTimeout(20, TimeUnit.SECONDS);
-    client.setReadTimeout(Integer.MAX_VALUE, TimeUnit.SECONDS);
-    client.setWriteTimeout(Integer.MAX_VALUE, TimeUnit.SECONDS);
+    client.setReadTimeout(30000, TimeUnit.SECONDS);
+    client.setWriteTimeout(30000, TimeUnit.SECONDS);
 
     ConnectionPool connectionPool = new ConnectionPool(10, 10000, TimeUnit.MILLISECONDS);
     client.setConnectionPool(connectionPool);

@@ -16,12 +16,12 @@ import io.github.jsoagger.core.business.cloud.services.api.ICategoryApi;
  */
 public class CategoryApi extends AbstractClientApi implements ICategoryApi {
 
-  private static final String ROOT_CATEGORIES_URL = "/v1/secured/api/category/rootCategories?typeId=%s&ownerId=%s&containerId=%s";
-  private static final String CATEGORY_BY_NUMBER_URL = "/v1/secured/api/category/byNumber/?number=%s&containerId=%s";
-  private static final String CATEGORY_BY_NAME_URL = "/v1/secured/api/category/byName/?name=%s&typeId=%s&ownerId=%s&containerId=%s";
-  private static final String CHILDREN_URL = "/v1/secured/api/category/%s/children/?containerId=%s";
-  private static final String PARENT_URL = "/v1/secured/api/category/%s/parent/?containerId=%s";
-  private static final String GET_URL = "/v1/secured/api/category/%s/?containerId=%s";
+  private static final String ROOT_CATEGORIES_URL = "/transdev/classifiable/v1/secured/api/category/rootCategories?typeId=%s&ownerId=%s&containerId=%s";
+  private static final String CATEGORY_BY_NUMBER_URL = "/transdev/classifiable/v1/secured/api/category/byNumber/?number=%s&containerId=%s";
+  private static final String CATEGORY_BY_NAME_URL = "/transdev/classifiable/v1/secured/api/category/byName/?name=%s&typeId=%s&ownerId=%s&containerId=%s";
+  private static final String CHILDREN_URL = "/transdev/classifiable/v1/secured/api/category/%s/children/?containerId=%s";
+  private static final String PARENT_URL = "/transdev/classifiable/v1/secured/api/category/%s/parent/?containerId=%s";
+  private static final String GET_URL = "/transdev/classifiable/v1/secured/api/category/%s/?containerId=%s";
 
   /**
    * {@inheritDoc}

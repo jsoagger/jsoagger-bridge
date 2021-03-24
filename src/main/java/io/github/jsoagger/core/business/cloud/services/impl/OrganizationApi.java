@@ -15,9 +15,9 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class OrganizationApi extends AbstractClientApi implements IOrganizationApi {
 
-  private static final String   BY_SIRET_EQUALS             = "/v1/secured/api/organization/bySiretEquals/?siret=%s&containerId=%s";
-  private static final String   BY_NAME_LIKE                = "/v1/secured/api/organization/byNameLike/?name=%s&containerId=%s";
-  private static final String   RENAME                      = "/v1/secured/api/organization/%s/rename/?containerId=%s";
+  private static final String   BY_SIRET_EQUALS             = "/transdev/people/v1/secured/api/organization/bySiretEquals/?siret=%s&containerId=%s";
+  private static final String   BY_NAME_LIKE                = "/transdev/people/v1/secured/api/organization/byNameLike/?name=%s&containerId=%s";
+  private static final String   RENAME                      = "/transdev/people/v1/secured/api/organization/%s/rename/?containerId=%s";
 
   @Override
   public IOperationResult createOrganization(JsonObject query) {

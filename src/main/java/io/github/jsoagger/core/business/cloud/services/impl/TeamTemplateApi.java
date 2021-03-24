@@ -19,14 +19,14 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class TeamTemplateApi extends AbstractClientApi implements ITeamTemplateApi {
 
-  public static String	TEAM_TEMP_ROOT_URL	= "/v1/secured/api/teamTemplate/%s/?containerId=%s";
-  public static String	BY_NAME_URL			= "/v1/secured/api/teamTemplate/byName?internalName=%s&containerId=%s";
-  public static String	GET_BY_OID_URL		= "/v1/secured/api/teamTemplate/%s/?containerId=%s";
-  public static String	GET_CLOB_URL		= "/v1/secured/api/teamTemplate/%s/template/?containerId=%s";
-  public static String	MEMBERS_URL			= "/v1/secured/api/teamTemplate/%s/members/?containerId=%s";
+  public static String	TEAM_TEMP_ROOT_URL	= "/transdev/base/v1/secured/api/teamTemplate/%s/?containerId=%s";
+  public static String	BY_NAME_URL			= "/transdev/base/v1/secured/api/teamTemplate/byName?internalName=%s&containerId=%s";
+  public static String	GET_BY_OID_URL		= "/transdev/base/v1/secured/api/teamTemplate/%s/?containerId=%s";
+  public static String	GET_CLOB_URL		= "/transdev/base/v1/secured/api/teamTemplate/%s/template/?containerId=%s";
+  public static String	MEMBERS_URL			= "/transdev/base/v1/secured/api/teamTemplate/%s/members/?containerId=%s";
 
-  public static String	POPULATE_URL	= "/v1/secured/api/container/%s/populateMembers/?containerId=%s";
-  public static String	GET_ALL_URL		= "/v1/secured/api/container/%s/teamTemplates/?&page=%s&pageSize=%s&sort=%s&containerId=%s";
+  public static String	POPULATE_URL	= "/transdev/base/v1/secured/api/container/%s/populateMembers/?containerId=%s";
+  public static String	GET_ALL_URL		= "/transdev/base/v1/secured/api/container/%s/teamTemplates/?&page=%s&pageSize=%s&sort=%s&containerId=%s";
 
 
   @Override

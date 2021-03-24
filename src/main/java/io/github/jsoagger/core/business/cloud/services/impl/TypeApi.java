@@ -17,16 +17,16 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class TypeApi extends AbstractClientApi implements ITypeApi {
 
-  private static final String	TYPE_BY_PATH					= "/v1/secured/api/type/byPath/?path=%s&containerId=%s";
-  private static final String   TYPE_BY_LOGICAL_NAME            = "/v1/secured/api/type/byLogicalName?logicalName=%s&containerId=%s";
+  private static final String	TYPE_BY_PATH					= "/transdev/base/v1/secured/api/type/byPath/?path=%s&containerId=%s";
+  private static final String   TYPE_BY_LOGICAL_NAME            = "/transdev/base/v1/secured/api/type/byLogicalName?logicalName=%s&containerId=%s";
 
-  private static final String	LINKABLE_ROLE_B					= "/v1/secured/api/type/%s/linkableRoleBs/?linkTypePath=%s&containerId=%s";
-  private static final String	SUBTYPE_TYPE					= "/v1/secured/api/type/%s/subtypes/?containerId=%s";
-  private static final String	INSTANCIABLE_SUBTYPE			= "/v1/secured/api/type/%s/instanciableSubtypes/?rootType=%s&containerId=%s";
-  private static final String	DYNAMICAL_ATTIBUTES				= "/v1/secured/api/type/%s/dynamicalAttributesDefinitions/?containerId=%s";
+  private static final String	LINKABLE_ROLE_B					= "/transdev/base/v1/secured/api/type/%s/linkableRoleBs/?linkTypePath=%s&containerId=%s";
+  private static final String	SUBTYPE_TYPE					= "/transdev/base/v1/secured/api/type/%s/subtypes/?containerId=%s";
+  private static final String	INSTANCIABLE_SUBTYPE			= "/transdev/base/v1/secured/api/type/%s/instanciableSubtypes/?rootType=%s&containerId=%s";
+  private static final String	DYNAMICAL_ATTIBUTES				= "/transdev/base/v1/secured/api/type/%s/dynamicalAttributesDefinitions/?containerId=%s";
 
-  private static final String   TYPE_GET_LIFECYCLE    = "/v1/secured/api/type/%s/lifecycle/?containerId=%s";
-  private static final String   TYPE_SET_LIFECYCLE    = "/v1/secured/api/type/%s/lifecycle/?lifecycleId=%s&containerId=%s";
+  private static final String   TYPE_GET_LIFECYCLE    = "/transdev/base/v1/secured/api/type/%s/lifecycle/?containerId=%s";
+  private static final String   TYPE_SET_LIFECYCLE    = "/transdev/base/v1/secured/api/type/%s/lifecycle/?lifecycleId=%s&containerId=%s";
 
 
   /**

@@ -16,12 +16,12 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class LifecycleApi extends AbstractClientApi implements ILifecycleApi {
 
-  public static String GET_LFC_BY_OID_URL	= "/v1/secured/api/rc/iteration/%s/?containerId=%s";
-  public static String GET_LFC_STATES_URL	= "/v1/secured/api/lifecycle/%s/states/?containerId=%s";
+  public static String GET_LFC_BY_OID_URL	= "/transdev/base/v1/secured/api/rc/iteration/%s/?containerId=%s";
+  public static String GET_LFC_STATES_URL	= "/transdev/base/v1/secured/api/lifecycle/%s/states/?containerId=%s";
 
-  public static String STATES_BY_PROMOTE_URL   = "/v1/secured/api/lifecycle/%s/stateByPromote/?fromState=%s&containerId=%s";
-  public static String STATES_BY_DENOTE_URL   = "/v1/secured/api/lifecycle/%s/stateByDenote/?fromState=%s&containerId=%s";
-  public static String STATES_BY_SET_STATE_URL   = "/v1/secured/api/lifecycle/%s/statesBySetState/?fromState=%s&containerId=%s";
+  public static String STATES_BY_PROMOTE_URL   = "/transdev/base/v1/secured/api/lifecycle/%s/stateByPromote/?fromState=%s&containerId=%s";
+  public static String STATES_BY_DENOTE_URL   = "/transdev/base/v1/secured/api/lifecycle/%s/stateByDenote/?fromState=%s&containerId=%s";
+  public static String STATES_BY_SET_STATE_URL   = "/transdev/base/v1/secured/api/lifecycle/%s/statesBySetState/?fromState=%s&containerId=%s";
 
 
 
