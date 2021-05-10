@@ -308,7 +308,7 @@
 		<repository>
 			<id>nexitia.com</id>
 			<name>Nexitia releases</name>
-			<url>http://nexus.nexitia.com/repository/nexitia-group/</url>
+			<url>http://nexus.nexitia.com/repository/nexitia-releases/</url>
 			<snapshots>
 				<enabled>true</enabled>
 				<checksumPolicy>ignore</checksumPolicy>
