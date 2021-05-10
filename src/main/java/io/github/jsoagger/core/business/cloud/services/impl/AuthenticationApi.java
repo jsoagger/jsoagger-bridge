@@ -16,13 +16,13 @@ import io.github.jsoagger.core.business.cloud.services.api.IClientAuthentication
  */
 public class AuthenticationApi extends AbstractClientApi implements IClientAuthenticationApi {
 
-  private static final String API_AUTHENTICATION_LOGIN = "/transdev/security/v1/anon/auth/login";
-  private static final String API_LOST_PASS = "/transdev/security/v1/anon/auth/lostPassword?login=%s";
-  private static final String API_AUTHENTICATION_LOGOUT = "/transdev/security/v1/secured/api/auth/logout";
-  private static final String API_RESEND_LOCKTOKEN = "/transdev/security/v1/secured/api//auth/%s/resendLockToken/?containerId=%s";
-  private static final String API_SET_TECHNICAL_STATE = "/transdev/security/v1/secured/api/auth/setSystemLocked?login=%s";
-  private static final String API_ACTIVATE_ACCOUNT = "/transdev/security/inactive/auth/activateAccount?login=%s";
-  private static final String MY_ACTIVATION_TOKEN = "/transdev/security/inactive/auth/myActivationToken";
+  private static final String API_AUTHENTICATION_LOGIN = "/jsoagger/security/v1/anon/auth/login";
+  private static final String API_LOST_PASS = "/jsoagger/security/v1/anon/auth/lostPassword?login=%s";
+  private static final String API_AUTHENTICATION_LOGOUT = "/jsoagger/security/v1/secured/api/auth/logout";
+  private static final String API_RESEND_LOCKTOKEN = "/jsoagger/security/v1/secured/api//auth/%s/resendLockToken/?containerId=%s";
+  private static final String API_SET_TECHNICAL_STATE = "/jsoagger/security/v1/secured/api/auth/setSystemLocked?login=%s";
+  private static final String API_ACTIVATE_ACCOUNT = "/jsoagger/security/inactive/auth/activateAccount?login=%s";
+  private static final String MY_ACTIVATION_TOKEN = "/jsoagger/security/inactive/auth/myActivationToken";
 
   /**
    * Constructor

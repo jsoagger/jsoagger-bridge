@@ -21,16 +21,16 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class FolderApi extends AbstractClientApi implements IFolderApi {
 
-  private static final String	FOLDER_CHILDREN_URI			= "/transdev/base/v1/secured/api/folder/%s/children/?containerId=%s";
-  private static final String	COUNT_FOLDER_CHILDREN_URI	= "/transdev/base/v1/secured/api/folder/%s/children/count/?containerId=%s";
-  private static final String	FOLDER_CONTENT_URI			= "/transdev/base/v1/secured/api/folder/%s/content/?contentClass=%s&page=%s&pageSize=%s&containerId=%s";
-  private static final String	COUNT_FOLDER_CONTENT_URI	= "/transdev/base/v1/secured/api/folder/%s/content/count/?contentClass=%s&containerId=%s";
-  private static final String	FOLDER_CREATE_URI			= "/transdev/base/v1/secured/api/folder/%s/?containerId=%s";
-  private static final String   FOLDER_DELETE_URI           = "/transdev/base/v1/secured/api/folder/%s/?containerId=%s";
-  private static final String   FOLDER_GET_URI           = "/transdev/base/v1/secured/api/folder/%s/?containerId=%s";
-  private static final String	FOLDER_BY_PATH_URI			= "/transdev/base/v1/secured/api/folder/byPath?path=%s&containerId=%s";
+  private static final String	FOLDER_CHILDREN_URI			= "/jsoagger/base/v1/secured/api/folder/%s/children/?containerId=%s";
+  private static final String	COUNT_FOLDER_CHILDREN_URI	= "/jsoagger/base/v1/secured/api/folder/%s/children/count/?containerId=%s";
+  private static final String	FOLDER_CONTENT_URI			= "/jsoagger/base/v1/secured/api/folder/%s/content/?contentClass=%s&page=%s&pageSize=%s&containerId=%s";
+  private static final String	COUNT_FOLDER_CONTENT_URI	= "/jsoagger/base/v1/secured/api/folder/%s/content/count/?contentClass=%s&containerId=%s";
+  private static final String	FOLDER_CREATE_URI			= "/jsoagger/base/v1/secured/api/folder/%s/?containerId=%s";
+  private static final String   FOLDER_DELETE_URI           = "/jsoagger/base/v1/secured/api/folder/%s/?containerId=%s";
+  private static final String   FOLDER_GET_URI           = "/jsoagger/base/v1/secured/api/folder/%s/?containerId=%s";
+  private static final String	FOLDER_BY_PATH_URI			= "/jsoagger/base/v1/secured/api/folder/byPath?path=%s&containerId=%s";
 
-  private static final String	POPULATE_FROM_URI	= "/transdev/base/v1/secured/api/folder/%s/populate/?templateId=%s&containerId=%s";
+  private static final String	POPULATE_FROM_URI	= "/jsoagger/base/v1/secured/api/folder/%s/populate/?templateId=%s&containerId=%s";
 
 
   /**

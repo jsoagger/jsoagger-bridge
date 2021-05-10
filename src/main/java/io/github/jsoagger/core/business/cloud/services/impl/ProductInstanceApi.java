@@ -18,13 +18,13 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 public class ProductInstanceApi extends AbstractClientApi implements IProductInstanceApi {
 
 
-  private static final String   getProduct_byid_ULR               = "/transdev/shopbase/v1/secured/api/productInstance/%s/?containerId=%s";
-  private static final String   getProducts_bynumber_ULR          = "/transdev/shopbase/v1/secured/api/productInstance/byNumber/?containerId=%s&number=%s";
-  private static final String   getProducts_ULR                   = "/transdev/shopbase/v1/secured/api/productInstance/?containerId=%s&o=%s&c=%s&page=%s&pageSize=%s&s=%s";
-  private static final String   updateDiscontinuationDate_ULR     = "/transdev/shopbase/v1/secured/api/productInstance/%s/discontinuationDate/?containerId=%s";
-  private static final String   setProductMasterCategory_ULR      = "/transdev/shopbase/v1/secured/api/productInstance/%s/masterCategory/?c=%s&containerId=%s";
-  private static final String   getCategoriesOf_ULR             = "/transdev/shopbase/v1/secured/api/productInstance/%s/categories/?containerId=%s";
-  private static final String   manageCategoriesOf_ULR          = "/transdev/shopbase/v1/secured/api/productInstance/%s/categories/?categoryId=%s&containerId=%s";
+  private static final String   getProduct_byid_ULR               = "/jsoagger/shopbase/v1/secured/api/productInstance/%s/?containerId=%s";
+  private static final String   getProducts_bynumber_ULR          = "/jsoagger/shopbase/v1/secured/api/productInstance/byNumber/?containerId=%s&number=%s";
+  private static final String   getProducts_ULR                   = "/jsoagger/shopbase/v1/secured/api/productInstance/?containerId=%s&o=%s&c=%s&page=%s&pageSize=%s&s=%s";
+  private static final String   updateDiscontinuationDate_ULR     = "/jsoagger/shopbase/v1/secured/api/productInstance/%s/discontinuationDate/?containerId=%s";
+  private static final String   setProductMasterCategory_ULR      = "/jsoagger/shopbase/v1/secured/api/productInstance/%s/masterCategory/?c=%s&containerId=%s";
+  private static final String   getCategoriesOf_ULR             = "/jsoagger/shopbase/v1/secured/api/productInstance/%s/categories/?containerId=%s";
+  private static final String   manageCategoriesOf_ULR          = "/jsoagger/shopbase/v1/secured/api/productInstance/%s/categories/?categoryId=%s&containerId=%s";
 
 
   @Override

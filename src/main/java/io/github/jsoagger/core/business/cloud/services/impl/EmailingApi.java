@@ -14,7 +14,7 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class EmailingApi extends AbstractClientApi  implements IEmailingApi {
 
-  private static final String NO_REPLY_URL = "/transdev/base/v1/secured/api/emailing/sendNoReply";
+  private static final String NO_REPLY_URL = "/jsoagger/base/v1/secured/api/emailing/sendNoReply";
 
 
   /**

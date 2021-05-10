@@ -17,10 +17,10 @@ import com.google.gson.JsonObject;
  */
 public class GlobalAttributesApi extends AbstractClientApi implements IGlobalAttributesApi {
 
-  private static final String	COUNT_ALL		= "/transdev/base/v1/secured/api/globalAttributes/count/?type=%s";
-  private static final String	GET_ALL			= "/transdev/base/v1/secured/api/globalAttributes/?type=%s&pageSize=%s&page=%s";
-  private static final String	BY_LOGICAL_NAME	= "/transdev/base/v1/secured/api/globalAttributes/byLogicalName/%s/";
-  private static final String	BY_OID			= "/transdev/base/v1/secured/api/globalAttributes/%s/";
+  private static final String	COUNT_ALL		= "/jsoagger/base/v1/secured/api/globalAttributes/count/?type=%s";
+  private static final String	GET_ALL			= "/jsoagger/base/v1/secured/api/globalAttributes/?type=%s&pageSize=%s&page=%s";
+  private static final String	BY_LOGICAL_NAME	= "/jsoagger/base/v1/secured/api/globalAttributes/byLogicalName/%s/";
+  private static final String	BY_OID			= "/jsoagger/base/v1/secured/api/globalAttributes/%s/";
 
 
   /**

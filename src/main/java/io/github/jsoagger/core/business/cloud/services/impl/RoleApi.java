@@ -16,10 +16,10 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 public class RoleApi extends AbstractClientApi implements IRoleApi {
 
 
-  private static final String   getRoleByKey                = "/transdev/base/v1/secured/api/role/byKey/?containerId=%s&roleKey=%s";
-  private static final String   getRole                     = "/transdev/base/v1/secured/api/role/%s/?containerId=%s";
-  private static final String   getRolePermissions              = "/transdev/base/v1/secured/api/role/%s/permissions/?containerId=%s";
-  private static final String   add_remove_PermissionToRole     = "/transdev/base/v1/secured/api/role/%s/permissions/%s/?containerId=%s";
+  private static final String   getRoleByKey                = "/jsoagger/base/v1/secured/api/role/byKey/?containerId=%s&roleKey=%s";
+  private static final String   getRole                     = "/jsoagger/base/v1/secured/api/role/%s/?containerId=%s";
+  private static final String   getRolePermissions              = "/jsoagger/base/v1/secured/api/role/%s/permissions/?containerId=%s";
+  private static final String   add_remove_PermissionToRole     = "/jsoagger/base/v1/secured/api/role/%s/permissions/%s/?containerId=%s";
 
 
   @Override

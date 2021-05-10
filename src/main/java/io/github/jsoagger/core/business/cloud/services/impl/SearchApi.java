@@ -18,12 +18,12 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class SearchApi extends AbstractClientApi implements ISearchApi {
 
-  private static final String	SEARCH_ENTITIES				= "/transdev/base/v1/secured/api/search/basic/entity/?containerId=%s";
-  private static final String	GET_SAVED_SEARCHS_URL		= "/transdev/base/v1/secured/api/search/basic/savedSearchs?audience=%s&containerId=%s";
-  private static final String	DELETE_SAVED_SEARCHS_URL	= "/transdev/base/v1/secured/api/search/basic/savedSearchs/%s/?containerId=%s";
+  private static final String	SEARCH_ENTITIES				= "/jsoagger/base/v1/secured/api/search/basic/entity/?containerId=%s";
+  private static final String	GET_SAVED_SEARCHS_URL		= "/jsoagger/base/v1/secured/api/search/basic/savedSearchs?audience=%s&containerId=%s";
+  private static final String	DELETE_SAVED_SEARCHS_URL	= "/jsoagger/base/v1/secured/api/search/basic/savedSearchs/%s/?containerId=%s";
 
-  private static final String	SEARCH_RC_ENTITIES_ITERATIONS	= "/transdev/base/v1/secured/api/search/basic/rcEntitySearchIterations/?containerId=%s";
-  private static final String	SEARCH_RC_ENTITIES_MASTERS		= "/transdev/base/v1/secured/api/search/basic/rcEntitySearchMasters/?containerId=%s";
+  private static final String	SEARCH_RC_ENTITIES_ITERATIONS	= "/jsoagger/base/v1/secured/api/search/basic/rcEntitySearchIterations/?containerId=%s";
+  private static final String	SEARCH_RC_ENTITIES_MASTERS		= "/jsoagger/base/v1/secured/api/search/basic/rcEntitySearchMasters/?containerId=%s";
 
 
   /**

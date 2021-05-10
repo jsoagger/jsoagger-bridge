@@ -19,18 +19,18 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class TypedObjectLinkApi extends AbstractClientApi implements ITypedObjectLinkApi {
 
-  private static final String	CREATE_LINK_ULR	= "/transdev/base/v1/secured/api/typedObjectLink/%s/?roleB=%s&linkConstraintName=%s&linkClass=%s&linkType=%s";
-  private static final String	COUNT_ROLEBs_URL	= "/transdev/base/v1/secured/api/typedObjectLink/%s/countRoleBs?linkConstraintName=%s&linkClass=%s";
-  private static final String	USAGES_URL			= "/transdev/base/v1/secured/api/typedObjectLink/%s/usages/?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s&linkClass=%s";
-  private static final String   GET_ROLEBs_ULR = "/transdev/base/v1/secured/api/typedObjectLink/%s/roleBs/?linkConstraintName=%s&linkClass=%s";
-  private static final String	ROLEBS_WITH_LINKS_URL			= "/transdev/base/v1/secured/api/typedObjectLink/%s/roleBsWithLinks/?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s&linkClass=%s";
-  private static final String	PAGINATED_ROLEBS_WITH_LINKS_URL	= "/transdev/base/v1/secured/api/typedObjectLink/%s/paginatedRoleBsWithLinks/?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s&linkClass=%s&linkConstraintName=%s";
+  private static final String	CREATE_LINK_ULR	= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/?roleB=%s&linkConstraintName=%s&linkClass=%s&linkType=%s";
+  private static final String	COUNT_ROLEBs_URL	= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/countRoleBs?linkConstraintName=%s&linkClass=%s";
+  private static final String	USAGES_URL			= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/usages/?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s&linkClass=%s";
+  private static final String   GET_ROLEBs_ULR = "/jsoagger/base/v1/secured/api/typedObjectLink/%s/roleBs/?linkConstraintName=%s&linkClass=%s";
+  private static final String	ROLEBS_WITH_LINKS_URL			= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/roleBsWithLinks/?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s&linkClass=%s";
+  private static final String	PAGINATED_ROLEBS_WITH_LINKS_URL	= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/paginatedRoleBsWithLinks/?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s&linkClass=%s&linkConstraintName=%s";
 
-  private static final String	GET_PAGINATED_ROLEBs_ULR_			= "/transdev/base/v1/secured/api/typedObjectLink/%s/paginatedRoleBs/?linkConstraintName=%s&linkClass=%s&pageSize=%s&page=%s";
-  private static final String	GET_PAGINATED_ROLEBs_ULR_ITERATIONS	= "/transdev/base/v1/secured/api/typedObjectLink/%s/paginatedRoleBsIterations/?linkConstraintName=%s&linkClass=%s&pageSize=%s&page=%s";
+  private static final String	GET_PAGINATED_ROLEBs_ULR_			= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/paginatedRoleBs/?linkConstraintName=%s&linkClass=%s&pageSize=%s&page=%s";
+  private static final String	GET_PAGINATED_ROLEBs_ULR_ITERATIONS	= "/jsoagger/base/v1/secured/api/typedObjectLink/%s/paginatedRoleBsIterations/?linkConstraintName=%s&linkClass=%s&pageSize=%s&page=%s";
 
 
-  private static final String   LINK_CONSTRAINTS_URL   = "/transdev/base/v1/secured/api/typedObjectLink/%s/linkConstraints/?containerId=%s";
+  private static final String   LINK_CONSTRAINTS_URL   = "/jsoagger/base/v1/secured/api/typedObjectLink/%s/linkConstraints/?containerId=%s";
 
 
   /**

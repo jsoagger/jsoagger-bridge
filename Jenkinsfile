@@ -1,9 +1,8 @@
 pipeline {
    
-   agent {label 'slave1'}
-   
+   agent {label 'master'}
    environment {
-       PROJECT_NAME="JSoagger Core CloudBridge"
+       PROJECT_NAME="JSoagger CloudBridge"
    }
    
    options {
@@ -54,7 +53,7 @@ pipeline {
 	        		}
 	        	}
         	}
-      	}
+        }
       
       	stage('Perform release') {
       		when {
@@ -73,23 +72,6 @@ pipeline {
 		         	}
 		        }
          	}
-         	
-         	post {  
-				 success {
-					 emailext   to: "${env.DEV_MAILING_LIST}",
-					 			subject: "$PROJECT_NAME, released",
-					 			body: "$PROJECT_NAME released.<br/> A new version of project $PROJECT_NAME is avalaible.<br/><br/>Jenkins", 
-								from: "${env.JOB_EMAIL_SENDER}", 
-								attachLog: false;
-				 }  
-				 failure {
-					emailext    to: "${env.DEV_MAILING_LIST}",
-								subject: "$PROJECT_NAME, RELEASE Failed",
-								body: "$PROJECT_NAME, RELEASE failed. <br/> You can check jenkins console output at $BUILD_URL to view full the results.<br/><br/>Jenkins", 
-								from: "${env.JOB_EMAIL_SENDER}", 
-								attachLog: true;
-				}  
-			}
       	}
     }
     

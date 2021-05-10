@@ -14,7 +14,7 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class FolderTemplateApi extends AbstractClientApi implements IFolderTemplateApi {
 
-  private static final String   FOLDER_TEMP_GET_WITH_NAME = "/transdev/base/v1/secured/api/folderTemplate/getWithName/?name=%s&containerId=%s";
+  private static final String   FOLDER_TEMP_GET_WITH_NAME = "/jsoagger/base/v1/secured/api/folderTemplate/getWithName/?name=%s&containerId=%s";
 
 
   /**

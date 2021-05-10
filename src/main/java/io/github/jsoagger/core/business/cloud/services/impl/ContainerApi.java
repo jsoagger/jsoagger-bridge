@@ -26,32 +26,32 @@ public class ContainerApi extends AbstractClientApi implements IContainerApi {
   private static final String rootContainerId =
       "MTppby5naXRodWIuanNvYWdnZXIuY29yZS5tb2RlbC5hcGkuY29tcG9zaXRlLkFwcGxpY2F0aW9uQ29udGFpbmVy";
 
-  private static final String GET_CONTAINER_BY_PATH = "/transdev/base/v1/secured/api/container/?path=%s";
-  private static final String GETCONTAINER = "/transdev/base/v1/secured/api/container/%s/";
+  private static final String GET_CONTAINER_BY_PATH = "/jsoagger/base/v1/secured/api/container/?path=%s";
+  private static final String GETCONTAINER = "/jsoagger/base/v1/secured/api/container/%s/";
 
-  private static final String GET_CONTAINER_ADMIN = "/transdev/base/v1/secured/api/container/%s/admins";
-  private static final String GET_SUBCONTAINER = "/transdev/base/v1/secured/api/container/%s/subContainers";
-  private static final String ROOT_FOLDER_URI = "/transdev/base/v1/secured/api/container/%s/rootFolder";
+  private static final String GET_CONTAINER_ADMIN = "/jsoagger/base/v1/secured/api/container/%s/admins";
+  private static final String GET_SUBCONTAINER = "/jsoagger/base/v1/secured/api/container/%s/subContainers";
+  private static final String ROOT_FOLDER_URI = "/jsoagger/base/v1/secured/api/container/%s/rootFolder";
   private static final String MEMBERS_URI =
-      "/transdev/base/v1/secured/api/container/%s/members/?page=%s&pageSize=%s&token=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/members/?page=%s&pageSize=%s&token=%s&includeParentItems=%s";
   private static final String ROLES_URI =
-      "/transdev/base/v1/secured/api/container/%s/roles/?page=%s&pageSize=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/roles/?page=%s&pageSize=%s&includeParentItems=%s";
   private static final String FOLDER_TEMPLATES_URI =
-      "/transdev/base/v1/secured/api/container/%s/folderTemplates/?page=%s&pageSize=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/folderTemplates/?page=%s&pageSize=%s&includeParentItems=%s";
   private static final String LIFECYCLE_URI =
-      "/transdev/base/v1/secured/api/container/%s/lifecycles/?page=%s&pageSize=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/lifecycles/?page=%s&pageSize=%s&includeParentItems=%s";
   private static final String ROOT_LINK_TYPES_URI =
-      "/transdev/base/v1/secured/api/container/%s/rootLinkTypes/?page=%s&pageSize=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/rootLinkTypes/?page=%s&pageSize=%s&includeParentItems=%s";
   private static final String ROOT_TYPES_URI =
-      "/transdev/base/v1/secured/api/container/%s/rootTypes/?page=%s&pageSize=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/rootTypes/?page=%s&pageSize=%s&includeParentItems=%s";
   private static final String SUBCONTAINERS_FOLDER_URI =
-      "/transdev/base/v1/secured/api/container/%s/subContainers/?page=%s&pageSize=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/subContainers/?page=%s&pageSize=%s";
   private static final String rulesIdentifier_URI =
-      "/transdev/base/v1/secured/api/container/%s/businessRuleIdentifiers/?includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/businessRuleIdentifiers/?includeParentItems=%s";
   private static final String enTemplates_URI =
-      "/transdev/base/v1/secured/api/container/%s/enTemplates/?page=%s&pageSize=%s&includeParentItems=%s";
+      "/jsoagger/base/v1/secured/api/container/%s/enTemplates/?page=%s&pageSize=%s&includeParentItems=%s";
   private static final String permissions_URI =
-      "/transdev/base/v1/secured/api/container/%s/permissions/?page=%s&pageSize=%s&";
+      "/jsoagger/base/v1/secured/api/container/%s/permissions/?page=%s&pageSize=%s&";
 
 
   /**

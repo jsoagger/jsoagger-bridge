@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
  */
 public class DocumentApi extends AbstractClientApi implements IDocumentApi {
 
-  private static final String CREATE_DOC_URI = "/transdev/document/v1/secured/api/document/";
+  private static final String CREATE_DOC_URI = "/jsoagger/document/v1/secured/api/document/";
 
 
   /**

@@ -14,7 +14,7 @@ import io.github.jsoagger.core.business.cloud.services.api.IContentFormatApi;
  */
 public class ContentFormatApi extends AbstractClientApi implements IContentFormatApi {
 
-  private static final String MIME_TYPE_PATH = "/transdev/base/v1/secured/api/contentFormat/thumbnail?mimeType=%s";
+  private static final String MIME_TYPE_PATH = "/jsoagger/base/v1/secured/api/contentFormat/thumbnail?mimeType=%s";
 
 
   /**

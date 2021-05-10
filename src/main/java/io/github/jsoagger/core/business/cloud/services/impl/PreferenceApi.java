@@ -15,9 +15,9 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class PreferenceApi extends AbstractClientApi implements IPreferenceAPI{
 
-  private static final String GET_PREF_VALUE_API = "/transdev/base/v1/secured/api/account/%s/preference/?key=%s";
-  private static final String SET_PREF_VALUE_API = "/transdev/base/v1/secured/api/account/%s/preference/?key=%s&value=%";
-  private static final String GET_USER_PREFS_API = "/transdev/base/v1/secured/api/account/%s/preference/all";
+  private static final String GET_PREF_VALUE_API = "/jsoagger/base/v1/secured/api/account/%s/preference/?key=%s";
+  private static final String SET_PREF_VALUE_API = "/jsoagger/base/v1/secured/api/account/%s/preference/?key=%s&value=%";
+  private static final String GET_USER_PREFS_API = "/jsoagger/base/v1/secured/api/account/%s/preference/all";
 
 
   /**

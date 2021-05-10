@@ -15,9 +15,9 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class MultiIdentificationApi extends AbstractClientApi implements IMultiIdentificationApi {
 
-  private static String GET_MASTER_IDENT_FOR_TYPE = "/transdev/multiIdentifiable/v1/secured/api/multiIdentifiable/%s/masterIdentification/?typeId=%s&containerId=%s";
-  private static String GET_IDENTS_ = "/transdev/multiIdentifiable/v1/secured/api/multiIdentifiable/%s/identifications?containerId=%s";
-  private static String SET_MASTER_IDENT_FOR_TYPE = "/transdev/multiIdentifiable/v1/secured/api/multiIdentifiable/%s/masterIdentification/?typeId=%s&identificationId=%s&containerId=%s";
+  private static String GET_MASTER_IDENT_FOR_TYPE = "/jsoagger/multiIdentifiable/v1/secured/api/multiIdentifiable/%s/masterIdentification/?typeId=%s&containerId=%s";
+  private static String GET_IDENTS_ = "/jsoagger/multiIdentifiable/v1/secured/api/multiIdentifiable/%s/identifications?containerId=%s";
+  private static String SET_MASTER_IDENT_FOR_TYPE = "/jsoagger/multiIdentifiable/v1/secured/api/multiIdentifiable/%s/masterIdentification/?typeId=%s&identificationId=%s&containerId=%s";
 
   @Override
   public IOperationResult getAllIdentifications(JsonObject query) {

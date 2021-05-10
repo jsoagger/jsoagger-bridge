@@ -18,15 +18,15 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
 public class ContactableApi extends AbstractClientApi implements IContactableApi {
 
 
-  private static String GET_CONTACTS_URL =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/?role=%s&masterForRole=%s&fromDate=%s&thruDate=%s&containerId=%s";
-  private static String DELETE_CONTACT_URL =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/?containerId=%s";
+  private static String GET_CONTACTS_URL =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/?role=%s&masterForRole=%s&fromDate=%s&thruDate=%s&containerId=%s";
+  private static String DELETE_CONTACT_URL =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/?containerId=%s";
 
-  private static String SET_MASTER_FOR_ROLE =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/setMasterForRole/?containerId=%s";
-  private static String SET_EFFECTIVITY =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/setEffectivity/?containerId=%s";
-  private static String SET_PostalAddress_URL =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/postal/?containerId=%s";
-  private static String SET_WEB_URL =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/web?add=%s&containerId=%s";
-  private static String SET_TELECOM_URL =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/telecom?add=%s&containerId=%s";
-  private static String SET_ROLE_URL =  "/transdev/contactable/v1/secured/api/contactable/%s/contacts/%s/setRole?role=%s&containerId=%s";
+  private static String SET_MASTER_FOR_ROLE =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/setMasterForRole/?containerId=%s";
+  private static String SET_EFFECTIVITY =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/setEffectivity/?containerId=%s";
+  private static String SET_PostalAddress_URL =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/postal/?containerId=%s";
+  private static String SET_WEB_URL =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/web?add=%s&containerId=%s";
+  private static String SET_TELECOM_URL =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/telecom?add=%s&containerId=%s";
+  private static String SET_ROLE_URL =  "/jsoagger/contactable/v1/secured/api/contactable/%s/contacts/%s/setRole?role=%s&containerId=%s";
 
 
   /**

@@ -15,12 +15,12 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class ViewDefinitionApi extends AbstractClientApi implements IViewDefinitionApi {
 
-  static String getAllSchemasByInternalName = "/transdev/base/v1/anon/api/viewDefinition/getAllSchemasByInternalName?internalName=%s";
-  static String getUISchemaByInternalName = "/transdev/base/v1/anon/api/viewDefinition/getUISchemaByInternalName?internalName=%s&platform=%s";
-  static String getJSONSchemaByInternalName = "/transdev/base/v1/anon/api/viewDefinition/getJSONSchemaByInternalName?internalName=%s&platform=%s";
-  static String getAll = "/transdev/base/v1/secured/api/viewDefinition/?platform=%s";
-  static String getById = "/transdev/base/v1/secured/api/viewDefinition/%s";
-  static String getByInternalName = "/transdev/base/v1/secured/api/viewDefinition/getByInternalName/?internalName=%s";
+  static String getAllSchemasByInternalName = "/jsoagger/base/v1/anon/api/viewDefinition/getAllSchemasByInternalName?internalName=%s";
+  static String getUISchemaByInternalName = "/jsoagger/base/v1/anon/api/viewDefinition/getUISchemaByInternalName?internalName=%s&platform=%s";
+  static String getJSONSchemaByInternalName = "/jsoagger/base/v1/anon/api/viewDefinition/getJSONSchemaByInternalName?internalName=%s&platform=%s";
+  static String getAll = "/jsoagger/base/v1/secured/api/viewDefinition/?platform=%s";
+  static String getById = "/jsoagger/base/v1/secured/api/viewDefinition/%s";
+  static String getByInternalName = "/jsoagger/base/v1/secured/api/viewDefinition/getByInternalName/?internalName=%s";
 
   //remote return jsonSchema + uiSchema (if platform is not null)
   @Override

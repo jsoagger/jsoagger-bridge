@@ -18,23 +18,23 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class RCApi extends AbstractClientApi implements IRCApi {
 
-  private static final String	MASTER_BY_NAME		  = "/transdev/base/v1/secured/api/rc/master/byName/?name=%s&domainClass=%s&containerId=%s";
-  private static final String   MASTER_BY_NUMBER      = "/transdev/base/v1/secured/api/rc/master/byNumber/?number=%s&domainClass=%s&containerId=%s";
+  private static final String	MASTER_BY_NAME		  = "/jsoagger/base/v1/secured/api/rc/master/byName/?name=%s&domainClass=%s&containerId=%s";
+  private static final String   MASTER_BY_NUMBER      = "/jsoagger/base/v1/secured/api/rc/master/byNumber/?number=%s&domainClass=%s&containerId=%s";
 
-  private static final String	CHECKIN_URL			= "/transdev/base/v1/secured/api/workable/%s/checkin/?containerId=%s";
-  private static final String   CHECKOUT_URL        = "/transdev/base/v1/secured/api/workable/%s/checkout/?containerId=%s";
-  private static final String   UNDOCHECKOUT_URL    = "/transdev/base/v1/secured/api/workable/%s/undoCheckout/?containerId=%s";
+  private static final String	CHECKIN_URL			= "/jsoagger/base/v1/secured/api/workable/%s/checkin/?containerId=%s";
+  private static final String   CHECKOUT_URL        = "/jsoagger/base/v1/secured/api/workable/%s/checkout/?containerId=%s";
+  private static final String   UNDOCHECKOUT_URL    = "/jsoagger/base/v1/secured/api/workable/%s/undoCheckout/?containerId=%s";
 
-  private static final String   ITERATED_MASTER_URL = "/transdev/base/v1/secured/api/rc/%s/master/?containerId=%s";
-  private static final String	REVISE_URL			= "/transdev/base/v1/secured/api/rc/%s/revise/?containerId=%s";
-  private static final String   DELETE_ITER_URL     = "/transdev/base/v1/secured/api/rc/%s/?containerId=%s";
-  private static final String	WORKINGCOPY_URL		= "/transdev/base/v1/secured/api/rc/%s/workingCopy/?containerId=%s";
+  private static final String   ITERATED_MASTER_URL = "/jsoagger/base/v1/secured/api/rc/%s/master/?containerId=%s";
+  private static final String	REVISE_URL			= "/jsoagger/base/v1/secured/api/rc/%s/revise/?containerId=%s";
+  private static final String   DELETE_ITER_URL     = "/jsoagger/base/v1/secured/api/rc/%s/?containerId=%s";
+  private static final String	WORKINGCOPY_URL		= "/jsoagger/base/v1/secured/api/rc/%s/workingCopy/?containerId=%s";
 
-  private static final String	ALL_VERSIONS_OF_MASTER_URL	        = "/transdev/base/v1/secured/api/rc/%s/versions/?containerId=%s";
-  private static final String   ALL_ITERATIONS_OF_MASTER_URL        = "/transdev/base/v1/secured/api/rc/%s/iterations/?containerId=%s";
-  private static final String   LATEST_OF_MASTER_URL                = "/transdev/base/v1/secured/api/rc/%s/latest/?containerId=%s";
+  private static final String	ALL_VERSIONS_OF_MASTER_URL	        = "/jsoagger/base/v1/secured/api/rc/%s/versions/?containerId=%s";
+  private static final String   ALL_ITERATIONS_OF_MASTER_URL        = "/jsoagger/base/v1/secured/api/rc/%s/iterations/?containerId=%s";
+  private static final String   LATEST_OF_MASTER_URL                = "/jsoagger/base/v1/secured/api/rc/%s/latest/?containerId=%s";
 
-  private static final String ALL_ITERATIONS_BY_VERSION_URL = "/transdev/base/v1/secured/api/rc/%s/iterationsOfVersion/?versionNumber=%s&containerId=%s";
+  private static final String ALL_ITERATIONS_BY_VERSION_URL = "/jsoagger/base/v1/secured/api/rc/%s/iterationsOfVersion/?versionNumber=%s&containerId=%s";
 
   /**
    * {@inheritDoc}

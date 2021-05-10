@@ -18,12 +18,12 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class PersistableApi extends AbstractClientApi implements IPersistableApi {
 
-  private static final String	UPDATE_ATTRIBUTES_URI	= "/transdev/base/v1/secured/api/persistable/%s/updateAttributes/?containerId=%s";
-  private static final String	LOAD_SIMPLE_MODEL_URI	= "/transdev/base/v1/secured/api/persistable/%s/loadSimpleModel/?containerId=%s";
-  private static final String	LOAD_BASIC_MODEL_URI	= "/transdev/base/v1/secured/api/persistable/%s/loadBasicModel/?containerId=%s";
-  private static final String	LOAD_BASIC_RC_MODEL_URI	= "/transdev/base/v1/secured/api/persistable/%s/loadBasicRCModel/?containerId=%s";
-  private static final String	PAGINATE_ENTITY_URI		= "/transdev/base/v1/secured/api/persistable/%s/paginateEntity?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s";
-  private static final String	PAGINATE_RC_URI			= "/transdev/base/v1/secured/api/persistable/%s/paginateRc?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s";
+  private static final String	UPDATE_ATTRIBUTES_URI	= "/jsoagger/base/v1/secured/api/persistable/%s/updateAttributes/?containerId=%s";
+  private static final String	LOAD_SIMPLE_MODEL_URI	= "/jsoagger/base/v1/secured/api/persistable/%s/loadSimpleModel/?containerId=%s";
+  private static final String	LOAD_BASIC_MODEL_URI	= "/jsoagger/base/v1/secured/api/persistable/%s/loadBasicModel/?containerId=%s";
+  private static final String	LOAD_BASIC_RC_MODEL_URI	= "/jsoagger/base/v1/secured/api/persistable/%s/loadBasicRCModel/?containerId=%s";
+  private static final String	PAGINATE_ENTITY_URI		= "/jsoagger/base/v1/secured/api/persistable/%s/paginateEntity?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s";
+  private static final String	PAGINATE_RC_URI			= "/jsoagger/base/v1/secured/api/persistable/%s/paginateRc?page=%s&pageSize=%s&sort=%s&audience=%s&containerOid=%s&queryPredicate=%s";
 
 
   /**

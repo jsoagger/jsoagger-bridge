@@ -17,18 +17,18 @@ import io.github.jsoagger.core.business.cloud.services.api.IAppVersionApi;
  */
 public class AppVersionApi extends AbstractClientApi implements IAppVersionApi {
 
-  static String PENDING_ISNTALLATION_URL = "/transdev/base/v1/secured/api/versionHistory/pendingInstallation/?buildModuleName=%s&buildModuleVersion=%s";
-  static String INSTALLATION_STATUS_URL = "/transdev/base/v1/secured/api/versionHistory/installationStatus?buildModuleName=%s&buildModuleVersion=%s";
-  static String VERSION_URL = "/transdev/base/v1/secured/api/versionHistory/version/?buildModuleName=%s";
-  static String CREATE_URL = "/transdev/base/v1/secured/api/versionHistory/";
-  static String GET_BY_ID_URL = "/transdev/base/v1/secured/api/versionHistory/%s";
-  static String DELETE_URL = "/transdev/base/v1/secured/api/versionHistory/%s";
-  static String SET_INSTALLED_URL = "/transdev/base/v1/secured/api/versionHistory/%s/installed";
-  static String SET_FAILED_URL = "/transdev/base/v1/secured/api/versionHistory/%s/failed";
-  static String GET_ALL_URL = "/transdev/base/v1/secured/api/versionHistory/?label=%s";
+  static String PENDING_ISNTALLATION_URL = "/jsoagger/base/v1/secured/api/versionHistory/pendingInstallation/?buildModuleName=%s&buildModuleVersion=%s";
+  static String INSTALLATION_STATUS_URL = "/jsoagger/base/v1/secured/api/versionHistory/installationStatus?buildModuleName=%s&buildModuleVersion=%s";
+  static String VERSION_URL = "/jsoagger/base/v1/secured/api/versionHistory/version/?buildModuleName=%s";
+  static String CREATE_URL = "/jsoagger/base/v1/secured/api/versionHistory/";
+  static String GET_BY_ID_URL = "/jsoagger/base/v1/secured/api/versionHistory/%s";
+  static String DELETE_URL = "/jsoagger/base/v1/secured/api/versionHistory/%s";
+  static String SET_INSTALLED_URL = "/jsoagger/base/v1/secured/api/versionHistory/%s/installed";
+  static String SET_FAILED_URL = "/jsoagger/base/v1/secured/api/versionHistory/%s/failed";
+  static String GET_ALL_URL = "/jsoagger/base/v1/secured/api/versionHistory/?label=%s";
 
-  static String getDataPatchInstallationStatusURL = "/transdev/base/v1/anon/dataPatch/installationStatus/?buildModuleVersion=%s&buildModuleName=%s";
-  static String setDataPatchInstallationStatusURL = "/transdev/base/v1/secured/api/versionHistory/dataPatchInstallationStatus/";
+  static String getDataPatchInstallationStatusURL = "/jsoagger/base/v1/anon/dataPatch/installationStatus/?buildModuleVersion=%s&buildModuleName=%s";
+  static String setDataPatchInstallationStatusURL = "/jsoagger/base/v1/secured/api/versionHistory/dataPatchInstallationStatus/";
 
 
   @Override

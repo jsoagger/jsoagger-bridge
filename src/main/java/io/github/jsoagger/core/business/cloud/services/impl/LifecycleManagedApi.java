@@ -17,18 +17,18 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class LifecycleManagedApi extends AbstractClientApi implements ILifecycleManagedApi {
 
-  private static final String   REASSIGN_URL             = "/transdev/base/v1/secured/api/lifecycleManaged/%s/reassign/?containerId=%s&lifecycleId=%s";
-  private static final String	DENOTE_URL			   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/denote/?containerId=%s";
-  private static final String	PROMOTE_URL			   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/promote/?containerId=%s";
-  private static final String	SET_STATE_URL		   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/setState/?state=%s&containerId=%s";
-  private static final String	LC_HISTORY_URL		   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/lifecycleHistory/?containerId=%s";
-  private static final String	STATE_OF_URL		   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/state/?containerId=%s";
-  private static final String	LIFECYCLE_NAME_URL		   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/lifecycleName/?containerId=%s";
-  private static final String	ALL_STATES_OF_URL		   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/allStates/?containerId=%s";
+  private static final String   REASSIGN_URL             = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/reassign/?containerId=%s&lifecycleId=%s";
+  private static final String	DENOTE_URL			   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/denote/?containerId=%s";
+  private static final String	PROMOTE_URL			   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/promote/?containerId=%s";
+  private static final String	SET_STATE_URL		   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/setState/?state=%s&containerId=%s";
+  private static final String	LC_HISTORY_URL		   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/lifecycleHistory/?containerId=%s";
+  private static final String	STATE_OF_URL		   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/state/?containerId=%s";
+  private static final String	LIFECYCLE_NAME_URL		   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/lifecycleName/?containerId=%s";
+  private static final String	ALL_STATES_OF_URL		   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/allStates/?containerId=%s";
 
-  private static final String	STATE_BY_DENOTE_URL	   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/stateByDenote/?containerId=%s";
-  private static final String	STATE_BY_PROMOTE_URL   = "/transdev/base/v1/secured/api/lifecycleManaged/%s/stateByPromote/?containerId=%s";
-  private static final String	STATES_BY_SETSTATE_URL = "/transdev/base/v1/secured/api/lifecycleManaged/%s/statesBySetState/?containerId=%s";
+  private static final String	STATE_BY_DENOTE_URL	   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/stateByDenote/?containerId=%s";
+  private static final String	STATE_BY_PROMOTE_URL   = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/stateByPromote/?containerId=%s";
+  private static final String	STATES_BY_SETSTATE_URL = "/jsoagger/base/v1/secured/api/lifecycleManaged/%s/statesBySetState/?containerId=%s";
 
 
   /**

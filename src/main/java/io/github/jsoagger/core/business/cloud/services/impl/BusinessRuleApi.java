@@ -17,12 +17,12 @@ import io.github.jsoagger.core.business.cloud.services.api.IBusinessRuleApi;
  */
 public class BusinessRuleApi extends AbstractClientApi implements IBusinessRuleApi {
 
-  private static final String setRuleActiveState_URI = "/transdev/base/v1/secured/api/businessRule/%s/activate?containerId=%s";
-  private static final String setRuleInactiveState_URI = "/transdev/base/v1/secured/api/businessRule/%s/desactivate?containerId=%s";
-  private static final String deleteByIdentifier_URI = "/transdev/base/v1/secured/api/businessRule/%s/delete?containerId=%s";
-  private static final String GetRule_URI = "/transdev/base/v1/secured/api/businessRule/%s/?containerId=%s";
-  private static final String getByIdentifier_URI = "/transdev/base/v1/secured/api/businessRule/getByIdentifier?identifier=%s&containerId=%s";
-  private static final String applicable_rules_URI = "/transdev/base/v1/secured/api/businessRule/applicableRules/?eventKey=%s&businessClass=%s&containerId=%s";
+  private static final String setRuleActiveState_URI = "/jsoagger/base/v1/secured/api/businessRule/%s/activate?containerId=%s";
+  private static final String setRuleInactiveState_URI = "/jsoagger/base/v1/secured/api/businessRule/%s/desactivate?containerId=%s";
+  private static final String deleteByIdentifier_URI = "/jsoagger/base/v1/secured/api/businessRule/%s/delete?containerId=%s";
+  private static final String GetRule_URI = "/jsoagger/base/v1/secured/api/businessRule/%s/?containerId=%s";
+  private static final String getByIdentifier_URI = "/jsoagger/base/v1/secured/api/businessRule/getByIdentifier?identifier=%s&containerId=%s";
+  private static final String applicable_rules_URI = "/jsoagger/base/v1/secured/api/businessRule/applicableRules/?eventKey=%s&businessClass=%s&containerId=%s";
 
 
 

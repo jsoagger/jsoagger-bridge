@@ -14,7 +14,7 @@ import io.github.jsoagger.core.bridge.result.SingleResult;
  */
 public class ContainedApi extends AbstractClientApi implements IContainedApi {
 
-  private static final String   GET_CONTAINER_OF       = "/transdev/base/v1/secured/api/contained/%s/container";
+  private static final String   GET_CONTAINER_OF       = "/jsoagger/base/v1/secured/api/contained/%s/container";
 
 
   @Override
