@@ -2,7 +2,7 @@ pipeline {
    
    agent {label 'master'}
    environment {
-       PROJECT_NAME="JSoagger CloudBridge"
+       PROJECT_NAME="JSoagger cloud-bridge"
    }
    
    options {
